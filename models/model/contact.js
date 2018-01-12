@@ -5,15 +5,15 @@ User = require('./user');
 const Contact = sequelize.define('contact',{
 
     firstName: {
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING, allowNull:false
     },
 
     lastName: {
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING, allowNull:false
     },
 
     email : {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING,allowNull:false,
         validate: {isEmail:true }
     },
 

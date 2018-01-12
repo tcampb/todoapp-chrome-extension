@@ -10,6 +10,10 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING,
 
     },
+    phone:{
+        type:Sequelize.BIGINT(11),
+    },
+
     email: {
         type: Sequelize.STRING,
         allowNull: false,

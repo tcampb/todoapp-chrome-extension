@@ -4,26 +4,32 @@ const sequelize = require('../db');
 
 const User = sequelize.define('user', {
     firstName: {
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING, allowNull:false
     },
     lastName: {
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING,
+
     },
     email: {
         type: Sequelize.STRING,
-        validate: {isEmail:true,notNull: true }
+        allowNull: false,
+        validate: {isEmail:true }
     },
     password: {
-        type:Sequelize.STRING
+        type:Sequelize.STRING,
+        allowNull:false
     },
     primary_token:{
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING,
+        allowNull:false
     },
     google_token:{
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING,
+        allowNull:false
     },
     sf_token :{
-        type: Sequelize.STRING, notNull: true
+        type: Sequelize.STRING,
+        allowNull:false
     }
 
 

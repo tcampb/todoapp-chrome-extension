@@ -3,24 +3,18 @@ sequelize = require('../db'),
 Task = require('./task'),
 Contact = require('./contact');
 
-const Task = sequelize.define('task',{
-    title:{
-        type: Sequelize.STRING
-    },
-    content : {
-        type: Sequelize.TEXT
-    },
-    status : {
-         type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false
-    }
+const Contask = sequelize.define('contask',{
+
 });
 
-Task.belongsTo(User);
+Contask.belongsTo(Contact);
+Contask.belongsTo(Task);
 
-Task.sync()
+
+Contask.sync()
     .then(() => {
-        console.log('Created Task table!');
+        console.log('Created Contaask table!');
     });
 
 
-module.exports = Task;
+module.exports = Contask;

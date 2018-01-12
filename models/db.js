@@ -1,6 +1,6 @@
-const {username} = require('..')
+const {username} = require('../config.json')
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('task-db',`${username}`,'', {
+const sequelize = new Sequelize('taskdb',`${username}`,'', {
     host: 'localhost',
     dialect:'postgres'
 });

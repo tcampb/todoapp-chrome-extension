@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const user = require('../models/model/user');
+// const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-}).post('/', (req, res, next) => {
-
+router.post('/', function(req, res) {
+  let {email, password} = _.pick(req.body, ['email', 'password']);
+  
+  res.end();
 });
 
 module.exports = router;

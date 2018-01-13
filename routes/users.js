@@ -19,12 +19,6 @@ const generateAuthToken = (user) => {
   let access = 'auth';
   let token = jwt.sign({id: userId, access}, config.secret);
   let userRecord = {id: userId, token};
-  userModel.update(
-    {primary_token: token},
-    {where: {
-      id: userId
-    }
-  })
   return userRecord;
 }
 
@@ -40,8 +34,7 @@ router.post('/', function(req, res) {
     return generateAuthToken(response);
   })
   .then((userRecord) => {
-    res.header('x-auth', userRecord.token);
-    res.json(userRecord);
+    res.header('x-auth', userRecord.token).json(userRecord);
   })
   .catch((err) => {
     res.status(400).send(err)

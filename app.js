@@ -24,7 +24,7 @@ app.use(parseURL);
 
 app.use('/', index);
 app.use('/users', users);
-app.use(isAuthorized);
+// app.use(isAuthorized);
 app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler

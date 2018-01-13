@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+//If auth successful, user = res.locals.user
 router.get('/', (req, res, next) => {
-    console.log(res.locals.user);
-    res.end('test');
+    res.render('dashboard', { title: 'Express' });
 })
 
 module.exports = router;

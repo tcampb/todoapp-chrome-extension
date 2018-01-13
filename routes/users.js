@@ -13,21 +13,27 @@ const verifyPassword = (password, user) => {
     return Error("Fail");
   })
 }
+
 const generateAuthToken = (user) => {
   let userId = user.dataValues.id;
   let access = 'auth';
   let token = jwt.sign({id: userId, access}, config.secret);
+  let userRecord = {id: userId, token};
   userModel.update(
     {primary_token: token},
     {where: {
       id: userId
     }
   })
-  return token;
+  return userRecord;
 }
 
-/* GET users listing. */
-router.post('/', function(req, res) {
+router.get('/', (req, res) => {
+  let token = req.header('x-auth') || req.body.token;
+  userModel.findByToken(token);
+  res.end()
+})
+.post('/', function(req, res) {
   let {email, password} = _.pick(req.body, ['email', 'password']);
   userModel.findOne({
     where: {email}
@@ -38,15 +44,14 @@ router.post('/', function(req, res) {
   .then((response) => {
     return generateAuthToken(response);
   })
-  .then((token) => {
-    res.header('x-auth', token).send("Success")
+  .then((userRecord) => {
+    res.header('x-auth', userRecord.token);
+    res.json(userRecord);
   })
   .catch((err) => {
     res.status(400).send(err)
    })
   })
   
-
-
 
 module.exports = router;

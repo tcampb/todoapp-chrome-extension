@@ -1,9 +1,9 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var index = require('./routes/index');
-var users = require('./routes/users');
-var userDB = require('./models/model/user')
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const index = require('./routes/index');
+const users = require('./routes/users');
+const userDB = require('./models/model/user')
 const bodyParser = require('body-parser');
 const parseJSON = bodyParser.json();
 const parseURL = bodyParser.urlencoded( {extended: false} );
@@ -19,6 +19,8 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(parseJSON);
 app.use(parseURL);
+
+
 app.use('/', index);
 app.use('/users', users);
 

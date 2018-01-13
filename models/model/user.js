@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('../../config.json');
 const User = sequelize.define('user', {
     firstName: {
         type: Sequelize.STRING
@@ -25,6 +27,22 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING
     }
   });
+
+  User.findByToken = (token) => {
+    let decoded;
+    
+    try {
+        decoded = jwt.verify(token, config.secret);
+    } catch (e) {
+        return Promise.reject();
+    }
+    return User.findOne({
+        where: {
+            id: decoded.id,
+            token
+        }
+    });
+  }
 
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash("test123", salt, (err, hash) => {

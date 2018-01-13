@@ -22,7 +22,7 @@ const create_all = async(user_json,task_json,contact_json) => {
     contask.save();
 }
 
-create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
+// create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
 
 
 
@@ -39,6 +39,15 @@ const find_create_task = async (userid,task) =>{
 
 // find user id 1 and plug in the task
 // find_create_task(1,sample.sample_data_task);
+
+
+// Create new user
+const create_user = async(user_json) => {
+    let user = await User.create(user_json); 
+    console.log("Sucessful!, your user id is "+user.dataValues.id);
+}
+
+create_user(sample.sample_data_user);
 
 
 module.export = create_all, find_create_task;

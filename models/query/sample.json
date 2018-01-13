@@ -1,8 +1,8 @@
 {
     "sample_data_user" : {
-        "firstName":"Erico",
+        "firstName":"Erica",
         "lastName":"yes",
-        "phone":8135059701,
+        "phone":8130000000,
         "email":"hhahahaa@gmail.com",
         "password":"321321321dsadsad",
         "primary_token":"321321ewqewqewq",
@@ -10,14 +10,14 @@
         "sf_token":"dsdsdsdsdsdsdsds"
     },
     "sample_data_task" : {
-        "title":"exercise",
-        "content":"stay home and sleep",
-        "location":"home",
+        "title":"lunch",
+        "content":"GETTING SOME WINGSSSS",
+        "location":"Buffalo Wild Wings",
         "startdate":"2018-01-13"
     },
     "sample_data_contact" : {
         "firstName":"Tyler",
-        "lastName":"Campell",
+        "lastName":"Campbell",
         "email":"tcampb@gmail.com"
     }
 }

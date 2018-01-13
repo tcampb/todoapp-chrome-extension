@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize'),
 sequelize = require('../db'),
 User = require('./user');
-var undf;
 
 const Task = sequelize.define('task',{
     title:{
@@ -15,6 +14,7 @@ const Task = sequelize.define('task',{
     },
     startdate:{
         type:Sequelize.DATEONLY,allowNull:false, defaultValue: Sequelize.NOW,
+        validate:{isAfter: String(new Date(Date.now()))}
     },
     enddate: {
         type: Sequelize.DATEONLY, allowNull:false, defaultValue: Sequelize.NOW 

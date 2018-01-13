@@ -4,8 +4,12 @@ const Task = require('./model/task');
 const Contask = require('./model/contask');
 
 
-// framework on creating a user
+// drop all tables
+// drop table users cascade; drop table contacts cascade; drop table tasks cascade; drop contasks tasks cascade;
+// useful methods :
+// findOrCreate, min,max,sum,
 
+// sample code on creating a user,task,contact & contask at the same time
 User.create({
     firstName:'Eric',
     lastName:'Yii',
@@ -40,6 +44,29 @@ User.create({
     })
 }
 )
+
+// demo to create task(s) for 'the' user
+
+User.findOne({
+    where: {
+        // find the user before creating the task
+        id: 1
+    }
+}).then((user)=>{
+    // now we create the task!
+    Task.create({
+        title:'lunch',
+        content:'hmmmmm',
+        location:'farm burger',
+        // (js date format is year, month,day)
+        startdate:new Date(Date.UTC(2017,11,20)),
+    }).then(task =>{
+        task.setUser(user);
+        task.save();
+    })
+})
+
+// demo to find user's all task
 
 
 

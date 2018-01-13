@@ -1,19 +1,20 @@
 const Sequelize = require('sequelize'),
 sequelize = require('../db'),
 User = require('./user');
+var undf;
 
 const Task = sequelize.define('task',{
     title:{
         type: Sequelize.STRING, allowNull:false
     },
     content : {
-        type: Sequelize.TEXT, allowNull:false
+        type: Sequelize.TEXT
     },
     location : {
-        type: Sequelize.STRING, allowNull:false
+        type: Sequelize.STRING
     },
     startdate:{
-        type:Sequelize.DATEONLY,allowNull:false, defaultValue: Sequelize.NOW 
+        type:Sequelize.DATEONLY,allowNull:false, defaultValue: Sequelize.NOW,
     },
     enddate: {
         type: Sequelize.DATEONLY, allowNull:false, defaultValue: Sequelize.NOW 
@@ -31,10 +32,10 @@ const Task = sequelize.define('task',{
 
 Task.belongsTo(User);
 
-Task.sync()
-    .then(() => {
-        console.log('Created Task table!');
-    });
+// Task.sync()
+//     .then(() => {
+//         console.log('Created Task table!');
+//     });
 
 
 module.exports = Task;

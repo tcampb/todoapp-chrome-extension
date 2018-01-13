@@ -24,11 +24,10 @@ const Contact = sequelize.define('contact',{
 });
 
 Contact.belongsTo(User);
-
-Contact.sync()
-    .then(() => {
-        console.log('Created Contact table!');
-    });
+// Contact.sync()
+//     .then(() => {
+//         console.log('Created Contact table!');
+//     });
 
 
 module.exports = Contact;

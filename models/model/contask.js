@@ -7,14 +7,7 @@ const Contask = sequelize.define('contask',{
 
 });
 
-Contask.belongsTo(Contact);
 Contask.belongsTo(Task);
-
-
-Contask.sync()
-    .then(() => {
-        console.log('Created Contaask table!');
-    });
-
+Contask.belongsTo(Contact);
 
 module.exports = Contask;

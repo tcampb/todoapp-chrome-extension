@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize'),
 sequelize = require('../db'),
 User = require('./user');
+let today = new Date(Date.now());
+console.log(today);
 
 const Task = sequelize.define('task',{
     title:{
@@ -14,7 +16,7 @@ const Task = sequelize.define('task',{
     },
     startdate:{
         type:Sequelize.DATEONLY,allowNull:false, defaultValue: Sequelize.NOW,
-        validate:{isAfter: String(new Date(Date.now()))}
+        validate:{isAfter: String(new Date(today.setDate(today.getDate()-1)))}
     },
     enddate: {
         type: Sequelize.DATEONLY, allowNull:false, defaultValue: Sequelize.NOW 
@@ -31,11 +33,4 @@ const Task = sequelize.define('task',{
 });
 
 Task.belongsTo(User);
-
-// Task.sync()
-//     .then(() => {
-//         console.log('Created Task table!');
-//     });
-
-
 module.exports = Task;

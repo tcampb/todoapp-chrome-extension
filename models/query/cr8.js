@@ -38,5 +38,7 @@ const find_create_task = async (userid,task) =>{
 }
 
 // find user id 1 and plug in the task
-find_create_task(1,sample.sample_data_task);
+// find_create_task(1,sample.sample_data_task);
 
+
+module.export = create_all, find_create_task;

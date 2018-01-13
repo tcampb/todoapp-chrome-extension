@@ -1,7 +1,7 @@
 {
     "sample_data_user" : {
-        "firstName":"Funny guy ah!!",
-        "lastName":"Rich",
+        "firstName":"Erico",
+        "lastName":"yes",
         "phone":8135059701,
         "email":"hhahahaa@gmail.com",
         "password":"321321321dsadsad",
@@ -13,7 +13,7 @@
         "title":"exercise",
         "content":"stay home and sleep",
         "location":"home",
-        "startdate":"2018-02-11"
+        "startdate":"2018-01-13"
     },
     "sample_data_contact" : {
         "firstName":"Tyler",

@@ -1,0 +1,23 @@
+{
+    "sample_data_user" : {
+        "firstName":"Funny guy ah!!",
+        "lastName":"Rich",
+        "phone":8135059701,
+        "email":"hhahahaa@gmail.com",
+        "password":"321321321dsadsad",
+        "primary_token":"321321ewqewqewq",
+        "google_token":"dsdsadsadsadadsa",
+        "sf_token":"dsdsdsdsdsdsdsds"
+    },
+    "sample_data_task" : {
+        "title":"exercise",
+        "content":"stay home and sleep",
+        "location":"home",
+        "startdate":"2018-02-11"
+    },
+    "sample_data_contact" : {
+        "firstName":"Tyler",
+        "lastName":"Campell",
+        "email":"tcampb@gmail.com"
+    }
+}

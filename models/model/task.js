@@ -12,8 +12,17 @@ const Task = sequelize.define('task',{
     location : {
         type: Sequelize.STRING, allowNull:false
     },
-    deadline: {
-        type: Sequelize.DATE, allowNull:false, defaultValue: Sequelize.NOW 
+    startdate:{
+        type:Sequelize.DATEONLY,allowNull:false, defaultValue: Sequelize.NOW 
+    },
+    enddate: {
+        type: Sequelize.DATEONLY, allowNull:false, defaultValue: Sequelize.NOW 
+    },
+    starttime:{
+        type:Sequelize.TIME, defaultValue :Sequelize.NOW
+    },
+    endtime:{
+        type:Sequelize.TIME, defaultValue :Sequelize.NOW
     },
     status : {
          type: Sequelize.BOOLEAN, defaultValue: false

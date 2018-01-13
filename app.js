@@ -1,13 +1,15 @@
 const express = require('express');
+var app = express();
 const path = require('path');
 const favicon = require('serve-favicon');
 const index = require('./routes/index');
 const users = require('./routes/users');
+const dashboard = require('./routes/dashboard');
 const userDB = require('./models/model/user')
 const bodyParser = require('body-parser');
 const parseJSON = bodyParser.json();
 const parseURL = bodyParser.urlencoded( {extended: false} );
-var app = express();
+const isAuthorized = require('./auth');
 var port = 3000;
 
 // view engine setup
@@ -20,9 +22,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(parseJSON);
 app.use(parseURL);
 
-
 app.use('/', index);
 app.use('/users', users);
+app.use(isAuthorized);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

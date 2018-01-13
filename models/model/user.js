@@ -28,21 +28,7 @@ const User = sequelize.define('user', {
     }
   });
 
-  User.findByToken = (token) => {
-    let decoded;
-    
-    try {
-        decoded = jwt.verify(token, config.secret);
-    } catch (e) {
-        return Promise.reject();
-    }
-    return User.findOne({
-        where: {
-            id: decoded.id,
-            token
-        }
-    });
-  }
+  
 
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash("test123", salt, (err, hash) => {

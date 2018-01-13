@@ -28,12 +28,7 @@ const generateAuthToken = (user) => {
   return userRecord;
 }
 
-router.get('/', (req, res) => {
-  let token = req.header('x-auth') || req.body.token;
-  userModel.findByToken(token);
-  res.end()
-})
-.post('/', function(req, res) {
+router.post('/', function(req, res) {
   let {email, password} = _.pick(req.body, ['email', 'password']);
   userModel.findOne({
     where: {email}

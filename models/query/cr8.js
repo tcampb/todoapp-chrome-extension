@@ -21,7 +21,7 @@ const create_all = async(user_json,task_json,contact_json) => {
     contask.save();
 }
 
-create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
+// create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
 
 
 
@@ -46,7 +46,7 @@ const create_user = async(user_json) => {
     console.log("Sucessful!, your user id is "+user.dataValues.id);
 }
 
-// create_user(sample.sample_data_user);
+create_user(sample.sample_data_user);
  
 
 

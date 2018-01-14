@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const parseJSON = bodyParser.json();
 const parseURL = bodyParser.urlencoded( {extended: false} );
 const isAuthorized = require('./auth');
+const auth = require('./routes/auth');
 var port = 3000;
 
 // view engine setup
@@ -24,8 +25,9 @@ app.use(parseURL);
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/auth', auth);
 // app.use(isAuthorized);
-app.use('/dashboard', isAuthorized, dashboard);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userModel = require('../models/model/user');
+const userModel = require('../models/table/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('../config.json');
@@ -46,8 +46,8 @@ router.post('/', (req, res, next) => {
   isAuthorized(req, res)
   .then((user) => {res.send(JSON.stringify(user))})
   .catch((e) => {
-    console.log(e);
-  })
+    res.send(e);
+    })
   })
   
 

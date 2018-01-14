@@ -1,0 +1,15 @@
+Reminders for fellow team member:
+1.go to db.js and change the username (username ===whoami in terminal)
+2.run "node createDb.js" to create all tables into the db
+3.if you want to create user, first to sample.json under table folder and modify the sample_data_user object. 
+4.Go to cr8.js and comment out other function, only run create_user fn.
+
+
+
+
+
+
+Things to fixed:
+1.Date.Now is not showing the current time in the backend 
+2. Time need some fixing. 
+3. more query functions for get and post request. 

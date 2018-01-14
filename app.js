@@ -24,9 +24,8 @@ app.use(parseJSON);
 app.use(parseURL);
 
 app.use('/', index);
+//Handles authenication 
 app.use('/users', users);
-app.use('/auth', auth);
-// app.use(isAuthorized);
 app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler

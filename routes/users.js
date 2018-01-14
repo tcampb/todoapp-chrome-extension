@@ -43,8 +43,12 @@ router.post('/', (req, res, next) => {
    })
   })
   .post('/auth', (req, res) => {
-    res.send(JSON.stringify({test:"test"}));
-  });
+  isAuthorized(req, res)
+  .then((user) => {res.send(JSON.stringify(user))})
+  .catch((e) => {
+    console.log(e);
+  })
+  })
   
 
 module.exports = router;

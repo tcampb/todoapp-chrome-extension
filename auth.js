@@ -14,14 +14,12 @@ module.exports = isAuthorized = (req, res, next) => {
     } catch (e) {
         next(e);
     }
-    userModel.findOne({
+    return userModel.findOne({
         where: {
             id: decoded.id
         }
     })
     .then((user) => {
-        res.locals.user = user;
-        req.url = '/dashboard';
-        next();
+        return user;
   })
 }

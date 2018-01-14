@@ -1,14 +1,17 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
-var index = require('./routes/index');
-var users = require('./routes/users');
-
+const express = require('express');
 var app = express();
+const path = require('path');
+const favicon = require('serve-favicon');
+const index = require('./routes/index');
+const users = require('./routes/users');
+const dashboard = require('./routes/dashboard');
+const userDB = require('./models/model/user')
+const bodyParser = require('body-parser');
+const parseJSON = bodyParser.json();
+const parseURL = bodyParser.urlencoded( {extended: false} );
+const isAuthorized = require('./auth');
+const auth = require('./routes/auth');
+var port = 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -16,14 +19,15 @@ app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(parseJSON);
+app.use(parseURL);
 
 app.use('/', index);
 app.use('/users', users);
+//Dashboard will only display if authenication is successful
+app.use('/dashboard', dashboard);
+app.use(isAuthorized);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,4 +47,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+app.listen(3000, () => {
+  console.log(`Server running on port ${port}`);
+});

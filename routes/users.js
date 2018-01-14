@@ -22,7 +22,7 @@ const generateAuthToken = (user) => {
   return userRecord;
 }
 
-router.post('/', function(req, res) {
+router.post('/', (req, res) => {
   let {email, password} = _.pick(req.body, ['email', 'password']);
   userModel.findOne({
     where: {email}

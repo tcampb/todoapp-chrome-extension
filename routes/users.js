@@ -42,6 +42,7 @@ router.post('/', (req, res, next) => {
     res.status(400).send(err)
    })
   })
+  //Authenticate request
   .post('/auth', (req, res) => {
   isAuthorized(req, res)
   .then((user) => {res.send(JSON.stringify(user))})
@@ -49,6 +50,24 @@ router.post('/', (req, res, next) => {
     res.send(e);
     })
   })
-  
+  //Create new user
+  .post('/create', (req, res) => {
+    let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(password, salt, (err, hash) => {
+          userModel.create({
+          firstName,
+          lastName,
+          email,
+          password: hash,
+        })
+        .then((user) => {
+          res.send(user);
+        })
+      })
+    })
+  })
+
+       
 
 module.exports = router;

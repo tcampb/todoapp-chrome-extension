@@ -5,12 +5,11 @@ const favicon = require('serve-favicon');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const dashboard = require('./routes/dashboard');
-const userDB = require('./models/model/user')
+const userDB = require('./models/table/user')
 const bodyParser = require('body-parser');
 const parseJSON = bodyParser.json();
 const parseURL = bodyParser.urlencoded( {extended: false} );
 const isAuthorized = require('./auth');
-const auth = require('./routes/auth');
 var port = 3000;
 
 // view engine setup

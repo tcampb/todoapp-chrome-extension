@@ -1,0 +1,22 @@
+{
+    "sample_data_user" : {
+        "firstName":"Wtf",
+        "lastName":"hello",
+        "phone":8130000000,
+        "email":"hhahahaa@gmail.com",
+        "password":"321321321dsadsad",
+        "google_token":"dsdsadsadsadadsa",
+        "sf_token":"dsdsdsdsdsdsdsds"
+    },
+    "sample_data_task" : {
+        "title":"lunch",
+        "content":"GETTING SOME WINGSSSS",
+        "location":"Buffalo Wild Wings",
+        "startdate":"2018-12-14"
+    },
+    "sample_data_contact" : {
+        "firstName":"Tyler",
+        "lastName":"Campbell",
+        "email":"tcampb@gmail.com"
+    }
+}

@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('task-db','Eric','', {
     host: 'localhost',
-    dialect:'postgres'
+    dialect:'postgres',
+    logging:false,
+    operatorsAliases: false
 });
 
 

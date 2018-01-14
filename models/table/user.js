@@ -25,11 +25,11 @@ const User = sequelize.define('user', {
     },
     google_token:{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
     sf_token :{
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     }
 
 

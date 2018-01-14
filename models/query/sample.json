@@ -1,11 +1,10 @@
 {
     "sample_data_user" : {
-        "firstName":"Erica",
-        "lastName":"yes",
+        "firstName":"Wtf",
+        "lastName":"hello",
         "phone":8130000000,
         "email":"hhahahaa@gmail.com",
         "password":"321321321dsadsad",
-        "primary_token":"321321ewqewqewq",
         "google_token":"dsdsadsadsadadsa",
         "sf_token":"dsdsdsdsdsdsdsds"
     },
@@ -13,7 +12,7 @@
         "title":"lunch",
         "content":"GETTING SOME WINGSSSS",
         "location":"Buffalo Wild Wings",
-        "startdate":"2018-01-13"
+        "startdate":"2018-12-14"
     },
     "sample_data_contact" : {
         "firstName":"Tyler",

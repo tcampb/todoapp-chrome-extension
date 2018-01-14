@@ -4,7 +4,6 @@ const Task = require('../table/task');
 const Contask = require('../table/contask');
 const sample = require('./sample.json');
 
-
 // new Date(Date.UTC(2018,11,20))
 
 // sample code on creating a user,task,contact & contask at the same time
@@ -22,7 +21,7 @@ const create_all = async(user_json,task_json,contact_json) => {
     contask.save();
 }
 
-// create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
+create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
 
 
 
@@ -47,7 +46,8 @@ const create_user = async(user_json) => {
     console.log("Sucessful!, your user id is "+user.dataValues.id);
 }
 
-create_user(sample.sample_data_user);
+// create_user(sample.sample_data_user);
+ 
 
 
 module.export = create_all, find_create_task;

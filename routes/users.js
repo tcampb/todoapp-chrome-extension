@@ -6,12 +6,15 @@ const jwt = require('jsonwebtoken');
 const config = require('../config.json');
 const _ = require('lodash');
 const isAuthorized = require('../auth');
+const passport = require('../passport-setup');
+
+console.log(passport);
 
 const verifyPassword = (password, user) => {
   return bcrypt.compare(password, user.dataValues.password).then((res) => {
     if (res) return user;
     if (err) return err;
-    return Error("Fail");
+    return Error("Invalid password");
   })
 }
 
@@ -23,7 +26,15 @@ const generateAuthToken = (user) => {
   return userRecord;
 }
 
-router.post('/', (req, res, next) => {
+router
+.get('/google', passport.authenticate('google', {
+  scope: ['profile']
+}))
+.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+  res.send("test");
+})
+//Sign-in with email / password
+.post('/', (req, res, next) => {
   let {email, password} = _.pick(req.body, ['email', 'password']);
   userModel.findOne({
     where: {email}

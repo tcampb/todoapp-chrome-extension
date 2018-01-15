@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/style.css">
     <title>Login</title>
 </head>
 <body>
     <body>
         <div class="container-fluid">
-            <h3>Login to your account</h3>
-            <div class="sign-in">
+            <h3 data-title>Login to your account</h3>
+            <div class="sign-in" data-sign-in>
                 <form>
-                    <div class="email">
-                        <input type="email" name="email" placeholder="Email" data-email="" id="email-form">
+                    <div class="google hide" data-google>
+                        <a class="google-button" href="/users/google"><i class="fa fa-google" aria-hidden="true"></i>     Log in with Google</a>
+                    </div>
+                    <div class="email" data-email>
+                        <input type="email" name="email" placeholder="Email" id="email-form">
                         <h2 id="email-error" style="display: none;">Incorrect Email Format</h2>
                         <h2 id="user-error" style="display: none;">User Not Found</h2>
                     </div>
-                        <button type="submit" data-submit="">Log in</button>
+                    <div class="password hide" data-password>
+                            <input type="password" placeholder="Password" name="password" id="pwd-form">
+                            <h2 id="password-error" style="display: none;">Wrong Password</h2>
+                    </div>
+                        <button type="submit" data-continue="">Continue</button>
                 </form>
             </div>
         </div>

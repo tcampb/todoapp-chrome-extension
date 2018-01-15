@@ -19,7 +19,17 @@
 
 const googleAuth = () => {
     let userName = 'Tyler';
-    $('h3').text(`Welcome back, ${userName}`)
+    $('[data-title]').text(`Welcome back, ${userName}!`)
+    $('[data-continue]').addClass('hide');
+    $('[data-email]').addClass('hide');
+    $('[data-google]').removeClass('hide');
+}
+
+const emailAuth = () => {
+    let userName = 'Tyler';
+    $('[data-title]').text(`Welcome back, ${userName}!`)
+    $('[data-email]').addClass('hide');
+    $('[data-password]').removeClass('hide');
 }
 
 

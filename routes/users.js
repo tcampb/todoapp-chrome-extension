@@ -8,8 +8,6 @@ const _ = require('lodash');
 const isAuthorized = require('../auth');
 const passport = require('../passport-setup');
 
-console.log(passport);
-
 const verifyPassword = (password, user) => {
   return bcrypt.compare(password, user.dataValues.password).then((res) => {
     if (res) return user;
@@ -81,7 +79,5 @@ router
       })
     })
   })
-
-       
 
 module.exports = router;

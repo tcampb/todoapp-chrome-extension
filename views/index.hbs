@@ -9,12 +9,21 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="/users" method="POST">
-        <input type="text" name="email">
-        <input type="password" name="password" id="">
-        <button type="submit">Submit</button>
-    </form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="javascripts/test.js"></script>
-</body>
+    <body>
+        <div class="container-fluid">
+            <h3>Login to your account</h3>
+            <div class="sign-in">
+                <form>
+                    <div class="email">
+                        <input type="email" name="email" placeholder="Email" data-email="" id="email-form">
+                        <h2 id="email-error" style="display: none;">Incorrect Email Format</h2>
+                        <h2 id="user-error" style="display: none;">User Not Found</h2>
+                    </div>
+                        <button type="submit" data-submit="">Log in</button>
+                </form>
+            </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascripts/test.js"></script>
+    </body>
 </html>

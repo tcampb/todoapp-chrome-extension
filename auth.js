@@ -5,18 +5,26 @@ const jwt = require('jsonwebtoken');
 const config = require('./config.json');
 
 module.exports = isAuthorized = (req, res, next) => {
-    // Decoded variable will contain the decoded payload if signature is valid
     let decoded;
     let token;
-    try {
-        token = req.header('x-auth') || req.body.token;
-        decoded = jwt.verify(token, config.secret);
-    } catch (e) {
-        next(e);
+    let userId;
+    if (!req.user) {
+        res.redirect('/');
+    } else if (req.user) {
+        userId = req.user.dataValues.id;
+    } else {
+        try {
+            token = req.header('x-auth') || req.body.token;
+            decoded = jwt.verify(token, config.secret);
+            userId = decoded.id;
+        } catch (e) {
+            next(e);
+        }
     }
+    // Decoded variable will contain the decoded payload if signature is valid
     return userModel.findOne({
         where: {
-            id: decoded.id
+            id: userId
         }
     })
     .then((user) => {

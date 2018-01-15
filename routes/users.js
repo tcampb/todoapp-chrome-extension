@@ -31,7 +31,7 @@ router
   scope: ['profile']
 }))
 .get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.send("test");
+  res.redirect('/dashboard');
 })
 //Sign-in with email / password
 .post('/', (req, res, next) => {

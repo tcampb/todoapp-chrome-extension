@@ -10,12 +10,25 @@ const bodyParser = require('body-parser');
 const parseJSON = bodyParser.json();
 const parseURL = bodyParser.urlencoded( {extended: false} );
 const isAuthorized = require('./auth');
+const cookieSession = require('cookie-session');
+const config = require('./config');
+const passport = require('passport');
 var port = 3000;
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [config.session.cookieKey]
+}));
+
+//Initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

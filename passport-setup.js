@@ -13,11 +13,12 @@ module.exports = passport.use(new GoogleStrategy({
         userModel.create({
             firstName: fullName[0],
             lastName: fullName[1],
-            email: 'tcampb45@gmail.com',
+            email: config.testEmail,
             googleId: profile.id
         })
         .then((newUser) => {
-            console.log("New user created")
+            console.log("New user created");
+            res.send("Success");
         });
     })
     );

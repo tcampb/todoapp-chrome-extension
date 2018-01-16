@@ -11,7 +11,25 @@ router.get('/', function(req, res, next) {
 .get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
 })
-.post('/signup', function(req, res, next){
+ //Create new user
+ .post('/signup', (req, res) => {
+  let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) => {
+        userModel.create({
+        firstName,
+        lastName,
+        email,
+        password: hash,
+      })
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    })
+  })
 })
 .post('/login', function(req, res) {
   let {email, password} = _.pick(req.body, ['email', 'password']);

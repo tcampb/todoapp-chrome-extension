@@ -37,7 +37,6 @@ const emailAuth = (email, username) => {
 $(document).ready(() => {
     $('form').on('submit', (event) => {
         event.preventDefault();
-        let email = $('#email-form')
         $.ajax({
             url: $('form').attr('action'),
             type: 'POST',

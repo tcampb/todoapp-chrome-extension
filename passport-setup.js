@@ -29,11 +29,12 @@ module.exports = passport.use(new GoogleStrategy({
                 //If user already exists, sign-in user
                 done(null, currentUser);
             } else {
+                console.log(profile.emails[0].value);
                 let fullName = profile.displayName.split(' ');
                 userModel.create({
                     firstName: fullName[0],
                     lastName: fullName[1],
-                    email: config.testEmail,
+                    email: profile.emails[0].value,
                     googleId: profile.id
                 })
         .then((newUser) => {

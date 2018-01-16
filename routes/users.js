@@ -26,7 +26,7 @@ const generateAuthToken = (user) => {
 
 //Sign-in with Google Oauth
 router.get('/google', passport.authenticate('google', {
-  scope: ['profile']
+  scope: ['profile', 'email']
 }))
 .get('/google/redirect', passport.authenticate('google'), (req, res) => {
   res.redirect('/dashboard');

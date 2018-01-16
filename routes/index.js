@@ -8,15 +8,15 @@ const userModel = require('../models/table/user');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 })
-.get('/login', function(req, res, next) {
-
-})
 .get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
+})
+.post('/signup', function(req, res, next){
 })
 .post('/login', function(req, res) {
   let {email, password} = _.pick(req.body, ['email', 'password']);
   let domain = email.split('@')[1];
+  console.log(domain);
   userModel.findOne({
     where: {email}
   })

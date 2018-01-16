@@ -26,11 +26,9 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [config.session.cookieKey]
 }));
-
 //Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));

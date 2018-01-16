@@ -46,7 +46,6 @@ const User = sequelize.define('user', {
 //   .then(() => {
 //       console.log('Created User table!');
 //   });
-  
 
     
     module.exports = User;

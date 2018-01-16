@@ -26,7 +26,8 @@ module.exports = passport.use(new GoogleStrategy({
         })
         .then((currentUser) => {
             if (currentUser) {
-                throw Error("User already exists");
+                //If user already exists, sign-in user
+                done(null, currentUser);
             } else {
                 let fullName = profile.displayName.split(' ');
                 userModel.create({

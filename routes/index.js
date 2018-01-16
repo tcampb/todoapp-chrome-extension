@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
 })
 .post('/login', function(req, res) {
-  let {email} = _.pick(req.body, ['email']);
+  let {email, password} = _.pick(req.body, ['email', 'password']);
   let domain = email.split('@')[1];
   userModel.findOne({
     where: {email}

@@ -80,6 +80,17 @@ button:focus {
   text-decoration: none;
 }
 
+.sign-up {
+  color: #4d5054;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sign-up a {
+  text-decoration: none;
+  color: #00a2ff;
+}
+
 h3 {
   font-family: Proxima Nova, sans-serif;
   color: rgba(77, 80, 85, 0.842);

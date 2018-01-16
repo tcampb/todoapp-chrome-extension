@@ -8,13 +8,14 @@ module.exports = isAuthorized = (req, res, next) => {
     let decoded;
     let token;
     let userId;
-    if (!req.user) {
+    if (!req.user && false) {
         res.redirect('/');
     } else if (req.user) {
         userId = req.user.dataValues.id;
     } else {
         try {
-            token = req.header('x-auth') || req.body.token;
+            // token = req.header('x-auth') || req.body.token;
+            token = req.cookies['x-auth'];
             decoded = jwt.verify(token, config.secret);
             userId = decoded.id;
         } catch (e) {
@@ -28,6 +29,8 @@ module.exports = isAuthorized = (req, res, next) => {
         }
     })
     .then((user) => {
-        return user;
+        // return user;
+        res.locals.user = user;
+        next();
   })
 }

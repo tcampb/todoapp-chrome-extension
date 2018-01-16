@@ -27,22 +27,28 @@ const googleAuth = (username) => {
     $('[data-google]').removeClass('hide');
 }
 
-const emailAuth = (username) => {
+const emailAuth = (email, username) => {
     $('[data-title]').text(`Welcome back, ${username}!`)
     $('[data-email]').addClass('hide');
     $('[data-password]').removeClass('hide');
+    $('#email-form').text(email);
+    $('form').attr('action', '/users');
 }
 
 $(document).ready(() => {
     $('form').on('submit', (event) => {
         event.preventDefault();
         $.ajax({
-            url: '/login',
+            url: $('form').attr('action'),
             type: 'POST',
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.username);
+                if (data.url) {
+                   location.replace(data.url);
+                } else {
+                    data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.email, data.username);
+                }
             },
             error: (err) => {
                 console.log(err);

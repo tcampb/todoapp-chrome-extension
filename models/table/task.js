@@ -2,7 +2,6 @@ const Sequelize = require('sequelize'),
 sequelize = require('../db'),
 User = require('./user');
 let today= new Date(Date.now());
-console.log(Date(Date.now()+"UTC"));
 
 const Task = sequelize.define('task',{
     title:{
@@ -21,12 +20,6 @@ const Task = sequelize.define('task',{
     enddate: {
         type: Sequelize.DATE, allowNull:false, defaultValue: Sequelize.NOW 
     },
-    // starttime:{
-    //     type:Sequelize.TIME, defaultValue :Sequelize.NOW
-    // },
-    // endtime:{
-    //     type:Sequelize.TIME, defaultValue :Sequelize.NOW
-    // },
     status : {
          type: Sequelize.BOOLEAN, defaultValue: false
     }

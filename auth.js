@@ -8,13 +8,11 @@ module.exports = isAuthorized = (req, res, next) => {
     let decoded;
     let token;
     let userId;
-    if (!req.user && false) {
-        res.redirect('/');
-    } else if (req.user) {
+    if (req.user) {
         userId = req.user.dataValues.id;
     } else {
         try {
-            token = req.cookies['x-auth'];
+            token = req.cookies['session'];
             decoded = jwt.verify(token, config.secret);
             userId = decoded.id;
         } catch (e) {

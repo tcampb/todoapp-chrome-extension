@@ -17,7 +17,6 @@
 //     })
 // })
 
-
 //Login template
 
 const googleAuth = (username) => {
@@ -38,17 +37,24 @@ const emailAuth = (email, username) => {
 $(document).ready(() => {
     $('form').on('submit', (event) => {
         event.preventDefault();
+        let email = $('#email-form')
         $.ajax({
             url: $('form').attr('action'),
             type: 'POST',
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                if (data.url) {
-                   location.replace(data.url);
-                } else {
+                if (data.error) {
+                    $('[data-user-not-found]').text(`No account exists for ${$('#email-form').val()}`).attr('style', 'display:inline');
+                } else if (data.url) {location.replace(data.url);}
+                else {
                     data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.email, data.username);
                 }
+                // if (data.url) {
+                //    location.replace(data.url);
+                // } else {
+                //     data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.email, data.username);
+                // }
             },
             error: (err) => {
                 console.log(err);

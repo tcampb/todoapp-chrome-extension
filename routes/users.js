@@ -24,8 +24,8 @@ const generateAuthToken = (user) => {
   return userRecord;
 }
 
-router
-.get('/google', passport.authenticate('google', {
+//Sign-in with Google Oauth
+router.get('/google', passport.authenticate('google', {
   scope: ['profile']
 }))
 .get('/google/redirect', passport.authenticate('google'), (req, res) => {
@@ -44,7 +44,7 @@ router
     return generateAuthToken(response);
   })
   .then((userRecord) => {
-    res.cookie('x-auth', userRecord.token);
+    res.cookie('session', userRecord.token);
     res.send({'url':'/dashboard'});
     // res.header('x-auth', userRecord.token).json(userRecord);
   })

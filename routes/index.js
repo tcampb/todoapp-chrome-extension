@@ -21,10 +21,15 @@ router.get('/', function(req, res, next) {
     where: {email}
   })
   .then((user) => {
+  //If no user exists, throw error
+  if (!user) {
+    res.send(JSON.stringify({"error":"User does not exist"}));
+  } else {
   let firstName = user.dataValues.firstName;
   dns.resolveMx(domain, (err, address) => {
     address[0].exchange.includes('google') ? res.send({'auth': 'google', 'username': `${firstName}`}) : res.send({'auth': 'email', 'username': `${firstName}`});
   })
+}
   })
 });
 

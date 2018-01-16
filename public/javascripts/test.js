@@ -43,20 +43,13 @@ $(document).ready(() => {
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                if (data.error) {
-                    $('[data-user-not-found]').text(`No account exists for ${$('#email-form').val()}`).attr('style', 'display:inline');
-                } else if (data.url) {location.replace(data.url);}
+                if (data.url) {location.replace(data.url);}
                 else {
                     data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.email, data.username);
                 }
-                // if (data.url) {
-                //    location.replace(data.url);
-                // } else {
-                //     data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.email, data.username);
-                // }
             },
             error: (err) => {
-                console.log(err);
+                $('[data-user-not-found]').text(`No account exists for ${$('#email-form').val()}`).attr('style', 'display:inline');
             }
         })
     })

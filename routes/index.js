@@ -41,9 +41,10 @@ router.get('/', function(req, res, next) {
   .then((user) => {
   //If no user exists, throw error
   if (!user) {
-    res.send(JSON.stringify({"error":"User does not exist"}));
+    res.status(400).send();
   } else {
   let firstName = user.dataValues.firstName;
+  //Lookup email domain
   dns.resolveMx(domain, (err, address) => {
     address[0].exchange.includes('google') ? res.send({'auth': 'google', 'username': `${firstName}`}) : res.send({'auth': 'email', 'username': `${firstName}`});
   })

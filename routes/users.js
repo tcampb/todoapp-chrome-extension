@@ -52,14 +52,6 @@ router
     res.status(400).send(err)
    })
   })
-  //Authenticate request
-  .post('/auth', (req, res) => {
-  isAuthorized(req, res)
-  .then((user) => {res.send(JSON.stringify(user))})
-  .catch((e) => {
-    res.send(e);
-    })
-  })
   //Create new user
   .post('/create', (req, res) => {
     let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);

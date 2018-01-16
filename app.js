@@ -1,5 +1,5 @@
 const express = require('express');
-var app = express();
+const app = express();
 const path = require('path');
 const favicon = require('serve-favicon');
 const index = require('./routes/index');
@@ -31,7 +31,6 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -48,7 +47,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-app.use(isAuthorized);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

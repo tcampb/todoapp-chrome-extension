@@ -14,7 +14,6 @@ module.exports = isAuthorized = (req, res, next) => {
         userId = req.user.dataValues.id;
     } else {
         try {
-            // token = req.header('x-auth') || req.body.token;
             token = req.cookies['x-auth'];
             decoded = jwt.verify(token, config.secret);
             userId = decoded.id;

@@ -31,7 +31,7 @@ const emailAuth = (email, username) => {
     $('[data-email]').addClass('hide');
     $('[data-password]').removeClass('hide');
     $('#email-form').text(email);
-    $('form').attr('action', '/users');
+    $('form').attr('action', '/auth');
 }
 
 $(document).ready(() => {

@@ -16,7 +16,7 @@ passport.deserializeUser((id, done) => {
 module.exports = passport.use(new GoogleStrategy({
     clientID: config.clientIdGoogle,
     clientSecret: config.clientSecretGoogle,
-    callbackURL: '/users/google/redirect' 
+    callbackURL: '/auth/google/redirect' 
     }, (accessToken, refreshToken, profile, done) => {
         //Check if user already exists in our db
         userModel.findOne({

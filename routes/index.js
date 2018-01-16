@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
 })
  //Create new user
- .post('/signup', (req, res) => {
+.post('/signup', (req, res) => {
   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, (err, hash) => {

@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const favicon = require('serve-favicon');
 const index = require('./routes/index');
-const users = require('./routes/users');
+const auth = require('./routes/auth');
 const dashboard = require('./routes/dashboard');
 const userDB = require('./models/table/user')
 const bodyParser = require('body-parser');
@@ -35,8 +35,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(parseJSON);
 app.use(parseURL);
 
+//Routes to homepage, login, sign-up
 app.use('/', index);
-app.use('/users', users);
+//Routes Google & email/password authentication
+app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
 app.use('/dashboard', isAuthorized, dashboard);
 // catch 404 and forward to error handler

@@ -52,25 +52,4 @@ router.get('/google', passport.authenticate('google', {
     res.status(400).send(err)
    })
   })
-  //Create new user
-  .post('/create', (req, res) => {
-    let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(password, salt, (err, hash) => {
-          userModel.create({
-          firstName,
-          lastName,
-          email,
-          password: hash,
-        })
-        .then((user) => {
-          res.send(user);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      })
-    })
-  })
-
 module.exports = router;

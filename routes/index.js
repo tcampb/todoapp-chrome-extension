@@ -16,10 +16,6 @@ router.get('/', function(req, res, next) {
  //Create new user
 .post('/signup', (req, res, next) => {
   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
-  //Validate that all user info is included
-  if (!firstName || !email || !password) {
-    next(new Error("Sign-up form incomplete"));
-  } else {
   //Check if email address is currently in use
   userModel.findOne({
     where: {email}
@@ -40,18 +36,16 @@ router.get('/', function(req, res, next) {
           res.send(user.email);
         })
         .catch((err) => {
-          next(new Error("Invalid email address format"));
+          next(err);
         })
     })
   })
 }
 })
-  }
 })
 .post('/login', function(req, res) {
   let {email, password} = _.pick(req.body, ['email', 'password']);
   let domain = email.split('@')[1];
-  console.log(domain);
   userModel.findOne({
     where: {email}
   })

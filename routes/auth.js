@@ -46,7 +46,6 @@ router.get('/google', passport.authenticate('google', {
   .then((userRecord) => {
     res.cookie('session', userRecord.token);
     res.send({'url':'/dashboard'});
-    // res.header('x-auth', userRecord.token).json(userRecord);
   })
   .catch((err) => {
     res.status(400).send(err)

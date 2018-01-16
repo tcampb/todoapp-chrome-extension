@@ -17,27 +17,21 @@
 //     })
 // })
 
-const googleAuth = () => {
-    let userName = 'Tyler';
-    $('[data-title]').text(`Welcome back, ${userName}!`)
+
+//Login template
+
+const googleAuth = (username) => {
+    $('[data-title]').text(`Welcome back, ${username}!`)
     $('[data-continue]').addClass('hide');
     $('[data-email]').addClass('hide');
     $('[data-google]').removeClass('hide');
 }
 
-const emailAuth = () => {
-    let userName = 'Tyler';
-    $('[data-title]').text(`Welcome back, ${userName}!`)
+const emailAuth = (username) => {
+    $('[data-title]').text(`Welcome back, ${username}!`)
     $('[data-email]').addClass('hide');
     $('[data-password]').removeClass('hide');
 }
-
-
-
-
-
-
-
 
 $(document).ready(() => {
     $('form').on('submit', (event) => {
@@ -48,7 +42,7 @@ $(document).ready(() => {
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                data.auth === 'google' ? googleAuth() : emailAuth();
+                data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.username);
             },
             error: (err) => {
                 console.log(err);

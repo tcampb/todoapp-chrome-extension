@@ -13,11 +13,15 @@ router.get('/', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
 })
  //Create new user
-.post('/signup', (req, res) => {
+.post('/signup', (req, res, next) => {
   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
+  if (!firstName || !lastName || !email || !password) {
+    next(new Error("Invalid info"));
+  } else {
   userModel.findOne({
     where: {email}
-  }).then((user) => {
+  })
+  .then((user) => {
     if (user) res.status(400).send("User already exists");
     else {
     bcrypt.genSalt(10, (err, salt) => {
@@ -38,6 +42,7 @@ router.get('/', function(req, res, next) {
   })
 }
 })
+  }
 })
 .post('/login', function(req, res) {
   let {email, password} = _.pick(req.body, ['email', 'password']);

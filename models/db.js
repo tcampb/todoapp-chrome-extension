@@ -9,4 +9,3 @@ const sequelize = new Sequelize('taskdb',`${username}`,'', {
 
 
 module.exports = sequelize;
-

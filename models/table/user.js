@@ -7,8 +7,7 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING, allowNull:false
     },
     lastName: {
-        type: Sequelize.STRING,
-
+        type: Sequelize.STRING
     },
     phone:{
         type:Sequelize.BIGINT,

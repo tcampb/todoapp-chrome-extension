@@ -1,23 +1,3 @@
-// $(document).ready(() => {
-//     $('form').on('submit', (event) => {
-//         event.preventDefault();
-//         $.ajax({
-//             url: '/users',
-//             type: 'POST',
-//             dataType: 'json',
-//             data: $('form').serialize(),
-//             success: (data) => {
-//                 localStorage.setItem('x-auth', data.token);
-//                 location.replace('/dashboard');
-//             },
-//             error: (err) => {
-//                 console.log(err);
-//             }
-//         })
-//     })
-// })
-
-
 //Login template
 
 const googleAuth = (username) => {
@@ -32,7 +12,7 @@ const emailAuth = (email, username) => {
     $('[data-email]').addClass('hide');
     $('[data-password]').removeClass('hide');
     $('#email-form').text(email);
-    $('form').attr('action', '/users');
+    $('form').attr('action', '/auth');
 }
 
 $(document).ready(() => {
@@ -44,14 +24,13 @@ $(document).ready(() => {
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                if (data.url) {
-                   location.replace(data.url);
-                } else {
+                if (data.url) {location.replace(data.url);}
+                else {
                     data.auth === 'google' ? googleAuth(data.username) : emailAuth(data.email, data.username);
                 }
             },
             error: (err) => {
-                console.log(err);
+                $('[data-user-not-found]').text(`No account exists for ${$('#email-form').val()}`).attr('style', 'display:inline');
             }
         })
     })

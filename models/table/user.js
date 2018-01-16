@@ -19,20 +19,28 @@ const User = sequelize.define('user', {
         allowNull: false,
         validate: {isEmail:true }
     },
+
     password: {
         type:Sequelize.STRING,
-        allowNull:false
+        allowNull:true
     },
-    google_token:{
+
+    googleId: {
+        type:Sequelize.STRING,
+        allowNull:true
+    },
+
+    google_calendar_token:{
         type: Sequelize.STRING,
         allowNull:true
     },
+
     sf_token :{
         type: Sequelize.STRING,
         allowNull:true
     }
   });
-  
+
 
     
     module.exports = User;

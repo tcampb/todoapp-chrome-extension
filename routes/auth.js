@@ -3,10 +3,10 @@ const router = express.Router();
 const userModel = require('../models/table/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('../config.json');
+const config = require('../config/config.json');
 const _ = require('lodash');
 const isAuthorized = require('../auth');
-const passport = require('../passport-setup');
+const passport = require('../config/passport-setup');
 
 const verifyPassword = (password, user) => {
   return bcrypt.compare(password, user.dataValues.password).then((res) => {

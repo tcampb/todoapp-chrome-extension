@@ -11,7 +11,7 @@ const parseJSON = bodyParser.json();
 const parseURL = bodyParser.urlencoded( {extended: false} );
 const isAuthorized = require('./auth');
 const cookieSession = require('cookie-session');
-const config = require('./config');
+const config = require('./config/config');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 var port = 3000;
@@ -29,6 +29,8 @@ app.use(cookieSession({
 //Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -36,7 +38,8 @@ app.use(parseJSON);
 app.use(parseURL);
 
 //Routes to homepage, login, sign-up
-app.use('/', index);
+//Redirect user to dashboard if they are currently signed in
+app.use('/', isAuthorized, index);
 //Routes Google & email/password authentication
 app.use('/auth', auth);
 //Dashboard will only display if authenication is successful

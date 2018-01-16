@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userModel = require('./models/table/user');
 const jwt = require('jsonwebtoken');
-const config = require('./config.json');
+const config = require('./config/config.json');
 
 module.exports = isAuthorized = (req, res, next) => {
     let decoded;
@@ -13,8 +13,10 @@ module.exports = isAuthorized = (req, res, next) => {
     } else {
         try {
             token = req.cookies['session'];
-            decoded = jwt.verify(token, config.secret);
-            userId = decoded.id;
+            if (token) {
+                decoded = jwt.verify(token, config.secret);
+                userId = decoded.id;
+            }
         } catch (e) {
             next(e);
         }

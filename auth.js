@@ -22,13 +22,12 @@ module.exports = isAuthorized = (req, res, next) => {
         }
     }
     // Decoded variable will contain the decoded payload if signature is valid
-    return userModel.findOne({
+    userModel.findOne({
         where: {
             id: userId
         }
     })
     .then((user) => {
-        // return user;
         res.locals.user = user;
         next();
   })

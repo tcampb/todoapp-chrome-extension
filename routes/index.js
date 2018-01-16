@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  //If user session is valid, redirect to dashboard
   res.locals.user ? res.redirect('/dashboard') : res.render('index', { title: 'Express' });
 })
 .get('/signup', function(req, res, next) {
@@ -15,15 +16,18 @@ router.get('/', function(req, res, next) {
  //Create new user
 .post('/signup', (req, res, next) => {
   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
-  if (!firstName || !lastName || !email || !password) {
-    next(new Error("Invalid info"));
+  //Validate that all user info is included
+  if (!firstName || !email || !password) {
+    next(new Error("Sign-up form incomplete"));
   } else {
+  //Check if email address is currently in use
   userModel.findOne({
     where: {email}
   })
   .then((user) => {
     if (user) res.status(400).send("User already exists");
     else {
+    //Encrypt user password
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(password, salt, (err, hash) => {
           userModel.create({
@@ -36,7 +40,7 @@ router.get('/', function(req, res, next) {
           res.send(user.email);
         })
         .catch((err) => {
-          res.send(err);
+          next(new Error("Invalid email address format"));
         })
     })
   })

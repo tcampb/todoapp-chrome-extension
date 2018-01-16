@@ -52,4 +52,5 @@ router.get('/google', passport.authenticate('google', {
     res.status(400).send(err)
    })
   })
+  
 module.exports = router;

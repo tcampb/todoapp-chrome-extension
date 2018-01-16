@@ -16,8 +16,15 @@ const find_all_task = async(user,arr) =>{
     print(tasks);
 }
 
-find_all_task(1,['title','content']);
+find_all_task(3,['title','content']);
 
+const find_all_contact = async(user) => {
+    let validate = {where:{userId:user}};
+    let contacts = await Contact.findAll(validate);
+    print(contacts);
+}
+
+// find_all_contact(1);
 
 // find upcoming task, order by date
 const find_task_by_date = async (date) =>{
@@ -26,10 +33,3 @@ const find_task_by_date = async (date) =>{
     print(tasks);
 }
 // find_task_by_date('2018-10-12');
-
-
-
-
-// const search_all = async (word)=>{
-
-// }

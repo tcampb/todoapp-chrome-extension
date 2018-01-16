@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
-
+console.log("Today Date is :"+ Date(Date.now()+"UTC"));
 
 const User = sequelize.define('user', {
     firstName: {
@@ -11,7 +11,7 @@ const User = sequelize.define('user', {
 
     },
     phone:{
-        type:Sequelize.BIGINT(11),
+        type:Sequelize.BIGINT,
     },
 
     email: {
@@ -31,13 +31,7 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING,
         allowNull:true
     }
-
-
   });
-//   User.sync({force:true})
-//   .then(() => {
-//       console.log('Created User table!');
-//   });
   
 
     

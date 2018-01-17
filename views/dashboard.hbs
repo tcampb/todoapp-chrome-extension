@@ -7,12 +7,28 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
-    <link rel="stylesheet" href="/../public/stylesheets/task.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/stylesheets/task.css">
     <title>Create Task</title>
 </head>
 <body>
+    <header>
+        <div class="profile">
+        <img src="/images/placeholder.png" width="40px" height="40px">
+        </div>
+        <div class="tasks">
+            <a href="#"><i class="fa fa-tasks blue" aria-hidden="true"></i></a>
+        </div>
+        <div class="contacts">
+            <a href="#"><i class="fa fa-address-book-o blue" aria-hidden="true"></i></a>
+        </div>
+        <div class="settings">
+            <a href="#"><i class="fa fa-cog gray" aria-hidden="true"></i></a>
+        </div>
+    </header>
     {{#each tasks}}
-         <a class="ui card" href="/">
+        <div class="task-container">
+         <a class="ui card" style="width: 100%" href="/">
                 <div class="content">
                   <div class="header">{{title}}</div>
                   <div class="meta">2 days ago</div>
@@ -27,6 +43,7 @@
                         <label>Done</label>
                       </div></div>
               </a>
+              </div>
 {{/each}}
     {{!-- <p>{{{user}}}</p> --}}
 </body>

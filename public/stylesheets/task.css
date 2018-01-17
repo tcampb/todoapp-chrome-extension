@@ -15,3 +15,34 @@ body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset,
 *,*:before, *:after{
     box-sizing: inherit;
 }
+
+header {
+    display: flex;
+    justify-content: space-around;
+    font-size: 35px;
+    margin-top: 8px;
+    border-bottom: 1px solid #dadada;
+    box-shadow: 0 7px 20px -5px rgba(0,0,0,0.2);
+    min-height: 50px;
+}
+
+.tasks, .contacts, .settings {
+    padding-top: 5px;
+}
+
+.blue {
+    color: #00a2ff;
+}
+
+.gray {
+    color: #80808091
+}
+
+header a {
+    padding-top: 5px;
+}
+
+header img {
+    border-radius: 50%;
+}
+

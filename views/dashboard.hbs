@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
+    <link rel="stylesheet" href="/../public/stylesheets/task.css">
+    <title>Create Task</title>
 </head>
 <body>
-    <p>{{{user}}}</p>
+    {{#each tasks}}
+         <a class="ui card" href="/">
+                <div class="content">
+                  <div class="header">{{title}}</div>
+                  <div class="meta">2 days ago</div>
+                  <div class="description">
+                    <p><strong>Location:</strong> Eric's house</p>
+                    <p><strong>Description:</strong> {{content}}</p>
+                    
+                </div>
+                </div>
+                <div class="extra content"><div class="ui checkbox">
+                        <input type="checkbox" name="example">
+                        <label>Done</label>
+                      </div></div>
+              </a>
+{{/each}}
+    {{!-- <p>{{{user}}}</p> --}}
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="javascripts/dashboardtest.js"></script>
 </html>
+

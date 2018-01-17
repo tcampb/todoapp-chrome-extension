@@ -1,10 +1,10 @@
 {
     "sample_data_user" : {
-        "firstName":"Jamerson",
-        "lastName":"yao",
+        "firstName":"Tyler",
+        "lastName":"Test23",
         "phone":8130000000,
-        "email":"hhahahaa@gmail.com",
-        "password":"321321321dsadsad",
+        "email":"test3@test.com",
+        "password":"$2a$10$rcehvDmyEZ4D1Dz3HxFOUOAjoZ4tpBL3L.LDkD7Zj.mM3qKhO9tuS",
         "google_token":"dsdsadsadsadadsa",
         "sf_token":"dsdsdsdsdsdsdsds"
     },

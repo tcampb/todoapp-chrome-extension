@@ -33,6 +33,7 @@ router.get('/google', passport.authenticate('google', {
 })
 //Sign-in with email / password
 .post('/', (req, res, next) => {
+  console.log(req.body);
   let {email, password} = _.pick(req.body, ['email', 'password']);
   userModel.findOne({
     where: {email}

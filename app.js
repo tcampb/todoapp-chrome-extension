@@ -28,8 +28,7 @@ app.use(cookieSession({
 //Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 //Parse JSON / url-encoded req

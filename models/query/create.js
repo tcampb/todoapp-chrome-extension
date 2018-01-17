@@ -21,7 +21,7 @@ const create_all = async(user_json,task_json,contact_json) => {
     contask.save();
 }
 
-// create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
+create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
 
 
 // demo to create task(s) for 'the' user

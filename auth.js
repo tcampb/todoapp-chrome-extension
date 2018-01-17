@@ -29,7 +29,6 @@ module.exports = isAuthorized = (req, res, next) => {
     })
     .then((user) => {
         res.locals.user = user;
-        console.log(user);
         next();
   })
 }

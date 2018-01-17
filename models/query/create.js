@@ -5,7 +5,6 @@ Contask = require('../table/contask'),
 sample = require('./sample.json');
 
 // new Date(Date.UTC(2018,11,20))
-
 // sample code on creating a user,task,contact & contask at the same time
 const create_all = async(user_json,task_json,contact_json) => {
     let user = await User.create(user_json);

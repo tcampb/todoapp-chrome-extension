@@ -26,6 +26,10 @@ header {
     min-height: 50px;
 }
 
+.description {
+    word-break: break-all;
+}
+
 .tasks, .contacts, .settings {
     padding-top: 5px;
 }

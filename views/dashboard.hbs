@@ -18,11 +18,13 @@
          <a class="ui card" style="width: 100%" href="/">
                 <div class="content">
                   <div class="header">{{title}}</div>
-                  <div class="meta">2 days ago</div>
+                  <div class="meta">{{createdAt}}</div>
                   <div class="description">
-                    <p><strong>Location:</strong> Eric's house</p>
+                      {{#if location}}
+                    <p><strong>Location:</strong> {{location}}</p>
+                      {{/if}}
                     <p><strong>Due:</strong> {{due}}</p>
-                    <p><strong>Description:</strong> {{content}}</p>
+                    <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
                 </div>
                 </div>
                 <div class="extra content"><div class="ui checkbox">

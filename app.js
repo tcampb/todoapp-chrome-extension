@@ -21,6 +21,13 @@ const dashboard = require('./routes/dashboard');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerHelper('partialContent', (content) => {
+  if (content.length > 140) {
+    return content.substring(0, 140) + '...';
+  } else {
+    return content
+  }
+});
 ////////////////////
 app.use(cookieParser());
 app.use(cookieSession({

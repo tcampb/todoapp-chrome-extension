@@ -6,12 +6,13 @@ Sequelize = require('sequelize'),
 Op = Sequelize.Op;
 
 const print = (data)=>{
-    data.forEach(data=>{console.log(data.dataValues)});
+    data.forEach(data=>{data.dataValues});
 }
     exports.find_all_task = async(user,arr) =>{
     let validate = {where:{userId:user},attributes:arr};
     let tasks = await Task.findAll(validate);
     // print(tasks);
+    console.log(tasks);
     return tasks;
 }
 

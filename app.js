@@ -30,18 +30,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
+//Parse JSON / url-encoded req
 app.use(parseJSON);
 app.use(parseURL);
-
-
+//Check to see if the user is currently signed-in
+app.use(isAuthorized);
 //Routes to homepage, login, sign-up
 //Redirect user to dashboard if they are currently signed in
-app.use('/', isAuthorized, index);
+app.use('/', index);
 //Routes Google & email/password authentication
 app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
-app.use('/dashboard', isAuthorized, dashboard);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,20 +12,7 @@
     <title>Create Task</title>
 </head>
 <body>
-    <header>
-        <div class="profile">
-        <img src="/images/placeholder.png" width="40px" height="40px">
-        </div>
-        <div class="tasks">
-            <a href="#"><i class="fa fa-tasks blue" aria-hidden="true"></i></a>
-        </div>
-        <div class="contacts">
-            <a href="#"><i class="fa fa-address-book-o blue" aria-hidden="true"></i></a>
-        </div>
-        <div class="settings">
-            <a href="#"><i class="fa fa-cog gray" aria-hidden="true"></i></a>
-        </div>
-    </header>
+   {{> header}}
     {{#each tasks}}
         <div class="task-container">
          <a class="ui card" style="width: 100%" href="/">
@@ -34,13 +21,13 @@
                   <div class="meta">2 days ago</div>
                   <div class="description">
                     <p><strong>Location:</strong> Eric's house</p>
+                    <p><strong>Due:</strong> {{due}}</p>
                     <p><strong>Description:</strong> {{content}}</p>
-                    
                 </div>
                 </div>
                 <div class="extra content"><div class="ui checkbox">
                         <input type="checkbox" name="example">
-                        <label>Done</label>
+                        <label>Complete</label>
                       </div></div>
               </a>
               </div>

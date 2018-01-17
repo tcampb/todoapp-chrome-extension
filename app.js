@@ -11,6 +11,7 @@ const config = require('./config/config');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3000;
+const hbs = require('hbs');
 //Import routes
 const index = require('./routes/index');
 const auth = require('./routes/auth');
@@ -19,6 +20,7 @@ const dashboard = require('./routes/dashboard');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 ////////////////////
 app.use(cookieParser());
 app.use(cookieSession({
@@ -62,6 +64,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

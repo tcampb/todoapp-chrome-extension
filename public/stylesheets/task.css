@@ -27,6 +27,14 @@ header {
     margin-bottom: 20px;
 }
 
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 700;
+  color: black;
+}
+
 .error {
     color: #e41600;
 }
@@ -151,6 +159,10 @@ header img {
   
   .hide {
     display: none;
+  }
+
+  .two {
+    padding-top: 20px;
   }
   
   @media screen and (max-width: 600px){

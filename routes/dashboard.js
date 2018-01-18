@@ -29,6 +29,10 @@ router.get('/', (req, res, next) => {
         })
     }
 })
+//Retrieve infomation about a specific task
+// .get('/:id', (req, res) => {
+
+// })
 //Retrieves create tasks page
 .get('/tasks', (req, res) => {
     //Redirect user to sign-in page if not logged in

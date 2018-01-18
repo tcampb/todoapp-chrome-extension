@@ -33,3 +33,8 @@ exports.find_task_by_date = async (date) =>{
     print(tasks);
 }
 // find_task_by_date('2018-10-12');
+
+// find task by id and all related contacts
+// exports.find_task_by_id = async (id) => {
+//     let validate = 
+// }

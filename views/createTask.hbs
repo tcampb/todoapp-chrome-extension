@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../stylesheets/task.css">
+    <title>Create Task</title>
+</head>
+<body>
+    {{> header}}
+    <form action="" method="POST" class="ui form container">
+        <div class="sixteen wide field">
+            <label for="title">Title</label>
+            <input type="text" name="title">
+        </div>
+        <div class="sixteen wide field">
+            <label>Description</label>
+            <textarea name="content"rows="2"></textarea>
+        </div>
+        <div class="sixteen wide field">
+            <div class="ui sub header">Contacts</div>
+            <div class="ui contact"><i class=" large add user icon"></i></div>
+            <div class="ui flowing popup top left transition hidden">
+            <div class="ui form">
+                <div class="three fields">
+                    <div class="field">
+                    <label>First Name</label>
+                    <input id="contact_first_name" type="text" palceholder="First Name">
+                    </div>
+                    <div class="field">
+                    <label>Last Name</label>
+                    <input id="contact_last_name" type="text" palceholder="Last Name">
+                    </div>
+                    <div class="field">
+                    <label>Email Address</label>
+                    <input id="contact_email" type="text" palceholder="Email Address">
+                    </div>
+                </div>
+                <button id="button_for_contact" class="ui primary basic button">Create</button>
+                </div>
+            </div></div>
+
+
+            <div class="ui fluid multiple search selection dropdown">
+              <input name="contact" type="hidden">
+              <i class="dropdown icon"></i>
+              <div class="default text">Contacts</div>
+              <div class="menu">
+                  {{#each contact}}
+                  <div class="item" data-value={{id}}>{{name}}</div>
+                  {{/each}}
+              </div>
+            </div></div>
+            <div class="ten wide field">
+                <label>Date</label>
+                    <div class="ui calendar" id="example1">
+                            <div class="ui input left icon">
+                              <i class="calendar icon"></i>
+                              <input name="enddate" type="text" placeholder="Date/Time">
+                            </div>
+                        </div></div>
+            <input type="submit" value="Submit" class="ui button">
+    
+        </form>
+        </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+    <script src="../javascripts/task.js"></script> 
+</body>
+</html>
+

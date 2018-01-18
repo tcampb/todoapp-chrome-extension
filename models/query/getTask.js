@@ -12,7 +12,6 @@ const print = (data)=>{
     let validate = {where:{userId:user},attributes:arr};
     let tasks = await Task.findAll(validate);
     // print(tasks);
-    console.log(tasks);
     return tasks;
 }
 

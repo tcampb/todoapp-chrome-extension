@@ -21,6 +21,7 @@ const dashboard = require('./routes/dashboard');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+//Limits dashboard task description to 140 characters
 hbs.registerHelper('partialContent', (content) => {
   if (content.length > 140) {
     return content.substring(0, 140) + '...';

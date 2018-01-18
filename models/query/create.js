@@ -59,4 +59,5 @@ const create_user = async(user_json) => {
 // create connection between contact & tasks
 
 // create_user(sample.sample_data_user);
-module.export = create_all, find_create_task;
+module.exports.create_all = create_all;
+module.exports.find_create_contact = find_create_contact;

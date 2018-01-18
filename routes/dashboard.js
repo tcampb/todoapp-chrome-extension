@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const getTasks = require('../models/query/getTask');
+const create = require('../models/query/create');
 const moment = require('moment');
 
 //If auth successful, user = res.locals.user
@@ -45,11 +46,13 @@ router.get('/', (req, res, next) => {
 next()
 })
 .post('/create-contact', (req, res, next) => {
-    console.log(req);
     const body = req.body;
-    create.find_create_contact(res.locals.user.id);
-    res.send("SUCCESS");
-    
+    try {
+        create.find_create_contact(res.locals.user.id, body);
+    } catch (err) {
+        res.end(err);
+    }
+    res.end();
 })
 
 

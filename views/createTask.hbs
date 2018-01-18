@@ -24,29 +24,29 @@
         </div>
         <div class="sixteen wide field">
             <div class="ui sub header">Contacts</div>
-            <div class="ui contact"><i class=" large add user icon"></i></div>
+            <div class="ui" data-contact-hover><i class=" large add user icon"></i></div>
             <div class="ui flowing popup top left transition hidden">
             <div class="ui form">
                 <div class="three fields">
                     <div class="field">
                     <label>First Name</label>
-                    <input id="contact_first_name" type="text" palceholder="First Name">
+                    <input type="text" placeholder="First Name" data-contact-firstname>
                     </div>
                     <div class="field">
                     <label>Last Name</label>
-                    <input id="contact_last_name" type="text" palceholder="Last Name">
+                    <input type="text" placeholder="Last Name" data-contact-lastname>
                     </div>
                     <div class="field">
                     <label>Email Address</label>
-                    <input id="contact_email" type="text" palceholder="Email Address">
+                    <input type="email" placeholder="Email Address" data-contact-email>
                     </div>
                 </div>
-                <button id="button_for_contact" class="ui primary basic button">Create</button>
+                <button class="ui primary basic button" data-create-contact>Create</button>
                 </div>
             </div></div>
 
 
-            <div class="ui fluid multiple search selection dropdown">
+            <div class="ui fluid multiple search selection dropdown" data-contact-dropdown>
               <input name="contact" type="hidden">
               <i class="dropdown icon"></i>
               <div class="default text">Contacts</div>

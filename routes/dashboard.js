@@ -4,9 +4,9 @@ const getTasks = require('../models/query/getTask');
 const create = require('../models/query/create');
 const moment = require('moment');
 
-//If auth successful, user = res.locals.user
+//Retrieves dashboard page if user successfully logs in
 router.get('/', (req, res, next) => {
-    //Redirect user to signin page if not logged in
+    //Redirect user to sign-in page if not logged in
     if (!res.locals.user) res.redirect('/');
     else {
         getTasks.find_all_task(res.locals.user.id,['title','content', 'enddate', 'createdAt', 'location']).then(allTasks=>{
@@ -26,7 +26,11 @@ router.get('/', (req, res, next) => {
         })
     }
 })
+//Retrieves create tasks page
 .get('/tasks', (req, res) => {
+    //Redirect user to sign-in page if not logged in
+    if (!res.locals.user) res.redirect('/');
+    else {
     getTasks.find_all_contact(res.locals.user.id).then(allContacts => {
         const contact = allContacts.map(contact => {
             return { 
@@ -38,12 +42,15 @@ router.get('/', (req, res, next) => {
             contact:contact
         });
     })
+}
 })
 .post('/create-task', (req, res, next) => {
     const body = req.body;
-    create.find_create_task(res.locals.user.id);
-    //Send response
-next()
+    try {
+        create.find_create_task(res.locals.user.id);
+    } catch (err) {
+        res.end(err);
+    } res.end();
 })
 .post('/create-contact', (req, res, next) => {
     const body = req.body;
@@ -51,8 +58,7 @@ next()
         create.find_create_contact(res.locals.user.id, body);
     } catch (err) {
         res.end(err);
-    }
-    res.end();
+    } res.end();
 })
 
 

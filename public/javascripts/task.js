@@ -1,4 +1,4 @@
-$('.ui.dropdown')
+$('[data-contact-dropdown')
   .dropdown();
 
 
@@ -8,9 +8,9 @@ $('.tag.example .ui.dropdown')
   })
 ;
 
-$('#example1').calendar();
+$('[data-calendar]').calendar();
 
-$('.contact')
+$('[data-contact-hover]')
   .popup({
     inline: true,
     hoverable:true,
@@ -22,19 +22,23 @@ $('.contact')
 ;
 
 $(document).ready(() => {
-    $('#button_for_contact').on('click',(event)=>{
+    $('[data-create-contact]').on('click',(event)=>{
         event.preventDefault();
-        console.log('button heard!');
         let data = {
-            firstName :$('#contact_first_name').val(),
-            lastName:$('#contact_last_name').val(),
-            email:$('#contact_email').val()
+            firstName: $('[data-contact-firstname]').val(),
+            lastName: $('[data-contact-lastname]').val(),
+            email: $('[data-contact-email]').val()
         }
         $.ajax({
             url:`/dashboard/create-contact`,
             type:`POST`,
             data : data,
-            success: console.log("success")
+            success: (response) => {
+                //add response
+            },
+            error: (err) => {
+                //add error handler
+            }
         })
     })
-})
+});

@@ -41,4 +41,21 @@ $(document).ready(() => {
             }
         })
     })
+
+    $('[data-create-task]').on('submit', (event) => {
+      event.preventDefault();
+      let data = $('[data-create-task]').serialize();
+
+      $.ajax({
+        url:'/dashboard/create-task',
+        type: 'POST',
+        data: data,
+        success: (response) => {
+          //add response
+        },
+        error: (err) => {
+          //add error handler
+        }
+      })
+    })
 });

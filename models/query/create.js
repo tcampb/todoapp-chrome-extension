@@ -28,6 +28,7 @@ const create_all = async(user_json,task_json,contact_json) => {
 
 // fancy await async function!
 const find_create_task = async (userid,task) =>{
+    console.log(task);
     let user = await User.findById(userid);
     let newTask = await Task.create(task);
     newTask.setUser(user);
@@ -60,4 +61,5 @@ const create_user = async(user_json) => {
 
 // create_user(sample.sample_data_user);
 module.exports.create_all = create_all;
+module.exports.find_create_task = find_create_task;
 module.exports.find_create_contact = find_create_contact;

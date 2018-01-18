@@ -47,7 +47,7 @@ router.get('/', (req, res, next) => {
 .post('/create-task', (req, res, next) => {
     const body = req.body;
     try {
-        create.find_create_task(res.locals.user.id);
+        create.find_create_task(res.locals.user.id, body);
     } catch (err) {
         res.end(err);
     } res.end();

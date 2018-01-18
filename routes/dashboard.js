@@ -22,7 +22,8 @@ router.get('/', (req, res, next) => {
                 res.render('dashboard', {
                     tasks: task,
                     date: moment().format('l'),
-                    document: 'dashboard'
+                    document: 'dashboard',
+                    title: 'dashboard'
                 })
         })
     }

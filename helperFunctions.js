@@ -8,7 +8,7 @@ hbs.registerHelper('partialContent', (content) => {
       return content
     }
   });
-  //Limits stylesheets based upon current document
+//Limits stylesheets based upon current document
 hbs.registerHelper('styleSheets', (document) => {
     switch (document) {
       case 'createTask':

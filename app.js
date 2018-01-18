@@ -12,6 +12,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3000;
 const hbs = require('hbs');
+const helperFunctions = require('./helperFunctions');
 //Import routes
 const index = require('./routes/index');
 const auth = require('./routes/auth');
@@ -21,13 +22,8 @@ const dashboard = require('./routes/dashboard');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
-hbs.registerHelper('partialContent', (content) => {
-  if (content.length > 140) {
-    return content.substring(0, 140) + '...';
-  } else {
-    return content
-  }
-});
+
+//Check if stylesheet is one directory higher
 ////////////////////
 app.use(cookieParser());
 app.use(cookieSession({

@@ -9,9 +9,10 @@ router.get('/', (req, res, next) => {
     //Redirect user to sign-in page if not logged in
     if (!res.locals.user) res.redirect('/');
     else {
-        getTasks.find_all_task(res.locals.user.id,['title','content', 'enddate', 'createdAt', 'location']).then(allTasks=>{
+        getTasks.find_all_task(res.locals.user.id,['id', 'title','content', 'enddate', 'createdAt', 'location']).then(allTasks=>{
                 const task = allTasks.map(task => {
                     return {
+                        id: task.id,
                         title:task.title,
                         content:task.content,
                         due: moment(task.enddate).format('llll'),
@@ -21,7 +22,9 @@ router.get('/', (req, res, next) => {
                 });
                 res.render('dashboard', {
                     tasks: task,
-                    date: moment().format('l')
+                    date: moment().format('l'),
+                    document: 'dashboard',
+                    title: 'dashboard'
                 })
         })
     }
@@ -39,15 +42,24 @@ router.get('/', (req, res, next) => {
             }
         })
         res.render('createTask',{
-            contact:contact
+            contact: contact,
+            document: 'createTask'
         });
     })
 }
 })
+//Retrieves contacts page
+// .get('/contacts', (req, res) => {
+//     //Redirect user to sign-in page if not logged in
+//     if (!res.locals.user) res.redirect('/');
+//     else {
+
+//     }
+// })
 .post('/create-task', (req, res, next) => {
     const body = req.body;
     try {
-        create.find_create_task(res.locals.user.id);
+        create.find_create_task_contact(res.locals.user.id, body);
     } catch (err) {
         res.end(err);
     } res.end();

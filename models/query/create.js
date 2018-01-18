@@ -22,11 +22,16 @@ const create_all = async(user_json,task_json,contact_json) => {
 
 // create_all(sample.sample_data_user,sample.sample_data_task,sample.sample_data_contact);
 
+// find and create contask 
 
-// demo to create task(s) for 'the' user
-// store the task content here
+const find_contact_task = async(contacts,task)=>{
+    let contact = await Contact.findOne({where:{email:contacts}});
+    let contask = await Contask.create({});
+    contask.setContact(contact);
+    contask.setTask(task);
+    contask.save();   
+}
 
-// fancy await async function!
 const find_create_task = async (userid,task) =>{
     let user = await User.findById(userid);
     let newTask = await Task.create(task);
@@ -34,12 +39,23 @@ const find_create_task = async (userid,task) =>{
     newTask.save();
 }
 
+exports.find_create_task_contact = async(userid,task)=>{
+    let user = await User.findById(userid);
+    let newTask = await Task.create(task);
+    newTask.setUser(user);
+    newTask.save();
+    let data = task.contact.split(',');
+    data.forEach((contacts)=>{
+    find_contact_task(contacts,newTask)
+    })
+}
+
 // find user id 1 and plug in the task
 // find_create_task(3,sample.sample_data_task);
 
 
 // create contact 
-const find_create_contact = async (userid,contact) => {
+exports.find_create_contact = async (userid,contact) => {
     let user = await User.findById(userid);
     let newContact = await Contact.create(contact);
     newContact.setUser(user);
@@ -50,7 +66,7 @@ const find_create_contact = async (userid,contact) => {
 
 
 // Create new user
-const create_user = async(user_json) => {
+exports.create_user = async(user_json) => {
     let user = await User.create(user_json);
     console.log("Sucessful!, your user id is "+user.dataValues.id);
 }
@@ -59,5 +75,3 @@ const create_user = async(user_json) => {
 // create connection between contact & tasks
 
 // create_user(sample.sample_data_user);
-module.exports.create_all = create_all;
-module.exports.find_create_contact = find_create_contact;

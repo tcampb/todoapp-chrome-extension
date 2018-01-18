@@ -21,7 +21,8 @@ router.get('/', (req, res, next) => {
                 });
                 res.render('dashboard', {
                     tasks: task,
-                    date: moment().format('l')
+                    date: moment().format('l'),
+                    document: 'dashboard'
                 })
         })
     }
@@ -39,7 +40,8 @@ router.get('/', (req, res, next) => {
             }
         })
         res.render('createTask',{
-            contact:contact
+            contact: contact,
+            document: 'createTask'
         });
     })
 }

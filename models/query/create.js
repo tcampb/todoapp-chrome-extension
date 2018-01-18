@@ -28,11 +28,21 @@ const create_all = async(user_json,task_json,contact_json) => {
 
 // fancy await async function!
 const find_create_task = async (userid,task) =>{
-    console.log(task);
     let user = await User.findById(userid);
     let newTask = await Task.create(task);
     newTask.setUser(user);
     newTask.save();
+}
+
+exports.find_create_task_contact = async(userid,task)=>{
+    let user = await User.findById(userid);
+    let newTask = await Task.create(task);
+    newTask.setUser(user);
+    newTask.save();
+    let data = task.contact.split(',');
+    data.forEach((contacts)=>{
+    find_contact_task(contacts,newTask)
+    })
 }
 
 // find user id 1 and plug in the task
@@ -40,7 +50,7 @@ const find_create_task = async (userid,task) =>{
 
 
 // create contact 
-const find_create_contact = async (userid,contact) => {
+exports.find_create_contact = async (userid,contact) => {
     let user = await User.findById(userid);
     let newContact = await Contact.create(contact);
     newContact.setUser(user);
@@ -51,7 +61,7 @@ const find_create_contact = async (userid,contact) => {
 
 
 // Create new user
-const create_user = async(user_json) => {
+exports.create_user = async(user_json) => {
     let user = await User.create(user_json);
     console.log("Sucessful!, your user id is "+user.dataValues.id);
 }
@@ -60,6 +70,3 @@ const create_user = async(user_json) => {
 // create connection between contact & tasks
 
 // create_user(sample.sample_data_user);
-module.exports.create_all = create_all;
-module.exports.find_create_task = find_create_task;
-module.exports.find_create_contact = find_create_contact;

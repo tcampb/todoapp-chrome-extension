@@ -5,18 +5,25 @@
         {{> header}}
     </header>
 <div class="container">
-<a class="ui card" style="width: 100%" href="/" id="card">
                 <div class="content">
-                  <div class="task-header">
-                    Account Settings</i>
+                  <div style="padding-bottom: 15px; width: 100%; text-align: center;">
+                    <h4 style="color: #4d5054; font-size: 22px"><strong>Account Settings</strong></h4>
                       </div>
-                  <div class="description">
-                    <p><strong>Name:</strong> {{name}}</p>
+                <div>
+                <img src={{img}} width="85px" height="85px" style="display: block; margin: 0 auto; border-radius: 50%">
+               </div>
+               <div>
+                <form action="">
+                        <input type="file" name="" id="" style="padding-left: 55px; padding-top: 10px">
+                    </form>
+</div>  
+                  <div>
+                    <p style="padding-top:20px"><strong>Name:</strong> {{name}}</p>
                     <p><strong>Email:</strong> {{email}}</p>
                 </div>
-                <div class="ui one buttons">
+                <div class="ui two buttons" style="padding-top: 5px;">
+                    <div class="ui basic green button">Update</div>
                     <div class="ui basic red button">Logout</div>
                     </div>
                 </div>
-              </a>
               </div>

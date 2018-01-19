@@ -2,7 +2,7 @@ $(document).ready(() => {
     $('form').on('submit', (event) => {
         event.preventDefault();
         $.ajax({
-            url: '/users/create',
+            url: '/signup',
             type: 'POST',
             dataType: 'json',
             data: $('form').serialize(),

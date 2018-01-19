@@ -49,6 +49,11 @@ app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
 app.use('/dashboard', dashboard);
 
+app.get('/logout', function(req, res){
+  res.cookie('session', '');
+  res.redirect('/');
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

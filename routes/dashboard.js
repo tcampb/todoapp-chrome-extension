@@ -25,7 +25,8 @@ router.get('/', (req, res, next) => {
                     tasks: task,
                     date: moment().format('l'),
                     document: 'dashboard',
-                    title: 'dashboard'
+                    title: 'dashboard',
+                    img: res.locals.user.picture
                 })
         })
     }

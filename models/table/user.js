@@ -25,6 +25,11 @@ const User = sequelize.define('user', {
         allowNull:true
     },
 
+    picture: {
+        type:Sequelize.STRING,
+        allowNull:true
+    },
+
     googleId: {
         type:Sequelize.STRING,
         allowNull:true

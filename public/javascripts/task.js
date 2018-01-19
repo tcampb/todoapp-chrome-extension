@@ -21,8 +21,11 @@ $(document).ready(() => {
     let contacts = $('[data-contact]');
     let contactArray = [];
     for (let i=0; i < contacts.length; i++) {
-      contactArray.push(contacts[i].getAttribute('data-contact'));
-    }
+      contactArray.push({
+                         contactId : contacts[i].getAttribute('data-contact'),
+                         contactName : contacts[i].innerHTML})
+      }
+        
     let dueDate = $('[data-due-date]').text();
     $('[data-create-contact]').on('click',(event)=>{
         event.preventDefault();
@@ -89,6 +92,9 @@ $(document).ready(() => {
         $('[name="title"]').val(title);
         $('[data-label]').addClass('hide');
         $('[data-submit]').val('Save');
+        contactArray.forEach((contact) => {
+          $('.search').prepend(`<a class="ui label transition visible" data-value="${contact.contactId}" style="display: inline-block !important;">${contact.contactName}<i class="delete icon"></i></a>`)
+        })
         $('[data-contact-dropdown')
         .dropdown();
         $('[data-calendar]').calendar();

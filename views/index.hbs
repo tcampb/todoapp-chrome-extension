@@ -1,2 +1,23 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+ <div class="container-fluid">
+            <h3 data-title>Login to your account</h3>
+            <div class="sign-in" data-sign-in>
+                <form action="/login">
+                    <div class="google hide" data-google>
+                        <a class="google-button" href="/auth/google" target="_blank"><i class="fa fa-google" aria-hidden="true"></i>     Log in with Google</a>
+                    </div>
+                    <div class="email" data-email>
+                        <input type="email" name="email" placeholder="Email" id="email-form">
+                        <h2 id="email-error" style="display: none;">Incorrect Email Format</h2>
+                        <h2 id="user-error" data-user-not-found>User Not Found</h2>
+                    </div>
+                    <div class="password hide" data-password>
+                            <input type="password" placeholder="Password" name="password" id="pwd-form">
+                            <h2 id="password-error" style="display: none;">Wrong Password</h2>
+                    </div>
+                        <button type="submit" data-continue="">Continue</button>
+                </form>
+                <h5 class="sign-up" data-sign-up>Don't have an account? <a href="/signup">Sign up</a></h5>
+            </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascripts/login.js"></script>

@@ -1,0 +1,24 @@
+   {{> header}}
+    {{#each tasks}}
+         <a class="ui card" style="width: 100%" href="/" id="card">
+                <div class="content">
+                  <div class="task-header">{{title}} <i class="fa fa-times" aria-hidden="true" data-delete-task></i></div>
+                  <div class="meta">{{createdAt}}</div>
+                  <div class="description">
+                      {{#if location}}
+                    <p><strong>Location:</strong> {{location}}</p>
+                      {{/if}}
+                    <p><strong>Due:</strong> {{due}}</p>
+                    <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
+                </div>
+                <div class="ui two buttons">
+                    <div class="ui basic green button">Done</div>
+                    <div class="ui basic blue button">More</div>
+                    </div>
+                </div>
+              </a>
+{{/each}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+<script src="javascripts/dashboard.js"></script>
+

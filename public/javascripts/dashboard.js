@@ -2,6 +2,7 @@ $(document).ready(() => {
     $('[data-delete-task]').on('click', (event)=>{
         let taskCard = $(event.target.parentElement.parentElement.parentElement);
         event.preventDefault();
+        console.log(event.target.dataset.deleteTask);
         taskCard.transition({
           animation: 'fly left',
           duration:1000
@@ -10,6 +11,14 @@ $(document).ready(() => {
         setTimeout(() => {
           taskCard.addClass('hide')
         }, 1000);
+        $.ajax({
+          url:`/dashboard`,
+          method:`DELETE`,
+          data:event.target.dataset.deleteTask 
+        })
+      
+      
+      
       })
 
     $('[data-info]').on('click', (event) => {

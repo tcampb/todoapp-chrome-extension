@@ -58,11 +58,14 @@ $(document).ready(() => {
         animation: 'fly right',
         duration: 2000
       })
+      console.log(event);
       setTimeout(() => {
-        console.log(1);
         window.location.replace('/');
       }, 1000);
-      });
 
-  
+    
+    
+    });
+
+
 });

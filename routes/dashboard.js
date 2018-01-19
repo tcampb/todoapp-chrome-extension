@@ -3,14 +3,15 @@ const router = express.Router();
 const getTasks = require('../models/query/getTask');
 const create = require('../models/query/create');
 const update = require('../models/query/update');
+const deleto = require('../models/query/delete');
 const moment = require('moment');
 
 //Retrieves dashboard page if user successfully logs in
 router.get('/', (req, res, next) => {
     //Redirect user to sign-in page if not logged in
-    if (!res.locals.user) res.redirect('/');
-    else {
-        getTasks.find_all_task(res.locals.user.id,['id', 'title','content', 'enddate', 'createdAt', 'location']).then(allTasks=>{
+    // if (!res.locals.user) res.redirect('/');
+    // else {
+        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location']).then(allTasks=>{
                 const task = allTasks.map(task => {
                     return {
                         id: task.id,
@@ -29,7 +30,19 @@ router.get('/', (req, res, next) => {
                     img: res.locals.user.picture
                 })
         })
-    }
+    // }
+})
+
+.delete('/',(req,res)=>{
+    let key =Object.keys(req.body);
+    key.forEach(key => { deleto.delete_a_task(res.locals.user,key)
+        .then(()=>{
+            res.send('success');
+        })
+        .catch(error=>{
+            res.send(error)
+        })
+     })
 })
 //Retrieve infomation about a specific task
 .get('/tasks/:id', (req, res) => {
@@ -60,7 +73,7 @@ router.get('/', (req, res, next) => {
     })
 })
 .put('/tasks/update-task/:id', (req, res) => {
-    let userId = res.locals.user.id;
+    let userId = res.locals.user;
     let taskId = req.params.id;
     let data = req.body;
     update.change_task_info(userId, taskId, data)
@@ -74,9 +87,9 @@ router.get('/', (req, res, next) => {
 //Retrieves create tasks page
 .get('/tasks', (req, res) => {
     //Redirect user to sign-in page if not logged in
-    if (!res.locals.user) res.redirect('/');
-    else {
-    getTasks.find_all_contact(res.locals.user.id).then(allContacts => {
+    // if (!res.locals.user) res.redirect('/');
+    // else {
+    getTasks.find_all_contact(res.locals.user).then(allContacts => {
         const contact = allContacts.map(contact => {
             return { 
                 id:contact.id,
@@ -89,7 +102,27 @@ router.get('/', (req, res, next) => {
             img: res.locals.user.picture
         });
     })
-}
+// }
+})
+
+.get('/contacts',(req,res,next)=>{
+    try{
+    getTasks.find_all_contact(res.locals.user).then(allContacts => {
+        const contact = allContacts.map(contact => {
+            return { 
+                id:contact.id,
+                name:contact.firstName+" "+contact.lastName
+            }
+        })
+        res.render('contact',{
+            contact: contact,
+            document: 'contact'
+        });
+    })
+        
+    }catch(err){
+        res.end(err);
+    }
 })
 
 //Retrieves contacts page
@@ -103,7 +136,7 @@ router.get('/', (req, res, next) => {
 .post('/create-task', (req, res, next) => {
     const body = req.body;
     try {
-        create.find_create_task_contact(res.locals.user.id, body);
+        create.find_create_task_contact(res.locals.user, body).catch(error =>{res.send(error)});
     } catch (err) {
         res.end(err);
     } res.end();
@@ -111,7 +144,7 @@ router.get('/', (req, res, next) => {
 .post('/create-contact', (req, res, next) => {
     const body = req.body;
     try {
-        create.find_create_contact(res.locals.user.id, body);
+        create.find_create_contact(res.locals.user, body);
     } catch (err) {
         res.end(err);
     } res.end();

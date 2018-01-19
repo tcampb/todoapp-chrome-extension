@@ -18,13 +18,21 @@ body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset,
 
 header {
     display: flex;
+    position: fixed;
+    top: 0px;
     justify-content: space-around;
     font-size: 35px;
-    margin-top: 8px;
     border-bottom: 1px solid #dadada;
     box-shadow: 0 7px 20px -5px rgba(0,0,0,0.2);
     min-height: 50px;
     margin-bottom: 20px;
+    z-index: 9999;
+    width: 100%;
+    background-color: white;
+}
+
+.container {
+  margin-top: 62px;
 }
 
 .console {
@@ -32,6 +40,7 @@ header {
   justify-content: space-between;
   padding: 0 20px;
   font-size: 27px;
+  margin-top: 65px;
 }
 
 .label {
@@ -66,7 +75,7 @@ header {
 }
 
 .tasks, .contacts, .settings {
-    padding-top: 5px;
+    padding-top: 7.5px;
 }
 
 .blue {

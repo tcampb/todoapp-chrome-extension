@@ -5,4 +5,9 @@ $(document).ready(() => {
         window.location.replace('/logout')
     });
 
+    // $('[data-update-profile]').on('click', (event) => {
+    //     event.preventDefault();
+        
+    // })
+
 })

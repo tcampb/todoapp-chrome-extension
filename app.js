@@ -17,13 +17,13 @@ const helperFunctions = require('./helperFunctions');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const dashboard = require('./routes/dashboard');
+const profile = require('./routes/profile');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-//Check if stylesheet is one directory higher
 ////////////////////
 app.use(cookieParser());
 app.use(cookieSession({
@@ -48,7 +48,8 @@ app.use('/', index);
 app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
 app.use('/dashboard', dashboard);
-
+app.use('/profile', profile)
+//Logout user and redirect to sign-in page
 app.get('/logout', function(req, res){
   res.cookie('session', '');
   res.redirect('/');

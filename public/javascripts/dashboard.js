@@ -14,7 +14,13 @@ $(document).ready(() => {
 
     $('[data-info]').on('click', (event) => {
       event.preventDefault();
-      let taskId = event.currentTarget.attributes['data-info'].value;
-      location.replace(`/dashboard/tasks/${taskId}`);
+      $('[data-container]').transition({
+        animation: 'fly left',
+        duration: 2000
+      })
+      setTimeout(() => {
+        let taskId = event.currentTarget.attributes['data-info'].value;
+        location.replace(`/dashboard/tasks/${taskId}`);
+      }, 1000);
     })
   })

@@ -27,6 +27,28 @@ header {
     margin-bottom: 20px;
 }
 
+.console {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 27px;
+}
+
+.label {
+  margin-left: 18px;
+}
+
+.content, .content h2, .content p {
+  margin-bottom: 15px;
+  margin-left: 10px;
+  max-width: 292px;
+}
+
+.content h2 {
+  margin-top: 20px;
+  font-size: 32px;
+}
+
 .task-header {
   display: flex;
   justify-content: space-between;

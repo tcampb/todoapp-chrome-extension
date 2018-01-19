@@ -1,5 +1,23 @@
 {{> header}}
+<div class="console">
+ <i class="fa fa-arrow-left blue" aria-hidden="true"></i>
+ <i class="fa fa-pencil" aria-hidden="true"></i>
+</div>
+                <div class="content">
+                    <h2>{{title}}</h2>
+                  <div class="meta">{{createdAt}}</div>
+                  <div class="description">
+                      {{#if location}}
+                    <p><strong>Location:</strong> {{location}}</p>
+                      {{/if}}
+                    <p><strong>Due:</strong> {{due}}</p>
+                    <p><strong>Description:</strong> {{content}}</p>
+                </div>
+                </div>
+<div class="label">
 {{#each contacts}}
-<p>{{firstName}} {{lastName}}</p>
+<div class="ui label" style="margin-bottom: 5px">
+  {{firstName}} {{lastName}}
+</div>               
 {{/each}}
-
+</div> 

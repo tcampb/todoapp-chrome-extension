@@ -32,7 +32,7 @@ router.get('/', (req, res, next) => {
 //Retrieve infomation about a specific task
 .get('/tasks/:id', (req, res) => {
     const taskId = req.params.id;
-    getTasks.find_task_by_id(taskId)
+    return getTasks.find_task_by_id(taskId)
     .then((task) => {
         return getTasks.find_related_contacts(task)
     }).then((contactTaskObject) => {
@@ -46,7 +46,13 @@ router.get('/', (req, res, next) => {
             }
         });
         res.render('task', {
-            contacts
+            contacts: contacts,
+            document: 'task',
+            id: task.id,
+            title: task.title,
+            content: task.content,
+            due: moment(task.enddate).format('llll'),
+            location: task.location
         })
     })
 })

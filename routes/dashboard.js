@@ -54,7 +54,8 @@ router.get('/', (req, res, next) => {
             title: task.title,
             content: task.content,
             due: moment(task.enddate).format('llll'),
-            location: task.location
+            location: task.location,
+            img: res.locals.user.picture
         })
     })
 })
@@ -84,7 +85,8 @@ router.get('/', (req, res, next) => {
         })
         res.render('createTask',{
             contact: contact,
-            document: 'createTask'
+            document: 'createTask',
+            img: res.locals.user.picture
         });
     })
 }

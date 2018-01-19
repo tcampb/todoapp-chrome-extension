@@ -11,10 +11,10 @@ $(document).ready(() => {
           taskCard.addClass('hide')
         }, 1000);
       })
-      
+
     $('[data-info]').on('click', (event) => {
       event.preventDefault();
       let taskId = event.currentTarget.attributes['data-info'].value;
-      location.replace(`/dashboard/${taskId}`);
+      location.replace(`/dashboard/tasks/${taskId}`);
     })
   })

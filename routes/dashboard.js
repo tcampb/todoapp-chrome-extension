@@ -30,9 +30,26 @@ router.get('/', (req, res, next) => {
     }
 })
 //Retrieve infomation about a specific task
-// .get('/:id', (req, res) => {
-
-// })
+.get('/tasks/:id', (req, res) => {
+    const taskId = req.params.id;
+    getTasks.find_task_by_id(taskId)
+    .then((task) => {
+        return getTasks.find_related_contacts(task)
+    }).then((contactTaskObject) => {
+        const task = contactTaskObject.task;
+        const contacts = contactTaskObject.relatedContacts.map((contact) => {
+            return {
+                id: contact.id,
+                firstName: contact.firstName,
+                lastName: contact.lastName,
+                email: contact.email
+            }
+        });
+        res.render('task', {
+            contacts
+        })
+    })
+})
 //Retrieves create tasks page
 .get('/tasks', (req, res) => {
     //Redirect user to sign-in page if not logged in

@@ -6,7 +6,7 @@ Sequelize = require('sequelize'),
 Op = Sequelize.Op;
 
 const print = (data)=>{
-    data.forEach(data=>{data.dataValues});
+    data.forEach(data=>console.log(JSON.stringify(`${data}`)));
 }
     exports.find_all_task = async(user,arr) =>{
     let validate = {where:{userId:user},attributes:arr};
@@ -34,7 +34,26 @@ exports.find_task_by_date = async (date) =>{
 }
 // find_task_by_date('2018-10-12');
 
+
+
 // find task by id and all related contacts
-// exports.find_task_by_id = async (id) => {
-//     let validate = 
-// }
+exports.find_task_by_id = async (id) => {
+    let task = await Task.findById(id);
+    return task;
+}
+
+//find all contacts related to a task
+exports.find_related_contacts = async (task) => {
+    let validate = {where:{taskId: task.id}};
+    let contasks = await Contask.findAll(validate);
+    let contactIds = contasks.map((contask) => {
+        return contask.dataValues.contactId;
+    })
+    let relatedContacts = await Contact.findAll({
+        where: {
+            id: contactIds
+        }
+    })
+    
+    return {relatedContacts, task}
+}

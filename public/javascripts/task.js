@@ -1,7 +1,6 @@
 $('[data-contact-dropdown')
   .dropdown();
 
-
 $('[data-calendar]').calendar();
 
 $('[data-contact-hover]')
@@ -19,7 +18,11 @@ $(document).ready(() => {
     let description = $('[data-description]').text();
     description = description.substring(description.indexOf(':') + 2);
     let location = $('[data-location]').text();
-    let contacts = $('[data-contact]').text();
+    let contacts = $('[data-contact]');
+    let contactArray = [];
+    for (let i=0; i < contacts.length; i++) {
+      contactArray.push(contacts[i].getAttribute('data-contact'));
+    }
     let dueDate = $('[data-due-date]').text();
     $('[data-create-contact]').on('click',(event)=>{
         event.preventDefault();
@@ -105,3 +108,4 @@ $(document).ready(() => {
 });
 
 
+// $('[data-contact-label]').attr('data-contact-label')

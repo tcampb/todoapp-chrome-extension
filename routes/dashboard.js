@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const getTasks = require('../models/query/getTask');
 const create = require('../models/query/create');
+const update = require('../models/query/update');
 const moment = require('moment');
 
 //Retrieves dashboard page if user successfully logs in
@@ -56,6 +57,18 @@ router.get('/', (req, res, next) => {
         })
     })
 })
+.put('/tasks/update-task/:id', (req, res) => {
+    let userId = res.locals.user.id;
+    let taskId = req.params.id;
+    let data = req.body;
+    update.change_task_info(userId, taskId, data)
+    .then(() => {
+        res.status(202).end();
+    })
+    .catch((err) => {
+        res.status(500).end();
+    })
+})
 //Retrieves create tasks page
 .get('/tasks', (req, res) => {
     //Redirect user to sign-in page if not logged in
@@ -75,6 +88,7 @@ router.get('/', (req, res, next) => {
     })
 }
 })
+
 //Retrieves contacts page
 // .get('/contacts', (req, res) => {
 //     //Redirect user to sign-in page if not logged in

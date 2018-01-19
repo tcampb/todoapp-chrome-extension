@@ -39,11 +39,10 @@ const task_change = {
 }
 
 
-const change_task_info = async (userId,taskId,task_change)=>{
+exports.change_task_info = async (userId,taskId,task_change) => {
     let task = await Task.findOne({where:{id:taskId,userId:userId}});
     let latest = await task.update(task_change);
-    latest.save();
-    console.log(latest.dataValues);
+    return latest.save()
 }
 
-change_task_info(2,2,task_change);
+// change_task_info(2,2,task_change);

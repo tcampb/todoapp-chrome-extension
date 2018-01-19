@@ -31,6 +31,14 @@ router.get('/', (req, res, next) => {
         })
     }
 })
+.get('/profile', (req, res) => {
+    res.render('profile', {
+        img: res.locals.user.picture,
+        name: `${res.locals.user.firstName} ${res.locals.user.lastName}`,
+        email: res.locals.user.email,
+        document: 'profile'
+    })
+})
 //Retrieve infomation about a specific task
 .get('/tasks/:id', (req, res) => {
     const taskId = req.params.id;

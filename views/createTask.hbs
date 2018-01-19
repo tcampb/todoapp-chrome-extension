@@ -10,7 +10,7 @@
         </div>
         <div class="sixteen wide field">
             <div class="ui sub header">Contacts</div>
-            <div class="ui" data-contact-hover><i class=" large add user icon"></i></div>
+            <div class="ui" data-contact-hover style="width: 5%"><i class=" large add user icon"></i></div>
             <div class="ui flowing popup top left transition hidden">
             <div class="ui form">
                 <div class="three fields">
@@ -34,9 +34,9 @@
 
             <div class="ui fluid multiple search selection dropdown" data-contact-dropdown>
               <input name="contact" type="hidden">
-              <i class="dropdown icon"></i>
+              <i class="dropdown icon" data-tab></i>
               <div class="default text">Contacts</div>
-              <div class="menu">
+              <div class="menu" data-contact>
                   {{#each contact}}
                   <div class="item" data-value={{id}}>{{name}}</div>
                   {{/each}}
@@ -50,7 +50,7 @@
                               <input name="enddate" type="text" placeholder="Date/Time">
                             </div>
                         </div></div>
-            <input type="submit" value="Submit" class="ui button">
+            <input type="submit" value="Submit" class="ui button" data-submit>
     
         </form>
         </body>

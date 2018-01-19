@@ -1,0 +1,29 @@
+{{> header}}
+<div data-container>
+<div class="console">
+ <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
+ <a href="/" data-update style="color: black"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+</div>
+                <div class="content" data-content>
+                    <h2 data-title>{{title}}</h2>
+                  <div class="meta">{{createdAt}}</div>
+                  <div class="description">
+                      {{#if location}}
+                    <p data-location><strong>Location:</strong> {{location}}</p>
+                      {{/if}}
+                    <p data-due-date><strong>Due:</strong> {{due}}</p>
+                    <p data-description><strong>Description:</strong> {{content}}</p>
+                </div>
+                </div>
+<div class="label" data-label>
+{{#each contacts}}
+<div class="ui label" style="margin-bottom: 5px" data-contact={{id}}>
+  {{firstName}} {{lastName}}
+</div>               
+{{/each}}
+</div> 
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+<script src="../../javascripts/task.js"></script>

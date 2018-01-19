@@ -11,4 +11,16 @@ $(document).ready(() => {
           taskCard.addClass('hide')
         }, 1000);
       })
+
+    $('[data-info]').on('click', (event) => {
+      event.preventDefault();
+      $('[data-container]').transition({
+        animation: 'fly left',
+        duration: 2000
+      })
+      setTimeout(() => {
+        let taskId = event.currentTarget.attributes['data-info'].value;
+        location.replace(`/dashboard/tasks/${taskId}`);
+      }, 1000);
     })
+  })

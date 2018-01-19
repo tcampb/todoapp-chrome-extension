@@ -1,8 +1,11 @@
    {{> header}}
+   <div class="container" data-container>
     {{#each tasks}}
          <a class="ui card" style="width: 100%" href="/" id="card">
                 <div class="content">
-                  <div class="task-header">{{title}} <i class="fa fa-times" aria-hidden="true" data-delete-task></i></div>
+                  <div class="task-header">
+                    {{title}} <i class="fa fa-times blue" aria-hidden="true" data-delete-task></i>
+                      </div>
                   <div class="meta">{{createdAt}}</div>
                   <div class="description">
                       {{#if location}}
@@ -13,11 +16,12 @@
                 </div>
                 <div class="ui two buttons">
                     <div class="ui basic green button">Done</div>
-                    <div class="ui basic blue button">More</div>
+                    <div class="ui basic blue button" data-info={{id}}>More</div>
                     </div>
                 </div>
               </a>
 {{/each}}
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
 <script src="javascripts/dashboard.js"></script>

@@ -5,9 +5,8 @@ $(document).ready(() => {
         window.location.replace('/logout')
     });
 
-    // $('[data-update-profile]').on('click', (event) => {
-    //     event.preventDefault();
-        
-    // })
+    $('[data-update-profile]').on('click', (event) => {
+        window.location.replace('/dashboard');
+    })
 
 })

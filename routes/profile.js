@@ -4,6 +4,8 @@ const getTasks = require('../models/query/getTask');
 const create = require('../models/query/create');
 const update = require('../models/query/update');
 const moment = require('moment');
+const multer = require('multer');
+const upload = multer({ dest: 'user_logo/' });
 
 router.get('/', (req, res) => {
     res.render('profile', {
@@ -13,8 +15,9 @@ router.get('/', (req, res) => {
         document: 'profile'
     })
 })
-.post((req, res) => {
-    console.log(req);
+.post('/', upload.single('picture'), (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
     res.end();
 });
 

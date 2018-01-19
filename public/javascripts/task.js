@@ -119,6 +119,29 @@ $(document).ready(() => {
               hide:500
             }
         })
+
+        $('[data-create-contact]').on('click',(event)=>{
+          event.preventDefault();
+          let data = {
+              firstName: $('[data-contact-firstname]').val(),
+              lastName: $('[data-contact-lastname]').val(),
+              email: $('[data-contact-email]').val()
+          }
+          $.ajax({
+              url:`../create-contact`,
+              type:`POST`,
+              data : data,
+              success: (response) => {
+                $('[data-contact]').append(`<div class="item" data-value="${data.email}">${data.firstName}  ${data.lastName}</div>`);
+              },
+              error: (err) => {
+                  //add error handler
+              }
+          })
+      })
+
+
+
         $('[data-submit]').on('click', (event) => {
           event.preventDefault();
           let taskId = window.location.pathname.lastIndexOf('/') + 1;

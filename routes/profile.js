@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const getTasks = require('../models/query/getTask');
-const create = require('../models/query/create');
-const update = require('../models/query/update');
-const moment = require('moment');
 const multer = require('multer');
-const upload = multer({ dest: 'user_logo/' });
+const upload = multer({ dest: 'public/images/user_logo/' });
+const User = require('../models/table/user');
 
 router.get('/', (req, res) => {
     res.render('profile', {
@@ -16,9 +13,9 @@ router.get('/', (req, res) => {
     })
 })
 .post('/', upload.single('picture'), (req, res) => {
-    console.log(req.body);
-    console.log(req.file);
-    res.end();
+    User.update({picture: `images/user_logo/${req.file.filename}`}, {where: {id: res.locals.user.id}})
+    .then(res.status(201).send())
+    .catch((err) => {res.status(400).send(err)});
 });
 
 module.exports = router;

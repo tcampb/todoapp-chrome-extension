@@ -6,7 +6,19 @@ $(document).ready(() => {
     });
 
     $('[data-update-profile]').on('click', (event) => {
-        window.location.replace('/dashboard');
+        event.preventDefault();
+        let form_data = new FormData($('#myForm')[0]);
+        console.log(form_data)
+        $.ajax({
+        type:'POST',
+        url:'/profile',
+        processData: false,
+        contentType: false,
+        data : form_data,
+      success: function(response){
+        console.log(response);
+      }
     })
+})
 
 })

@@ -24,7 +24,6 @@ $(document).ready(() => {
         duration: 2000
       })
       setTimeout(() => {
-        console.log(1);
         window.location.replace('/');
       }, 1000);
       });

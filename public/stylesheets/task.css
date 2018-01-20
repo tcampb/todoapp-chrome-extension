@@ -35,6 +35,10 @@ header {
   margin-top: 62px;
 }
 
+#primaryForm {
+  margin-top: 22px;
+}
+
 .console {
   display: flex;
   justify-content: space-between;

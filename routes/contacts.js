@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
     .then((contact) => {
         res.render('contact', {
             contact: contact,
-            document: 'contact'
+            document: 'contact',
+            img: res.locals.user.picture
         });
     })
 })

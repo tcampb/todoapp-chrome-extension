@@ -4,7 +4,11 @@
         </div>
         {{> header}}
     </header>
-    <form action="" method="POST" class="ui form container" data-create-task>
+    <div data-container>
+    <div class="console">
+    <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
+    </div>
+    <form action="" method="POST" class="ui form container" id="primaryForm" data-create-task>
         <div class="sixteen wide field">
             <label for="title">Title</label>
             <input type="text" name="title">
@@ -48,7 +52,7 @@
                   {{/each}}
                   {{/if}}
               </div>
-            </div></div>
+            </div>
             <div class="sixteen wide field">
                 <label>Date</label>
                     <div class="ui calendar" data-calendar>
@@ -56,10 +60,12 @@
                               <i class="calendar icon"></i>
                               <input name="enddate" type="text" placeholder="Date/Time">
                             </div>
-                        </div></div>
+                        </div>
+                        </div>
             <input type="submit" value="Submit" class="ui button" data-submit>
     
         </form>
+        </div>
         </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.js"></script>

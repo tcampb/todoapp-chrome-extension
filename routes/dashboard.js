@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     if (!res.locals.user) res.redirect('/');
         getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location'])
         .then(allTasks=>{
-                if (!allTasks) return null;
+                if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
                     return {
                         id: task.id,
@@ -24,6 +24,7 @@ router.get('/', (req, res, next) => {
                     }
                 })
         })
+        .catch((err) => {console.log(err)})
         .then((task) => {
             res.render('dashboard', {
             tasks: task,
@@ -31,7 +32,7 @@ router.get('/', (req, res, next) => {
             document: 'dashboard',
             title: 'dashboard',
             img: res.locals.user.picture
-        }).catch((err) => {console.log(err)})
+        })
     })
 })
 
@@ -88,23 +89,24 @@ router.get('/', (req, res, next) => {
 })
 //Retrieves create tasks page
 .get('/tasks', (req, res) => {
-    //Redirect user to sign-in page if not logged in
-    // if (!res.locals.user) res.redirect('/');
-    // else {
-    getTasks.find_all_contact(res.locals.user).then(allContacts => {
-        const contact = allContacts.map(contact => {
+    getTasks.find_all_contact(res.locals.user)
+    .then(allContacts => {
+        console.log(allContacts);
+        if (!allContacts) return allContacts;
+        return allContacts.map(contact => {
             return { 
                 id:contact.id,
                 name:contact.firstName+" "+contact.lastName
             }
         })
-        res.render('createTask',{
-            contact: contact,
-            document: 'createTask',
-            img: res.locals.user.picture
-        });
     })
-// }
+        .then((contact) => {
+            res.render('createTask',{
+                contact: contact,
+                document: 'createTask',
+                img: res.locals.user.picture
+            })
+})
 })
 
 .get('/contacts',(req,res,next)=>{

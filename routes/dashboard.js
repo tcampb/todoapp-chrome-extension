@@ -35,17 +35,17 @@ router.get('/', (req, res, next) => {
     })
 })
 
-// .delete('/',(req,res)=>{
-//     let key =Object.keys(req.body);
-//     key.forEach(key => { deleto.delete_a_task(res.locals.user,key)
-//         .then(()=>{
-//             res.send('success');
-//         })
-//         .catch(error=>{
-//             res.send(error)
-//         })
-//      })
-// })
+.delete('/',(req,res)=>{
+    let key = Object.keys(req.body);
+    key.forEach(key => { deleto.delete_a_task(res.locals.user,key)
+        .then(()=>{
+            res.send('success');
+        })
+        .catch(error=>{
+            res.send(error)
+        })
+     })
+})
 //Retrieve infomation about a specific task
 .get('/tasks/:id', (req, res) => {
     const taskId = req.params.id;

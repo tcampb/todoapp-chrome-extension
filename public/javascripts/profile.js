@@ -15,8 +15,11 @@ $(document).ready(() => {
         processData: false,
         contentType: false,
         data : form_data,
-      success: function(response){
-        console.log(response);
+      success: (response) => {
+        window.location.replace('/profile');
+      },
+      error: (err) => {
+        console.log("An unexpected error occurred");
       }
     })
 })

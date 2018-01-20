@@ -10,7 +10,7 @@ const print = (data)=>{
 }
     exports.find_all_task = async(user,arr) =>{
     let validate = {where:{userId:user},attributes:arr};
-    let tasks = await Task.findAll(validate);
+    let tasks = await Task.findAll(validate).catch((err) => {return null});
     // print(tasks);
     return tasks;
 }
@@ -19,7 +19,7 @@ const print = (data)=>{
 
 exports.find_all_contact = async(user) => {
     let validate = {where:{userId:user}};
-    let contacts = await Contact.findAll(validate);
+    let contacts = await Contact.findAll(validate).catch((err) => {return null});
     // print(contacts);
     return contacts;
 }

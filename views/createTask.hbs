@@ -42,9 +42,11 @@
               <i class="dropdown icon" data-tab></i>
               <div class="default text">Contacts</div>
               <div class="menu" data-contact>
+                  {{#if contact}}
                   {{#each contact}}
                   <div class="item" data-value={{id}}>{{name}}</div>
                   {{/each}}
+                  {{/if}}
               </div>
             </div></div>
             <div class="sixteen wide field">

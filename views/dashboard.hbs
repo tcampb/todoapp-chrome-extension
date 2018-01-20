@@ -5,6 +5,8 @@
         {{> header}}
     </header>
    <div class="container" data-container>
+
+  {{#if tasks}}
     {{#each tasks}}
          <a href="#" class="ui card" style="width: 100%" id="card">
                 <div class="content">
@@ -26,6 +28,9 @@
                 </div>
               </a>
 {{/each}}
+{{else}} 
+<h3 style="color: rgba(0,0,0,0.44)">You have no upcoming tasks yet.</h3>
+{{/if}}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>

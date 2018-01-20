@@ -18,6 +18,8 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const dashboard = require('./routes/dashboard');
 const profile = require('./routes/profile');
+const task = require('./routes/task');
+const contact = require('./routes/contacts');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,7 +50,9 @@ app.use('/', index);
 app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
 app.use('/dashboard', dashboard);
-app.use('/profile', profile)
+app.use('/task', task);
+app.use('/contacts', contact);
+app.use('/profile', profile);
 //Logout user and redirect to sign-in page
 app.get('/logout', function(req, res){
   res.cookie('session', '');

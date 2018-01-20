@@ -64,6 +64,7 @@ header {
   font-size: 22px;
   font-weight: 700;
   color: black;
+  word-break: break-all;
 }
 
 .error {

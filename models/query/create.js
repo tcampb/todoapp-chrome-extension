@@ -25,16 +25,17 @@ const create_all = async(user_json,task_json,contact_json) => {
 // find and create contask 
 
 const find_contact_task = async(contacts,task)=>{
-    let contact = await Contact.findOne({where:{id:contacts}});
-    let contask = await Contask.create({});
+    let contact = await Contact.findOne({where:{id:contacts}}).catch((err) => {return err});
+    let contask = await Contask.create({}).catch((err) => {return err});
     contask.setContact(contact);
     contask.setTask(task);
-    contask.save();   
+    contask.save().catch((err) => {return err});
 }
+
 
 const find_create_task = async (userid,task) =>{
     let user = await User.findById(userid);
-    let newTask = await Task.create(task);
+    let newTask = await Task.create(task).catch((err) => {console.log(err)});
     newTask.setUser(user);
     newTask.save();
 }
@@ -43,11 +44,14 @@ exports.find_create_task_contact = async(userid,task)=>{
     let user = await User.findById(userid);
     let newTask = await Task.create(task);
     newTask.setUser(user);
-    newTask.save();
-    let data = task.contact.split(',');
-    data.forEach((contacts)=>{
-    find_contact_task(contacts,newTask)
+    newTask.save()
+    .then(() => {
+        let data = task.contact.split(',');
+        data.forEach((contacts) => {
+            find_contact_task(contacts,newTask)
+        })
     })
+    .catch((err) => {return err})
 }
 
 // find user id 1 and plug in the task

@@ -75,6 +75,7 @@ router.get('/', (req, res) => {
         res.end(err); 
     } res.end();
 })
+//Delete task
 .delete('/',(req,res) => {
     let key = Object.keys(req.body);
     key.forEach(key => { deleto.delete_a_task(res.locals.user.id,key)

@@ -38,7 +38,6 @@ const task_change = {
     content:'prepare notes for next week exam'
 }
 
-
 exports.change_task_info = async (userId,taskId,task_change) => {
     let task = await Task.findOne({where:{id:taskId,userId:userId}});
     let latest = await task.update(task_change);

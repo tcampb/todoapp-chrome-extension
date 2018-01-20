@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const getTasks = require('../models/query/getTask');
 const update = require('../models/query/update');
+const create = require('../models/query/create');
+const deleto = require('../models/query/delete');
 const moment = require('moment');
-
 //GET createTask page
 router.get('/', (req, res) => {
     getTasks.find_all_contact(res.locals.user)
@@ -54,7 +55,7 @@ router.get('/', (req, res) => {
 })
 //Update individual task
 .put('/:id', (req, res) => {
-    let userId = res.locals.user;
+    let userId = res.locals.user.id;
     let taskId = req.params.id;
     let data = req.body;
     update.change_task_info(userId, taskId, data)
@@ -69,14 +70,14 @@ router.get('/', (req, res) => {
 .post('/', (req, res, next) => {
     const body = req.body;
     try {
-        create.find_create_task_contact(res.locals.user, body).catch(error =>{res.send(error)});
+        create.find_create_task_contact(res.locals.user.id, body).catch(error =>{res.send(error)});
     } catch (err) {
-        res.end(err);
+        res.end(err); 
     } res.end();
 })
 .delete('/',(req,res) => {
     let key = Object.keys(req.body);
-    key.forEach(key => { deleto.delete_a_task(res.locals.user,key)
+    key.forEach(key => { deleto.delete_a_task(res.locals.user.id,key)
         .then(()=>{
             res.send('success');
         })

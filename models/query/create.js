@@ -57,9 +57,9 @@ exports.find_create_task_contact = async(userid,task)=>{
 // create contact 
 exports.find_create_contact = async (userid,contact) => {
     let user = await User.findById(userid);
-    let newContact = await Contact.create(contact);
+    let newContact = await Contact.create(contact).catch((err) => {return null});
     newContact.setUser(user);
-    newContact.save();
+    newContact.save()
 }
 
 // find_create_contact(3,sample.sample_data_contact);

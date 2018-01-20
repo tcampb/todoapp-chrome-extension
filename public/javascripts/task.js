@@ -23,7 +23,7 @@ $(document).ready(() => {
             email: $('[data-contact-email]').val()
         }
         $.ajax({
-            url:`/dashboard/create-contact`,
+            url:`/contacts`,
             type:`POST`,
             data : data,
             success: (response) => {
@@ -40,7 +40,7 @@ $(document).ready(() => {
       let data = $('[data-create-task]').serialize();
 
       $.ajax({
-        url:'/dashboard/create-task',
+        url:'/task',
         type: 'POST',
         data: data,
         success: (response) => {

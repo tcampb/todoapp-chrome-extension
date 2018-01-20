@@ -32,7 +32,7 @@ $(document).ready(() => {
     $('[data-update]').on('click', (event) => {
       event.preventDefault();
       $('[data-update]').empty();
-      $.get('/dashboard/tasks', (data) => {
+      $.get('/task', (data) => {
         let formStart = data.indexOf('<form');
         let formEnd = data.indexOf('</form>') + 7;
         let form = data.substring(formStart, formEnd);
@@ -78,7 +78,7 @@ $(document).ready(() => {
               email: $('[data-contact-email]').val()
           }
           $.ajax({
-              url:`../create-contact`,
+              url:`/contact`,
               type:`POST`,
               data : data,
               success: (response) => {
@@ -95,7 +95,7 @@ $(document).ready(() => {
           let taskId = window.location.pathname.lastIndexOf('/') + 1;
           taskId = window.location.pathname.substring(taskId);
           $.ajax({
-            url:`./update-task/${taskId}`,
+            url:`/task/${taskId}`,
             type: 'PUT',
             data: $('form').serialize(),
             success: (response) => {

@@ -40,12 +40,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(parseJSON);
 app.use(parseURL);
 //Check to see if the user is currently signed-in
-// app.use(isAuthorized);
+app.use(isAuthorized);
 //Routes to homepage, login, sign-up
 //Redirect user to dashboard if they are currently signed in
 app.use('/', index);
 //Routes Google & email/password authentication
-// app.use('/auth', auth);
+app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
 app.use('/dashboard', dashboard);
 app.use('/profile', profile)

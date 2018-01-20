@@ -8,11 +8,12 @@ const moment = require('moment');
 
 //Retrieves dashboard page if user successfully logs in
 router.get('/', (req, res, next) => {
-    //Redirect user to sign-in page if not logged in
-    // if (!res.locals.user) res.redirect('/');
-    // else {
-        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location']).then(allTasks=>{
-                const task = allTasks.map(task => {
+    // Redirect user to sign-in page if not logged in
+    if (!res.locals.user) res.redirect('/');
+        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location'])
+        .then(allTasks=>{
+                if (!allTasks) return null;
+                return task = allTasks.map(task => {
                     return {
                         id: task.id,
                         title:task.title,
@@ -21,29 +22,30 @@ router.get('/', (req, res, next) => {
                         createdAt: moment(task.createdAt).fromNow(),
                         location: task.location
                     }
-                });
-                res.render('dashboard', {
-                    tasks: task,
-                    date: moment().format('l'),
-                    document: 'dashboard',
-                    title: 'dashboard',
-                    img: res.locals.user.picture
                 })
         })
-    // }
+        .then((task) => {
+            res.render('dashboard', {
+            tasks: task,
+            date: moment().format('l'),
+            document: 'dashboard',
+            title: 'dashboard',
+            img: res.locals.user.picture
+        }).catch((err) => {console.log(err)})
+    })
 })
 
-.delete('/',(req,res)=>{
-    let key =Object.keys(req.body);
-    key.forEach(key => { deleto.delete_a_task(res.locals.user,key)
-        .then(()=>{
-            res.send('success');
-        })
-        .catch(error=>{
-            res.send(error)
-        })
-     })
-})
+// .delete('/',(req,res)=>{
+//     let key =Object.keys(req.body);
+//     key.forEach(key => { deleto.delete_a_task(res.locals.user,key)
+//         .then(()=>{
+//             res.send('success');
+//         })
+//         .catch(error=>{
+//             res.send(error)
+//         })
+//      })
+// })
 //Retrieve infomation about a specific task
 .get('/tasks/:id', (req, res) => {
     const taskId = req.params.id;

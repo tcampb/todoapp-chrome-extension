@@ -34,6 +34,23 @@ exports.find_task_by_date = async (date) =>{
 }
 // find_task_by_date('2018-10-12');
 
+const find_done_task = async(id) =>{
+    let validate_user = {where:{userId:id,status:true}};
+    try{
+        let tasks = await Task.findAll(vaidate_user);
+    }
+    catch(error){
+        if (error ===Sequelize.ValidationError){
+            return res.status(422).send(error)
+        }
+        else{
+            return res.status(400).json({message:"issue trying to connect to db"})
+        }
+    }
+    return tasks;
+
+
+}
 
 
 // find task by id and all related contacts

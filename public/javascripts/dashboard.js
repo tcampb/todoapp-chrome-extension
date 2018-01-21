@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('.red').hide();
+  $('.green.right').hide();
     $('[data-delete-task]').on('click', (event)=>{
         let taskCard = $(event.target.parentElement.parentElement.parentElement);
         event.preventDefault();
@@ -35,5 +35,5 @@ $(document).ready(() => {
   })
 
   $('.green.button').on('click',(event)=>{
-  $(event.target).closest('.ui.card').find('.red').toggle();  
+  $(event.target).closest('.ui.card').find('.green.right').toggle();  
 })

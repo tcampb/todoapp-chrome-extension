@@ -1,5 +1,7 @@
    {{> header}}
-   <div class="container" data-container>
+
+<br>
+   <div class="ui container" data-container>
     {{#each tasks}}
          <div class="ui card" style="">
                 <div class="ui top left attached label">tags</div>
@@ -15,7 +17,7 @@
                     <p><strong>Due:</strong> {{due}}</p>
                     <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
                 </div>
-                  <a class="ui red right ribbon label">Donzo</a>
+                  <a class="ui green right ribbon label">Donzo</a>
                 <div class="ui two buttons">
                     <div class="ui basic green button">Done</div>
                     <div class="ui basic blue button" data-info={{id}}>More</div>

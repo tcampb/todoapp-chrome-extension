@@ -1,0 +1,36 @@
+ <header>
+        <div class="profile">
+         <a href="/profile" data-profile><img src={{img}} width="40px" height="40px"></a>
+         </div>
+        {{> header}}
+    </header>
+<div class="container" data-container>
+    <div class="console">
+    <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
+    </div>
+                <div class="content">
+                  <div style="padding-bottom: 15px; width: 100%; text-align: center;">
+                    <h4 style="color: #4d5054; font-size: 22px"><strong>Account Settings</strong></h4>
+                      </div>
+                <div>
+                <img src={{img}} width="85px" height="85px" style="display: block; margin: 0 auto; border-radius: 50%">
+               </div>
+               <div>
+                <form method="POST" action="/profile" enctype="multipart/form-data" id="myForm">
+                        <input type="file" name="picture" id="picture" style="padding-left: 55px; padding-top: 10px">
+                    </form>
+</div>  
+                  <div>
+                    <p style="padding-top:20px"><strong>Name:</strong> {{name}}</p>
+                    <p><strong>Email:</strong> {{email}}</p>
+                </div>
+                <div class="ui two buttons" style="padding-top: 5px;">
+                    <div class="ui basic green button" data-update-profile>Update</div>
+                    <div class="ui basic red button" data-logout>Logout</div>
+                    </div>
+                </div>
+              </div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+<script src="../javascripts/profile.js"></script>

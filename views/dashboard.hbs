@@ -1,7 +1,13 @@
-   {{> header}}
 
-<br>
-   <div class="ui container" data-container>
+   <header>
+        <div class="profile" style="padding-top: 5px;">
+         <a href="/profile" data-profile><img src={{img}} width="40px" height="40px"></a>
+        </div>
+        {{> header}}
+    </header>
+   <div class="container" data-container>
+
+  {{#if tasks}}
     {{#each tasks}}
          <div class="ui card" style="">
                 <div class="ui top left attached label">tags</div>
@@ -25,9 +31,12 @@
                 </div>
               </div>
 {{/each}}
+{{else}} 
+<h3 style="color: rgba(0,0,0,0.44)">You have no upcoming tasks yet.</h3>
+{{/if}}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
-<script src="javascripts/dashboard.js"></script>
+<script src="../javascripts/dashboard.js"></script>
 
 {{!-- make sure user can toggle the done button --}}

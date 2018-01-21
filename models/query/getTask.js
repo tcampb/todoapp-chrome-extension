@@ -9,8 +9,8 @@ const print = (data)=>{
     data.forEach(data=>console.log(JSON.stringify(`${data}`)));
 }
     exports.find_all_task = async(user,arr) =>{
-    let validate = {where:{userId:user},attributes:arr};
-    let tasks = await Task.findAll(validate);
+    let validate = {where:{userId:user.id},attributes:arr};
+    let tasks = await Task.findAll(validate).catch((err) => {return null});
     // print(tasks);
     return tasks;
 }
@@ -18,8 +18,8 @@ const print = (data)=>{
 // find_all_task(3,['title','content']);
 
 exports.find_all_contact = async(user) => {
-    let validate = {where:{userId:user}};
-    let contacts = await Contact.findAll(validate);
+    let validate = {where:{userId:user.id}};
+    let contacts = await Contact.findAll(validate).catch((err) => {return null});
     // print(contacts);
     return contacts;
 }

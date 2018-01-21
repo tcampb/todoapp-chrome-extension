@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //If user session is valid, redirect to dashboard
-  res.locals.user ? res.redirect('/dashboard') : res.render('index', { title: 'Express' });
+  res.locals.user ? res.redirect('/dashboard') : res.render('index', { title: 'Login' });
 })
 .get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
@@ -31,6 +31,7 @@ router.get('/', function(req, res, next) {
           lastName,
           email,
           password: hash,
+          picture: '../images/placeholder.png'
         })
         .then((user) => {
           res.send(user.email);

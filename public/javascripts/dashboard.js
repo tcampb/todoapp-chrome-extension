@@ -1,4 +1,5 @@
 $(document).ready(() => {
+
   $('.green.right').hide();
     $('[data-delete-task]').on('click', (event)=>{
         let taskCard = $(event.target.parentElement.parentElement.parentElement);
@@ -12,13 +13,10 @@ $(document).ready(() => {
           taskCard.addClass('hide')
         }, 1000);
         $.ajax({
-          url:`/dashboard`,
+          url:`/task`,
           method:`DELETE`,
           data:event.target.dataset.deleteTask 
         })
-      
-      
-      
       })
 
     $('[data-info]').on('click', (event) => {
@@ -29,7 +27,7 @@ $(document).ready(() => {
       })
       setTimeout(() => {
         let taskId = event.currentTarget.attributes['data-info'].value;
-        location.replace(`/dashboard/tasks/${taskId}`);
+        location.replace(`task/${taskId}`);
       }, 1000);
     })
   })

@@ -121,6 +121,11 @@ header {
 
 .tasks, .contacts, .integrations {
     padding-top: 7.5px;
+
+}
+.tasks:hover, .contacts:hover, .integrations:hover {
+    background:#eee;
+
 }
 
 .blue {

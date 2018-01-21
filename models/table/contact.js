@@ -6,7 +6,7 @@ const Contact = sequelize.define('contact',{
 
     firstName: {
         type: Sequelize.STRING, allowNull:false,
-        validate:{notEmpty:{args:true,msg:`virtual friend with no first name is not allowed`}}
+        validate:{notEmpty:true}
     },
 
     lastName: {
@@ -15,7 +15,7 @@ const Contact = sequelize.define('contact',{
 
     email : {
         type: Sequelize.STRING,allowNull:false,
-        validate: {isEmail:true,msg:`Please enter a valid email` }
+        validate: {isEmail:{args:true,msg:`email is not valid`}}
     },
 
     recent_date:{

@@ -9,8 +9,7 @@
 
   {{#if tasks}}
     {{#each tasks}}
-         <div class="ui card" style="">
-                <div class="ui top left attached label">tags</div>
+              <a href="#" class="ui card" style="width: 100%" id="card">
                 <div class="content">
                   <div class="task-header">
                     {{title}} <i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
@@ -23,13 +22,13 @@
                     <p><strong>Due:</strong> {{due}}</p>
                     <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
                 </div>
-                  <a class="ui green right ribbon label">Donzo</a>
+                <div class="ui green right ribbon label" style="margin-left: 25px; {{#unless status}} display:none {{/unless}}" data-ribbon="{{id}}">Complete</div>
                 <div class="ui two buttons">
                     <div class="ui basic green button">Done</div>
                     <div class="ui basic blue button" data-info={{id}}>More</div>
                     </div>
                 </div>
-              </div>
+              </a>
 {{/each}}
 {{else}} 
 <h3 style="color: rgba(0,0,0,0.44)">You have no upcoming tasks yet.</h3>

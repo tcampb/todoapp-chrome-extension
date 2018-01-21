@@ -60,7 +60,7 @@ router.get('/', (req, res) => {
     let data = req.body;
     update.change_task_info(userId, taskId, data)
     .then(() => {
-        res.status(202).end();
+        res.status(202).send({"message":"success"});
     })
     .catch((err) => {
         res.status(500).end();
@@ -69,12 +69,9 @@ router.get('/', (req, res) => {
 //Create new task
 .post('/', (req, res, next) => {
     const body = req.body;
-    create.find_create_task_contact(res.locals.user.id,body)
-    .then(()=>{
-        res.status(201).send('success');
-    })
-    .catch((error) => {
-        res.status(422).send(error.message);
+    create.find_create_task_contact(res.locals.user.id, body)
+    .catch((err) => {
+        res.status(500).end();
     })
 })
 //Delete task

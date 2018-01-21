@@ -33,10 +33,10 @@ const change_contact_info = async (userId,contactId,contact_change)=>{
 }
 
 // change_contact_info(2,2,contact_change);
-const task_change = {
-    title:'Text Preparation',
-    content:'prepare notes for next week exam'
-}
+// const task_change = {
+//     title:'Text Preparation',
+//     content:'prepare notes for next week exam'
+// }
 
 exports.change_task_info = async (userId,taskId,task_change) => {
     let task = await Task.findOne({where:{id:taskId,userId:userId}});

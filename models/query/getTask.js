@@ -10,7 +10,7 @@ const print = (data)=>{
 }
     exports.find_all_task = async(user,arr) =>{
     let validate = {where:{userId:user.id},attributes:arr};
-    let tasks = await Task.findAll(validate).catch((err) => {return null});
+    let tasks = await Task.findAll(validate)
     // print(tasks);
     return tasks;
 }

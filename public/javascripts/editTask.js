@@ -4,6 +4,7 @@ $(document).ready(() => {
     let description = $('[data-description]').text();
     description = description.substring(description.indexOf(':') + 2);
     let location = $('[data-location]').text();
+    location = location.substring(location.indexOf(':') + 2);
     let contacts = $('[data-contact]');
     let contactArray = [];
     let contactIds = [];
@@ -42,7 +43,7 @@ $(document).ready(() => {
         $('[name="title"]').val(title);
         $('[name="content"]').val(description);
         $('[name="enddate"]').val(dueDate);
-        $('[name="title"]').val(title);
+        $('[name="location"]').val(location);
         $('[data-label]').addClass('hide');
         $('[data-submit]').val('Save');
         //Add selected contacts

@@ -51,20 +51,40 @@ $(document).ready(() => {
     })
 
     $('[data-create-task]').on('submit', (event) => {
+      $('.ui.container.error.message').remove();
+      $('.ui.container.success.message').remove();
       event.preventDefault();
       let data = $('[data-create-task]').serialize();
-
       $.ajax({
         url:'/dashboard/create-task',
-        type: 'POST',
+        method: 'POST',
         data: data,
-        success: (response) => {
-          //add response
+        success:(response) => {
+         $(`<div class="ui success container message">
+          <div class="header">Form Completed</div>
+          <p>Task Created</p>
+        </div>`).appendTo($('body'));
+        $('.ui.container.error.message').remove();
         },
-        error: (err) => {
-          //add error handler
+        error: (error) => {
+          let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
+          let $error_header =$(`<h4>${error.statusText}</h4>`);
+          $error_header.appendTo($error_div);
+          let list = error.responseText.split('\n');
+          list.map(text => $(`<p>${text}</p>`).appendTo($error_div));
+          $error_div.appendTo($('#error-box'));
+          // // close icon for error messages!
+          // $('.close.icon').on('click', function() {
+          //   console.log('clicked!!')
+          //   $(this)
+          //     .closest('#error-box')
+          //     .transition('fade');
+          // });
         }
       })
+
+      });
+      
     })
 
     $('[data-back]').on('click', (event) => {
@@ -145,25 +165,11 @@ $(document).ready(() => {
       })
 
 
-
-        $('[data-submit]').on('click', (event) => {
-          event.preventDefault();
-          let taskId = window.location.pathname.lastIndexOf('/') + 1;
-          taskId = window.location.pathname.substring(taskId);
-          $.ajax({
-            url:`./update-task/${taskId}`,
-            type: 'PUT',
-            data: $('form').serialize(),
-            success: (response) => {
-              console.log(response);
-            },
-            error: (err) => {
-              console.log(err);
-            }
-          })
-        })
-      })
       
+      
+    })
+    
+    
+  });
 
-    });
-});
+

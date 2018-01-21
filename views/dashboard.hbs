@@ -1,7 +1,8 @@
    {{> header}}
    <div class="container" data-container>
     {{#each tasks}}
-         <a href="#" class="ui card" style="width: 100%" id="card">
+         <div class="ui card" style="">
+                <div class="ui top left attached label">tags</div>
                 <div class="content">
                   <div class="task-header">
                     {{title}} <i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
@@ -14,15 +15,17 @@
                     <p><strong>Due:</strong> {{due}}</p>
                     <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
                 </div>
+                  <a class="ui red right ribbon label">Donzo</a>
                 <div class="ui two buttons">
                     <div class="ui basic green button">Done</div>
                     <div class="ui basic blue button" data-info={{id}}>More</div>
                     </div>
                 </div>
-              </a>
+              </div>
 {{/each}}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
 <script src="javascripts/dashboard.js"></script>
 
+{{!-- make sure user can toggle the done button --}}

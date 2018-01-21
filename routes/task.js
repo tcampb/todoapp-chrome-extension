@@ -70,8 +70,11 @@ router.get('/', (req, res) => {
 .post('/', (req, res, next) => {
     const body = req.body;
     create.find_create_task_contact(res.locals.user.id, body)
+    .then(() => {
+        res.status(201).send("success");
+    })
     .catch((err) => {
-        res.status(500).end();
+        res.status(422).end(err.message);
     })
 })
 //Delete task

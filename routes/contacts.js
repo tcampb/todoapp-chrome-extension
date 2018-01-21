@@ -27,9 +27,10 @@ router.get('/', (req, res) => {
 .post('/', (req, res, next) => {
     const body = req.body;
     create.find_create_contact(res.locals.user.id, body)
-    .then(res.status(201).send("Contact Created"))
-    .catch((err) => {
-        res.status(400).send("Unable to create contact");
+    .then(()=>res.send('success'))
+    .catch((error) => {
+        console.log(error)
+        res.status(422).send(error.message)
     })
 })
 

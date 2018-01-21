@@ -22,15 +22,22 @@ $(document).ready(() => {
             lastName: $('[data-contact-lastname]').val(),
             email: $('[data-contact-email]').val()
         }
+        console.log(data);
         $.ajax({
             url:`/contacts`,
             type:`POST`,
             data : data,
             success: (response) => {
-              $('[data-contact]').append(`<div class="item" data-value="${data.email}">${data.firstName}  ${data.lastName}</div>`);
+              // $('[data-contact]').append(`<div class="item" data-value="${data.email}">${data.firstName}  ${data.lastName}</div>`);
             },
-            error: (err) => {
-                //add error handler
+            error: (error) => {
+              console.log(error);
+              let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
+              let $error_header =$(`<h4>${error.statusText}</h4>`);
+              $error_header.appendTo($error_div);
+              let list = error.responseText.split('\n');
+              list.map(text => $(`<p>${text}</p>`).appendTo($error_div));
+              $error_div.appendTo($('#error-box'));
             }
         })
     })

@@ -5,7 +5,11 @@ let today= new Date(Date.now());
 
 const Task = sequelize.define('task',{
     title:{
-        type: Sequelize.STRING, allowNull:false
+        type: Sequelize.STRING, allowNull:false,
+        validate:{
+            notEmpty:{args:true, msg:`hey hey hey, title empty`},
+            len:{args:[0,55],msg:`OPS, you have exceed 55 word count!`}
+        }
     },
     content : {
         type: Sequelize.TEXT
@@ -15,10 +19,20 @@ const Task = sequelize.define('task',{
     },
     startdate:{
         type:Sequelize.DATE,allowNull:false, defaultValue: Sequelize.NOW,
-        validate:{isAfter: String(new Date(today.setDate(today.getDate()-1)))}
+        validate:{isAfter: {
+            args:String(new Date(today.setDate(today.getDate()-1))),
+            msg:`We don't live in the past, please re-enter your date!`
+        }
+        }
     },
     enddate: {
-        type: Sequelize.DATE, allowNull:false, defaultValue: Sequelize.NOW 
+        type: Sequelize.DATE, allowNull:false, defaultValue: Sequelize.NOW,
+        validate:{notEmpty:{args:true,msg:`hey hey hey, enter a date please`},
+        isAfter: {
+            args:String(new Date(today.setDate(today.getDate()-1))),
+            msg:`We don't live in the past, please re-enter your date!`
+        }
+    }
     },
     status : {
          type: Sequelize.BOOLEAN, defaultValue: false

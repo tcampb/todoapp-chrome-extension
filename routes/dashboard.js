@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
         .then(allTasks=>{
                 if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
+
                     return {
                         id: task.id,
                         title:task.title,
@@ -24,6 +25,7 @@ router.get('/', (req, res, next) => {
                     }
                 })
         })
+
         .catch((err) => {console.log(err)})
         .then((task) => {
             res.render('dashboard', {
@@ -34,6 +36,9 @@ router.get('/', (req, res, next) => {
             img: res.locals.user.picture
         })
     })
+
+
 })
+
 
 module.exports = router;

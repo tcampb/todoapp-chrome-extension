@@ -1,8 +1,9 @@
 $(document).ready(() => {
-    $('[data-delete-task]').on('click', (event) => {
+
+  $('.green.right').hide();
+    $('[data-delete-task]').on('click', (event)=>{
         let taskCard = $(event.target.parentElement.parentElement.parentElement);
         event.preventDefault();
-        console.log(event.target.dataset.deleteTask);
         taskCard.transition({
           animation: 'fly left',
           duration:1000
@@ -30,3 +31,7 @@ $(document).ready(() => {
       }, 1000);
     })
   })
+
+  $('.green.button').on('click',(event)=>{
+  $(event.target).closest('.ui.card').find('.green.right').toggle();  
+})

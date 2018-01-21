@@ -41,7 +41,7 @@ $(document).ready(() => {
       event.preventDefault();
       let data = $('[data-create-task]').serialize();
       $.ajax({
-        url:'/dashboard/create-task',
+        url:'/task',
         method: 'POST',
         data: data,
         success:(response) => {
@@ -85,8 +85,5 @@ $(document).ready(() => {
     
     
     });
-    })
-    
-    
-  });
+
 

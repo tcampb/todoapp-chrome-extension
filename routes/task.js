@@ -69,9 +69,12 @@ router.get('/', (req, res) => {
 //Create new task
 .post('/', (req, res, next) => {
     const body = req.body;
-    create.find_create_task_contact(res.locals.user.id, body)
-    .catch((err) => {
-        res.status(500).end();
+    create.find_create_task_contact(res.locals.user.id,body)
+    .then(()=>{
+        res.status(201).send('success');
+    })
+    .catch((error) => {
+        res.status(422).send(error.message);
     })
 })
 //Delete task

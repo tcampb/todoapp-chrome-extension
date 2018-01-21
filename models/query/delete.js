@@ -12,7 +12,7 @@ exports.delete_a_task = async (userId,taskId)=> {
     const elimenate = await task.destroy();
 }
 
-const delete_a_contact = async(userId,contactId)=> {
+exports.delete_a_contact = async(userId,contactId)=> {
     const contact = await Contact.findOne({where:{userId:userId, id:contactId}});
     const elimenate = await contact.destroy();
 }

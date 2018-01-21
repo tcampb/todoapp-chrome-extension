@@ -123,10 +123,6 @@ header {
     padding-top: 7.5px;
 
 }
-.tasks:hover, .contacts:hover, .integrations:hover {
-    background:#eee;
-
-}
 
 .blue {
     color: #00a2ff;

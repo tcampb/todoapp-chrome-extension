@@ -1,3 +1,4 @@
+
 $('[data-contact-dropdown')
   .dropdown();
 
@@ -7,6 +8,7 @@ $('[data-contact-hover]')
   .popup({
     inline: true,
     hoverable:true,
+    position:"bottom left",
     delay: {
       show:300,
       hide:500
@@ -79,6 +81,17 @@ $(document).ready(() => {
       
     })
 
+  //   $('.ui.modal')
+  // .modal({
+  //   allowMultiple:false,
+  //   onApprove: ()=>{
+  //     console.log('hello world');
+  //   }
+  // })
+  // .modal('attach events','ui.bottom','show')
+  //   ;
+
+
     $('[data-back]').on('click', (event) => {
       event.preventDefault();
       $('[data-container]').transition({
@@ -88,9 +101,18 @@ $(document).ready(() => {
       setTimeout(() => {
         window.location.replace('/');
       }, 1000);
-
-    
-    
     });
 
 
+$('.ui.bottom.attached').on('click',(event)=>{
+    let id = ($(event.target).attr('data-contact-id'));
+
+    $.ajax({
+      url:`/contacts`,
+      method:`DELETE`,
+      data:id,
+      success:()=>location.replace('/dashboard'),
+      error:(error)=>{console.log(error)}
+    })
+
+})

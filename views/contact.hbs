@@ -8,6 +8,8 @@
     <div class="console">
     <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
     </div>
+
+
 <div class="container ui" id="primaryForm">
     <div class="ui cards">
     {{#if contact}}
@@ -15,17 +17,17 @@
         <div class="card">
             <div class="content">
                 <div class="header">{{name}}</div>
-                <div class="description">
-                    <div class="ui fluid input">
-                        <input>
-                    </div>
                 </div>
-                <div class="ui bottom attached button">
+        <div class="content">
+            <p><i class="mail icon"></i>       {{email}}</p>
+        </div>
+            <div class="extra content">
+                <div class="ui bottom attached button" data-contact-id={{id}}>
                     <i class="remove user icon"></i>
                     Remove Contact
                 </div>
             </div>
-        </div>
+            </div>
     {{/each}}
     {{else}}
     <h3 style="color: rgba(0,0,0,0.44)">You have no contacts yet.</h3>

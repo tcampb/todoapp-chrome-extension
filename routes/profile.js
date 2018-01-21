@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     })
 })
 .post('/', upload.single('picture'), (req, res) => {
-    User.update({picture: `images/user_logo/${req.file.filename}`}, {where: {id: res.locals.user.id}})
+    User.update({picture: `../images/user_logo/${req.file.filename}`}, {where: {id: res.locals.user.id}})
     .then(res.status(201).send())
     .catch((err) => {res.status(400).send(err)});
 });

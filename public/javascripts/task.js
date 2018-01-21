@@ -58,7 +58,6 @@ $(document).ready(() => {
         animation: 'fly right',
         duration: 2000
       })
-      console.log(event);
       setTimeout(() => {
         window.location.replace('/');
       }, 1000);

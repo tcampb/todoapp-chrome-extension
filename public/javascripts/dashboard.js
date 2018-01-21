@@ -35,7 +35,7 @@ $(document).ready(() => {
     let e = $(event.target).closest('.ui.card').find('[data-ribbon]');
     // Check to see if ribbon is hidden
     let display = e.attr('style');
-    display.includes('display: none') ? status = false : status = true;
+    display.includes('none') ? status = true : status = false;
     let taskId = e.attr('data-ribbon');
     $.ajax({
       url: `/task/${taskId}`,

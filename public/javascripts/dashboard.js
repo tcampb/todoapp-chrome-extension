@@ -1,6 +1,5 @@
 $(document).ready(() => {
 
-  $('.green.right').hide();
     $('[data-delete-task]').on('click', (event)=>{
         let taskCard = $(event.target.parentElement.parentElement.parentElement);
         event.preventDefault();
@@ -30,8 +29,26 @@ $(document).ready(() => {
         location.replace(`task/${taskId}`);
       }, 1000);
     })
-  })
 
   $('.green.button').on('click',(event)=>{
-  $(event.target).closest('.ui.card').find('.green.right').toggle();  
+    event.preventDefault();
+    let e = $(event.target).closest('.ui.card').find('[data-ribbon]');
+    // Check to see if ribbon is hidden
+    let display = e.attr('style');
+    display.includes('display: none') ? status = false : status = true;
+    let taskId = e.attr('data-ribbon');
+    $.ajax({
+      url: `/task/${taskId}`,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: {'status': status},
+      success: (response) => {
+        e.toggle();
+      },
+      error: (err) => {
+        console.log("ERROR");
+      }
+    })
+})
+
 })

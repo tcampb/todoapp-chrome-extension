@@ -60,7 +60,7 @@ router.get('/', (req, res) => {
     let data = req.body;
     update.change_task_info(userId, taskId, data)
     .then(() => {
-        res.status(202).end();
+        res.status(202).send({"message":"success"});
     })
     .catch((err) => {
         res.status(500).end();

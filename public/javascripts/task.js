@@ -6,9 +6,10 @@ $('[data-calendar]').calendar();
 
 $('[data-contact-hover]')
   .popup({
+    on:'click',
     inline: true,
     hoverable:true,
-    position:"bottom left",
+    position:"bottom center",
     delay: {
       show:300,
       hide:500
@@ -24,16 +25,20 @@ $(document).ready(() => {
             lastName: $('[data-contact-lastname]').val(),
             email: $('[data-contact-email]').val()
         }
-        console.log(data);
         $.ajax({
             url:`/contacts`,
             type:`POST`,
             data : data,
             success: (response) => {
               $('[data-contact]').append(`<div class="item" data-value="${data.email}">${data.firstName}  ${data.lastName}</div>`);
-            },
+
+              $(`<div class="ui success container message">
+          <div class="header">Status Complete</div>
+          <p>Contact Created</p>
+        </div>`).appendTo($('body'));
+        $('.ui.container.error.message').remove();
+        },
             error: (error) => {
-              console.log(error);
               let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
               let $error_header =$(`<h4>${error.statusText}</h4>`);
               $error_header.appendTo($error_div);
@@ -80,18 +85,22 @@ $(document).ready(() => {
       })
 
       });
-      
+
+
+      let array = $('.header.contact').map(function(){
+        return $.trim($(this).text());
+      }).get();
+
+      let contactList = new Array;
+        for(let i=0;i<array.length;i++){
+          contactList[i]= {title:array[i]}}
+      $('.ui.search')
+        .search({
+          source: contactList
+              });
     })
 
-  //   $('.ui.modal')
-  // .modal({
-  //   allowMultiple:false,
-  //   onApprove: ()=>{
-  //     console.log('hello world');
-  //   }
-  // })
-  // .modal('attach events','ui.bottom','show')
-  //   ;
+ 
 
 
     $('[data-back]').on('click', (event) => {

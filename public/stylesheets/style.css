@@ -56,10 +56,14 @@ button:focus {
   width: 100px;
   height: 35px;
   border-color: #0088ff;
-  margin-top: 1%;
+  margin-top: 20px;
   margin-left: 70%;
   color: white;
   outline: none;
+}
+
+.sign-in h5 {
+  margin-top: 40px;
 }
 
 .google {
@@ -89,6 +93,11 @@ button:focus {
 .sign-up a {
   text-decoration: none;
   color: #00a2ff;
+}
+
+.reset-user {
+  text-align: center;
+  display: block
 }
 
 h3 {
@@ -122,6 +131,30 @@ h3 {
   .sign-in button {
       display: block;
       margin: 60px auto 0 auto;
+  }
+
+}
+
+/* Chrome extension layout */
+@media screen and (max-width: 319px) {
+  html, body {
+    background-color: white;
+  }
+
+  .container-fluid {
+    box-shadow: none;
+  }
+
+  h3 {
+    padding-top: 80px;
+  }
+
+  .sign-in button {
+    margin-top: 60px
+  }
+
+  .sign-up h5 {
+    margin-top: 150px
   }
 
 }

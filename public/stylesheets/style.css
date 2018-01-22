@@ -76,7 +76,7 @@ button:focus {
 .google {
   height: 50px;
   display: flex;
-  width: 65%;
+  width: 85%;
   margin: 0 auto;
   border-radius: 22px;
   background-color: #4184f3;
@@ -87,8 +87,10 @@ button:focus {
 .google-button {
   color: white;
   display: block;
-  font-size: 22px;
+  font-size: 18px;
   text-decoration: none;
+  text-align: center;
+  width: 100%;
 }
 
 .sign-up {

@@ -44,7 +44,7 @@ router.get('/', function(req, res, next) {
           picture: '../images/placeholder.png'
         })
         .then((user) => {
-          res.send(user.email);
+          res.status(201).send({"userCreated":"True"});
         })
         .catch((err) => {
           next(err);

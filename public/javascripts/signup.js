@@ -21,7 +21,7 @@ const emailAuth = (email) => {
     $('[data-email]').removeClass('hide').attr('required');
     $('.sign-up').addClass('hide');
     $('button').attr({'style': 'margin-top: 0px'});
-    $('form').attr('action', '/auth');
+    $('form').attr('action', '/signup');
 }
 
 
@@ -29,13 +29,15 @@ $(document).ready(() => {
     $('form').on('submit', (event) => {
         event.preventDefault();
         $.ajax({
-            url: '/signup/email',
+            url: $('form').attr('action'),
             type: 'POST',
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                console.log(data.auth);
                 data.auth === 'google' ? googleAuth(data.address) : emailAuth(data.address);
+                if (data.userCreated) {
+                    window.location.replace('/');
+                }
             },
             error: (err) => {
                 console.log(err);

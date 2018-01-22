@@ -9,8 +9,8 @@
     <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
     </div>
     <form action="" method="POST" class="ui form container" id="primaryForm" data-create-task>
-        <div class="sixteen wide field">
-            <label for="title">Title</label>
+        <div class="sixteen wide field required">
+            <label class= for="title">Title</label>
             <input type="text" name="title">
         </div>
         <div class="sixteen wide field">
@@ -19,7 +19,7 @@
         </div>
         <div class="sixteen wide field">
             <div class="ui sub header">Contacts</div>
-            <div class="ui" data-contact-hover><i class=" large add user icon"></i></div>
+            <div class="ui icon button" data-contact-hover><i class="fitted add user icon"></i></div>
             <div class="ui flowing popup bottom left transition hidden">
             <div class="ui form">
                 <div class="three fields">
@@ -36,7 +36,7 @@
                     <input type="email" placeholder="Email Address" data-contact-email>
                     </div>
                 </div>
-                <button class="ui primary basic button" data-create-contact>Create</button>
+                <button class="ui inverted blue button" data-create-contact>Create</button>
                 </div>
             </div></div>
 

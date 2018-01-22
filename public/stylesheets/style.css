@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background-color: #00A2FF
+  background-color: #efefee;
 }
 
 .error {
@@ -27,6 +27,13 @@ body {
   margin: 10% auto 0 auto;
   height: 55px;
   width: 55px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px
 }
 
 .sign-in form {
@@ -97,15 +104,20 @@ button:focus {
 
 .reset-user {
   text-align: center;
-  display: block
+  display: block;
+  margin-top: -20px;
 }
 
-h3 {
+.logo + h3 {
   font-family: Proxima Nova, sans-serif;
   color: rgba(77, 80, 85, 0.842);
   text-align: center;
   font-size: 25px;
-  padding-top: 80px;
+  margin-top: 17px;
+}
+
+.logo img {
+  margin-top: 20px;
 }
 
 .reset {
@@ -155,6 +167,12 @@ h3 {
 
   .sign-up h5 {
     margin-top: 150px
+  }
+
+  .logo img {
+    margin-top: 110px;
+    height: 140px;
+    width: 160px;
   }
 
 }

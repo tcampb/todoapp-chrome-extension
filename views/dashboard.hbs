@@ -7,6 +7,31 @@
     </header>
    <div class="container" data-container>
 
+<div class="ui floating dropdown labeled icon button" style="margin-left:5px">
+  <i class="filter icon"></i>
+  <span class="text">{{{spam}}}</span>
+  <div class="menu">
+      <div class="item" data-filter-date>
+        <i class="calendar icon"></i>
+        Date
+      </div>
+      <div class="item" data-overdue-task>
+        <i class="red dont icon"></i>
+        Overdue
+      </div>
+      <div class="item" data-completed-task>
+        <i class="green check square icon"></i>
+        Completed
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
   {{#if tasks}}
     {{#each tasks}}
               <a href="#" class="ui card" style="width: 100%" id="card">

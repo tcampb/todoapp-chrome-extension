@@ -34,24 +34,23 @@ exports.find_task_by_date = async (date) =>{
 }
 // find_task_by_date('2018-10-12');
 
-const find_done_task = async(id) =>{
-    let validate_user = {where:{userId:id,status:true}};
-    try{
-        let tasks = await Task.findAll(vaidate_user);
-    }
-    catch(error){
-        if (error ===Sequelize.ValidationError){
-            return res.status(422).send(error)
-        }
-        else{
-            return res.status(400).json({message:"issue trying to connect to db"})
-        }
-    }
+exports.find_done_task = async(user) =>{
+    let validate_user = {where:{userId:user.id,status:true}};
+    let tasks = await Task.findAll(validate_user);
     return tasks;
-
-
 }
 
+exports.find_overdue_task = async (user) => {
+    let validate = {where:{enddate:{[Op.lt]:new Date()},status:false}};
+    let tasks = await Task.findAll(validate);
+    return tasks;
+}
+
+exports.find_order_date = async (user) => {
+    let validate = {order:[['enddate']]};
+    let tasks = await Task.findAll(validate);
+    return tasks;
+}
 
 // find task by id and all related contacts
 exports.find_task_by_id = async (id) => {
@@ -74,3 +73,4 @@ exports.find_related_contacts = async (task) => {
     
     return {relatedContacts, task}
 }
+

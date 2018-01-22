@@ -16,8 +16,9 @@ router.get('/', function(req, res, next) {
 //Check user's email provider
 .post('/signup/email', (req, res, next) => {
   let {email} = _.pick(req.body, ['email']);
+  let domain = email.split('@')[1];
   dns.resolveMx(domain, (err, address) => {
-    address[0].exchange.includes('google') ? res.send({'auth': 'google', 'username': `${firstName}`}) : res.send({'auth': 'email', 'username': `${firstName}`});
+    address[0].exchange.includes('google') ? res.send({'auth': 'google'}) : res.send({'auth': 'email'});
   })
 }) 
  //Create new user

@@ -31,6 +31,7 @@ $(document).ready(() => {
             data : data,
             success: (response) => {
               $('[data-contact]').append(`<div class="item" data-value="${data.email}">${data.firstName}  ${data.lastName}</div>`);
+
               $(`<div class="ui success container message">
           <div class="header">Status Complete</div>
           <p>Contact Created</p>
@@ -58,6 +59,7 @@ $(document).ready(() => {
         method: 'POST',
         data: data,
         success:(response) => {
+          console.log(response);
          $(`<div class="ui success container message">
           <div class="header">Form Completed</div>
           <p>Task Created</p>
@@ -65,6 +67,7 @@ $(document).ready(() => {
         $('.ui.container.error.message').remove();
         },
         error: (error) => {
+          console.log("error");
           let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
           let $error_header =$(`<h4>${error.statusText}</h4>`);
           $error_header.appendTo($error_div);

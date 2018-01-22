@@ -10,7 +10,7 @@ const moment = require('moment');
 router.get('/', (req, res, next) => {
     // Redirect user to sign-in page if not logged in
     if (!res.locals.user) res.redirect('/');
-        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location'])
+        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location', 'status'])
         .then(allTasks=>{
                 if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
@@ -21,7 +21,8 @@ router.get('/', (req, res, next) => {
                         content:task.content,
                         due: moment(task.enddate).format('llll'),
                         createdAt: moment(task.createdAt).fromNow(),
-                        location: task.location
+                        location: task.location,
+                        status: task.status
                     }
                 })
         })

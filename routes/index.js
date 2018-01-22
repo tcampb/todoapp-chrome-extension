@@ -13,6 +13,15 @@ router.get('/', function(req, res, next) {
 .get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
 })
+//Check user's email provider
+.post('/signup/email', (req, res, next) => {
+  let {email} = _.pick(req.body, ['email']);
+  let domain = email.split('@')[1];
+  dns.resolveMx(domain, (err, address) => {
+    address[0].exchange.includes('google') ? res.send(JSON.stringify({'auth':'google', 'address': email})) 
+                                           : res.send(JSON.stringify({'auth':'email', 'address': email}));
+  })
+}) 
  //Create new user
 .post('/signup', (req, res, next) => {
   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
@@ -23,6 +32,7 @@ router.get('/', function(req, res, next) {
   .then((user) => {
     if (user) res.status(400).send("User already exists");
     else {
+    
     //Encrypt user password
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(password, salt, (err, hash) => {
@@ -34,7 +44,7 @@ router.get('/', function(req, res, next) {
           picture: '../images/placeholder.png'
         })
         .then((user) => {
-          res.send(user.email);
+          res.status(201).send({"userCreated":"True"});
         })
         .catch((err) => {
           next(err);

@@ -10,7 +10,8 @@
     </div>
 
             <div class="ui header">Contacts</div>
-            <div class=" ui icon button" data-contact-hover><i class="fitted add user icon"></i></div>
+            <div class="container ui">
+            <div class=" fluid ui icon button" data-contact-hover><i class="fitted add user icon"></i></div>
             <div class="ui flowing popup bottom left transition hidden">
             <div class="ui form">
                 <div class="three fields">
@@ -29,7 +30,17 @@
                 </div>
                 <button class="ui inverted blue button" data-create-contact>Create</button>
                 </div>
-            </div></div>
+            </div></div></div>
+
+<div class="ui container">
+<div class="ui search">
+  <div class="ui icon input">
+    <input class="prompt" type="text" placeholder="Search contact...">
+    <i class="search icon"></i>
+  </div>
+  <div class="results"></div>
+</div></div>
+
 
 
 <div class="container ui" id="primaryForm">
@@ -38,7 +49,7 @@
     {{#each contact}}
         <div class="card">
             <div class="content">
-                <div class="header">{{name}}</div>
+                <div class="header contact">{{name}}</div>
                 </div>
         <div class="content">
             <p><i class="mail icon"></i>       {{email}}</p>

@@ -9,7 +9,7 @@ $('[data-contact-hover]')
     on:'click',
     inline: true,
     hoverable:true,
-    position:"bottom left",
+    position:"bottom center",
     delay: {
       show:300,
       hide:500
@@ -82,18 +82,22 @@ $(document).ready(() => {
       })
 
       });
-      
+
+
+      let array = $('.header.contact').map(function(){
+        return $.trim($(this).text());
+      }).get();
+
+      let contactList = new Array;
+        for(let i=0;i<array.length;i++){
+          contactList[i]= {title:array[i]}}
+      $('.ui.search')
+        .search({
+          source: contactList
+              });
     })
 
-  //   $('.ui.modal')
-  // .modal({
-  //   allowMultiple:false,
-  //   onApprove: ()=>{
-  //     console.log('hello world');
-  //   }
-  // })
-  // .modal('attach events','ui.bottom','show')
-  //   ;
+ 
 
 
     $('[data-back]').on('click', (event) => {

@@ -1,7 +1,8 @@
 .wrapper {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 200px 300px auto auto auto auto 600px;
+    grid-template-rows: 200px 200px auto auto auto auto 600px;
+    grid-gap: 20px
 }
 .logo {
      grid-row: 1;
@@ -31,7 +32,13 @@
     grid-row: 3/4;
     grid-column: 1/2;
 }
-
+.feature_bkgrnd {
+    background-color: #6c53361f;
+    color: #9c210e;
+}
+.red-text {
+    color: #9c210e;
+}
 .feature-grid {
     display: grid;
     grid-template-columns: 100%;
@@ -53,8 +60,6 @@
 .salesforce-feature-pic {
     grid-row: 3/4;
     grid-column: 2/3;
-    /* justify-self: center;
-    align-self: center;     */
 }
 .google-calendar-feature {
     grid-row: 4/5;
@@ -67,12 +72,12 @@
 .task-storage-feature {
     grid-row: 5/6;
     grid-column: 1/2;
-
+    
 }
 .task-storage-feature-pic {
     grid-row: 5/6;
     grid-column: 2/3;
-
+    
 }
 
 .chrome-extention {
@@ -87,13 +92,13 @@
 .coders {
     grid-row:   7/8;
     grid-column: 1/3;
-
+    
 }
 .coders img {
-    width: 150px;
+    width: 25%;
     border-radius: 50%;
 }
 
-@media screen {
+@media screen (max-width: 768px) {
     
 }

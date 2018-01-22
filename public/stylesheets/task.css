@@ -75,10 +75,17 @@ header {
   margin-top: 62px;
 }
 
+.ui.container {
+  margin:0px;
+}
+
 #primaryForm {
   margin-top: 22px;
 }
 
+#error-box {
+  margin-top:10px;
+}
 .console {
   display: flex;
   justify-content: space-between;

@@ -50,5 +50,37 @@ $(document).ready(() => {
       }
     })
 })
+// Drop down js for filter 
+    $('.dropdown')
+    .dropdown({
+      transition: 'fade up'
+    })
+    ;
+
+    // 
+    $('[data-completed-task]').on('click',(event)=>{
+      $.ajax({
+        url:`/dashboard/done`,
+        type:`GET`,
+        sucess:location.replace(`/dashboard/done`)
+      })
+    })
+    $('[data-overdue-task]').on('click',(event)=>{
+      $.ajax({
+        url:`/dashboard/due`,
+        type:`GET`,
+        sucess:location.replace(`/dashboard/due`)
+      })
+    })
+    $('[data-filter-date]').on('click',(event)=>{
+      $.ajax({
+        url:`/dashboard/date`,
+        type:`GET`,
+        sucess:location.replace(`/dashboard/date`)
+      })
+    })
+
+
+
 
 })

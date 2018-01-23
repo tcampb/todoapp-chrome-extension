@@ -14,11 +14,13 @@ const googleAuth = (email) => {
 const emailAuth = (email) => {
 
     if (!email) {$('[data-google]').addClass('hide')}
-
-    $('[data-firstName]').removeClass('hide').attr('required');
-    $('[data-lastName]').removeClass('hide').attr('required');
-    $('[data-password]').removeClass('hide').attr('required');
-    $('[data-email]').removeClass('hide').attr('required');
+    $('[data-firstName]').removeClass('hide')
+    $('[data-firstName] > input').attr('required', true);
+    $('[data-lastName]').removeClass('hide');
+    $('[data-lastName] > input').attr('required', true);
+    $('[data-password]').removeClass('hide')
+    $('[data-password] > input').attr('required', true);
+    $('[data-email]').removeClass('hide')
     $('.sign-up').addClass('hide');
     $('button').attr({'style': 'margin-top: 0px'});
     $('form').attr('action', '/signup');
@@ -41,7 +43,6 @@ $(document).ready(() => {
                 }
             },
             error: (error) => {
-                console.log(error);
                 let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
                 let $error_header =$(`<h4>${error.statusText}</h4>`);
                 $error_header.appendTo($error_div);

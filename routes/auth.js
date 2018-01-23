@@ -38,7 +38,6 @@ router.get('/google', passport.authenticate('google', {
     where: {email}
   })
   .then((user) => {
-    console.log(user);
     return verifyPassword(password, user);
   })
   .then((response) => {

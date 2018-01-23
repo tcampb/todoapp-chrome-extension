@@ -16,47 +16,19 @@ router.get('/', function(req, res, next) {
 //Check user's email provider
 .post('/signup/email', (req, res, next) => {
   let {email} = _.pick(req.body, ['email']);
+
   let domain = email.split('@')[1];
   dns.resolveMx(domain, (err, address) => {
+    if (err) res.status(422).send(err);
     address[0].exchange.includes('google') ? res.send(JSON.stringify({'auth':'google', 'address': email})) 
-                                           : res.send(JSON.stringify({'auth':'email', 'address': email}));
-  })
+                                            : res.send(JSON.stringify({'auth':'email', 'address': email}));
+})
 }) 
- //Create new user
-// .post('/signup', (req, res, next) => {
-//   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
-//   //Check if email address is currently in use
-//   userModel.findOne({
-//     where: {email}
-//   })
-//   .then((user) => {
-//     if (user) res.status(400).send("User already exists");
-//     else {
-//     //Encrypt user password
-//     bcrypt.genSalt(10, (err, salt) => {
-//       bcrypt.hash(password, salt, (err, hash) => {
-//           userModel.create({
-//           firstName,
-//           lastName,
-//           email,
-//           password: hash,
-//           picture: '../images/placeholder.png'
-//         })
-//         .then((user) => {
-//           res.send(user.email);
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//           next(err);
-//         })
-//     })
-//   })
-// }
-// })
-// })
-
 .post('/signup', (req, res, next) => {
   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
+  if (!firstName || !password) {
+    res.status(422).send("Please fill out all required fields");
+  } else {
   //Check if email address is currently in use
     //Encrypt user password
     bcrypt.genSalt(10, (err, salt) => {
@@ -82,6 +54,7 @@ router.get('/', function(req, res, next) {
         })
     })
   })
+}
 })
 
 .post('/login', function(req, res) {

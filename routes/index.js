@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dns = require('dns');
 const _ = require('lodash');
-const User = require('../models/table/user');
+const userModel = require('../models/table/user');
 const bcrypt = require('bcryptjs');
 
 /* GET home page. */
@@ -61,7 +61,7 @@ router.get('/', function(req, res, next) {
     //Encrypt user password
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(password, salt, (err, hash) => {
-          User.create({
+          userModel.create({
           firstName,
           lastName,
           email,
@@ -90,7 +90,7 @@ router.get('/', function(req, res, next) {
   userModel.findOne({
     where: {email}
   })
-  .then((user) => {
+  .then((user) => {     
   //If no user exists, throw error
   if (!user) {
     res.status(400).send();

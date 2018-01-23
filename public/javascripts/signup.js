@@ -41,6 +41,7 @@ $(document).ready(() => {
                 }
             },
             error: (error) => {
+                console.log(error);
                 let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
                 let $error_header =$(`<h4>${error.statusText}</h4>`);
                 $error_header.appendTo($error_div);

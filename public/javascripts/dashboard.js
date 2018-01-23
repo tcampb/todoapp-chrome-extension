@@ -57,7 +57,7 @@ $(document).ready(() => {
     })
     ;
 
-    // 
+    // Filter buttons redirect js
     $('[data-completed-task]').on('click',(event)=>{
       $.ajax({
         url:`/dashboard/done`,
@@ -79,7 +79,9 @@ $(document).ready(() => {
         sucess:location.replace(`/dashboard/date`)
       })
     })
-
+    $('[data-all-task]').on('click',()=>{
+      location.replace(`/dashboard`)
+    });
 
 
 

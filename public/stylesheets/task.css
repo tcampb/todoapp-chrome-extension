@@ -94,6 +94,7 @@ header {
   margin-top: 65px;
 }
 
+
 .label {
   margin-left: 18px;
 }
@@ -119,42 +120,45 @@ header {
 }
 
 .error {
-    color: #e41600;
+  color: #e41600;
 }
 
 .description {
-    word-break: break-all;
+  word-break: break-all;
 }
 
 .tasks, .contacts, .integrations {
-    padding-top: 7.5px;
-
+  padding-top: 7.5px;
+  
 }
 
 .blue {
-    color: #00a2ff;
+  color: #00a2ff;
 }
 
 .gray {
-    color: #80808091
+  color: #80808091
 }
 
 header a {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 header img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .container-fluid {
-    width: 500px;
-    height: 500px;
-    box-shadow:0 4px 16px rgba(0,0,0,.2);
-    margin: 130px auto 0 auto;
-    background-color: white;
-  }
-  
+  width: 500px;
+  height: 500px;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+  margin: 130px auto 0 auto;
+  background-color: white;
+}
+
+.ui.card:hover {
+  cursor:default !important;
+}
   .header img {
     display: block;
     margin: 10% auto 0 auto;

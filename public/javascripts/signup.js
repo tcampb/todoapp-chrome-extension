@@ -1,5 +1,6 @@
 $(document).ready(() => {
     $('form').on('submit', (event) => {
+        $('.ui.container.error.message').remove();
         event.preventDefault();
         $.ajax({
             url: '/signup',
@@ -7,10 +8,16 @@ $(document).ready(() => {
             dataType: 'json',
             data: $('form').serialize(),
             success: (data) => {
-                location.replace('/');
+                console.log('success');
+                // location.replace('/');
             },
-            error: (err) => {
-                console.log(err);
+            error: (error) => {
+                let $error_div =$(`<div class="ui error container message"><i id="close-error" class="close icon"></i></div>`);
+                let $error_header =$(`<h4>${error.statusText}</h4>`);
+                $error_header.appendTo($error_div);
+                let list = error.responseText.split('\n');
+                list.map(text => $(`<p>${text}</p>`).appendTo($error_div));
+                $error_div.appendTo($('#error-box'));
             }
         })
     })

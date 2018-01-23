@@ -5,38 +5,22 @@ body {
 /* Initial grid layout - mobile first */
 .wrapper {
     display: grid;
+    grid-template-rows: 200px 200px auto auto auto auto auto 150px;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 200px 200px auto auto auto auto auto auto auto auto 200px 150px;
-    /* grid-template-areas:
-        "top-logo"
-        "sign-up"
-        "sf-feat"
-        "sf-pic"
-        "goog-feat"
-        "goog-pic"
-        "task-feat"
-        "task-pic"
-        "chrome-feat"
-        "chrome-pic"
-        "team"
-        "btm-sign-up" */
 }
 /* --------------------------------------- */
 
 /* Logo and sign-up area formatting */
 .logo {
-     grid-row: 1;
+     grid-row: 1/2;
      grid-column: 1/3;
-     grid-area: top-logo;
- }
+  }
 .welcome {
     color: #9c210e;
     text-align: center;
     font-size: 35px;
 }
 .sign-up-btn {
-    /* grid-row: 1; */
-    /* grid-column: 2/3; */
     text-align: center;
     font-size: 20px;
     color: #9c210e;
@@ -46,16 +30,7 @@ body {
     grid-column: 1/3;
     text-align: center;
     background: url("images/tan_stone.jpg");
-    grid-area: sign-up;
 }
-.bottom-sign-up {
-    grid-row: 8/9;
-    grid-column: 1/3;
-    text-align: center;
-    background: url("images/tan_stone.jpg");
-    grid-area: btm-sign-up;
-}
-
 .feature_bkgrnd {
     background-color: #6c53361f;
     color: #9c210e;
@@ -69,7 +44,7 @@ body {
 and text in two rows */
 .feature-grid {
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
     grid-template-rows:20% 80%;
 }
 .feature-header {
@@ -94,24 +69,20 @@ and text in two rows */
 .salesforce-feature {
     grid-row: 3/4;
     grid-column: 1/3;
-    grid-area: sf-feat;
 }
 .salesforce-feature-pic {
     grid-row: 4/5;
     grid-column: 1/3;
-    grid-area: sf-pic;
 }
 /* ----------------------------------------- */
 /* Defines area for Google Calendar description and pic */
 .google-calendar-feature {
     grid-row: 5/6;
     grid-column: 1/3;
-    grid-area: goog-feat;
 }
 .google-calendar-feature-pic {
     grid-row: 6/7;
     grid-column: 1/3;
-    grid-area: goog-pic;
 }
 /* ---------------------------------------- */
 
@@ -119,12 +90,10 @@ and text in two rows */
 .task-storage-feature {
     grid-row: 7/8;
     grid-column: 1/3;
-    grid-area: task-feat;
 }
 .task-storage-feature-pic {
     grid-row: 8/9;
     grid-column: 1/3;
-    grid-area: task-pic;
 }
 /* -------------------------------------- */
 
@@ -132,12 +101,10 @@ and text in two rows */
 .chrome-extention {
     grid-row: 9/10;
     grid-column: 1/3;
-    grid-area: chrome-feat;
 }
 .chrome-extention-pic {
     grid-row: 10/11;
     grid-column: 1/3;
-    grid-area: chrome-pic;
 }
 /* ------------------------------------- */
 
@@ -145,8 +112,6 @@ and text in two rows */
 .coders {
     grid-row:   11/12;
     grid-column: 1/3;
-    grid-area: team;
-    
 }
 .coders img {
     width: 25%;
@@ -173,11 +138,14 @@ and text in two rows */
     display: block;
 }
 /* ---------------------------------------- */
-
+.bottom-sign-up {
+    grid-row: 12/13;
+    grid-column: 1/3;
+    text-align: center;
+    background: url("images/tan_stone.jpg");
+}
 /* Adjust layout for tablet and computer */
 @media (min-width: 678px) {
-    grid-template-rows: 200px 200px auto auto auto auto auto 200px 150px;
-
     .logo {
         grid-row: 1/2;
         grid-column: 1/2;

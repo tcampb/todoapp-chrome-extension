@@ -35,7 +35,8 @@ hbs.registerHelper('styleSheets', (document) => {
       return `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">\n
               <link rel="stylesheet" href="stylesheets/task.css">`
       default:
-      return `<link rel="stylesheet" href="stylesheets/style.css">`
+      return `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">\n
+              <link rel="stylesheet" href="stylesheets/style.css">`
     }
   })
 

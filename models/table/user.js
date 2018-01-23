@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
-console.log("Today Date is :"+ Date(Date.now()+"UTC"));
 
 const User = sequelize.define('user', {
     firstName: {

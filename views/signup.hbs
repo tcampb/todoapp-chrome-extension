@@ -1,14 +1,37 @@
-    <form action="/signup" method="POST">
-        <input type="text" name="firstName">firstname
-        <input type="text" name="lastName">lastname
-        <input type="email" name="email">email
-        <input type="password" name="password" id="">password
-        <button type="submit">Submit</button>
-    </form>
-    <div class="google" data-google>
-                        <a class="google-button" href="/auth/google"><i class="fa fa-google" aria-hidden="true"></i>     Log in with Google</a>
+
+
+
+ <div class="container-fluid">
+     <div class="logo">
+            <img src="images/digitaltaskslogo.png" alt="logo" width="120px" height="105px">
+            </div>
+            <h3 data-title>Sign up for DigitalTasks</h3>
+            <div class="sign-in" data-sign-in>
+                <form action="/signup/email">
+                    <div class="google hide" data-google>
+                        <a class="google-button" href="/auth/google" target="_blank"><i class="fa fa-google" aria-hidden="true"></i>     Sign up with Google</a>
                     </div>
-      <div id="error-box" class="ui container"></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
-<script src="javascripts/signup.js"></script>
+                    <div class="email" data-email>
+                        <input type="email" name="email" placeholder="Email" required data-email-input>
+                        <h2 id="email-error" style="display: none;">Incorrect Email Format</h2>
+                        <h2 id="user-error" data-user-not-found>User Not Found</h2>
+                    </div>
+                    <div class="firstName hide" data-firstName>
+                            <input type="text" placeholder="First Name" name="firstName">
+                    </div>
+                    <div class="lastName hide" data-lastName>
+                            <input type="text" placeholder="Last Name" name="lastName">
+                    </div>
+                    <div class="password hide" data-password>
+                            <input type="password" placeholder="Password" name="password">
+                    </div>
+                        <button type="submit" data-continue="">Continue</button>
+                </form>
+                <h5 class="sign-up" style="margin-top: 50px" data-sign-up>Already have an account? <a href="/" data-switch-password>Log in</a></h5>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+        <script src="javascripts/signup.js"></script>
+

@@ -13,6 +13,15 @@ router.get('/', function(req, res, next) {
 .get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Signup' });
 })
+//Check user's email provider
+.post('/signup/email', (req, res, next) => {
+  let {email} = _.pick(req.body, ['email']);
+  let domain = email.split('@')[1];
+  dns.resolveMx(domain, (err, address) => {
+    address[0].exchange.includes('google') ? res.send(JSON.stringify({'auth':'google', 'address': email})) 
+                                           : res.send(JSON.stringify({'auth':'email', 'address': email}));
+  })
+}) 
  //Create new user
 // .post('/signup', (req, res, next) => {
 //   let {firstName, lastName, email, password} = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
@@ -59,9 +68,8 @@ router.get('/', function(req, res, next) {
           password: hash,
           picture: '../images/placeholder.png'
         })
-        .then(() => {
-          res.status(201).send({'msg':'success'});
-          // res.send(user.email);
+        .then((user) => {
+          res.status(201).send({"userCreated":"True"});
         })
         .catch(err => {
           console.log(err)

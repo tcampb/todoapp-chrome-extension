@@ -10,7 +10,6 @@ exports.sfConn = (user) => {
 }
 
 exports.find_sf_tasks = (user, conn) => {
-    console.log(user.sf_userId)
     return new Promise(resolve => {
     let Now = new Date();
     Now = Now.toISOString().slice(0, 10);
@@ -62,3 +61,4 @@ exports.find_sf_tasks = (user, conn) => {
     })
     })
 }
+

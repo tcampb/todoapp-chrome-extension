@@ -33,12 +33,10 @@ router.get('/', (req, res) => {
         sf_instance: conn.instanceUrl,
         sf_userId: userInfo.id
     }, {where: {id: res.locals.user.id}, returning: true})
-    .then(res.redirect('/'))
+    .then(res.redirect('/integrations'))
     .catch((err) => {console.log(err)})
 })
-});
-
-
+})
 
 
 

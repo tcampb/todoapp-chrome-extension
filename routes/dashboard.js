@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
         .then(allTasks=>{
                 if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
-                    console.log(task.content);
+                    console.log(task.enddate);
                     return {
                         id: task.id,
                         title:task.title,

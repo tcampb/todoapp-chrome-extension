@@ -16,6 +16,7 @@ const print = (data)=>{
     let tasks = await Task.findAll(validate);
     let sfConn = await Sf.sfConn(user);
     let sfTasks = await Sf.find_sf_tasks(user, sfConn);
+    console.log(sfTasks);
     
     return tasks.concat(sfTasks);
 }

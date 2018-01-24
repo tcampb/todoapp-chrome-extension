@@ -12,13 +12,6 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING
     },
 
-    phone:{
-        type:Sequelize.BIGINT,
-        validate:{
-            len:{args:[11],msg:`please include area code!, currently only allow NA area code`}
-        }
-    },
-
     email: {
         type: Sequelize.STRING,
         allowNull: false,

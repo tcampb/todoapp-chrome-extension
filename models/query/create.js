@@ -47,9 +47,11 @@ exports.find_create_task_contact = async(userid,task)=>{
     newTask.save()
     .then(() => {
         let data = task.contact.split(',');
-        data.forEach((contacts) => {
-            find_contact_task(contacts,newTask)
-        })
+        if (data[0] != '') {
+            data.forEach((contacts) => {
+                find_contact_task(contacts,newTask)
+            })
+        }
     })
     .catch((err) => {return err})
 }

@@ -104,12 +104,24 @@ router.get('/', (req, res) => {
         res.status(201).send("success");
     })
     .catch((err) => {
+        console.log("dawdwadda");
         res.status(422).end(err.message);
     })
 })
 //Delete task
 .delete('/',(req,res) => {
     let key = Object.keys(req.body);
+    //Delete Salesforce task
+    if (key[0].startsWith('00T')) {
+        sf.sfConn(res.locals.user)
+        .then((conn) => {sf.deleteTask(conn, key[0])})
+        .then(()=>{
+            res.send('success');
+        })
+        .catch(error=>{
+            res.send(error)
+        })
+    } else {
     key.forEach(key => { deleto.delete_a_task(res.locals.user.id,key)
         .then(()=>{
             res.send('success');
@@ -118,6 +130,7 @@ router.get('/', (req, res) => {
             res.send(error)
         })
      })
+    }
 })
 
 module.exports = router;

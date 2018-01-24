@@ -3,6 +3,7 @@ const async = require('async');
 
 
 exports.sfConn = (user) => {
+    if (!user || !user.sf_userId) {return null}
     return new Promise(resolve => {
         const conn = new jsforce.Connection({ instanceUrl: user.sf_instance, accessToken : user.sf_token });
         resolve(conn)
@@ -110,6 +111,40 @@ exports.find_sfTask_by_Id = (conn, taskId) => {
                 task.createdAt= task.CreatedDate;
                 resolve(task);
             }
+    })
+})
+
+}
+
+exports.deleteTask = (conn, taskId) => {
+    conn.sobject("Task").destroy(taskId, function(err, ret) {
+        if (err || !ret.success) { return console.error(err, ret); }
+        console.log('Deleted Successfully : ' + ret.id);
+      });
+}
+
+exports.find_overdue_task = (conn, user, taskCollection) => {
+    if (!user.sf_userId) {return null}
+    return new Promise(resolve => {
+    let Now = new Date();
+    Now = Now.toISOString().slice(0, 10);
+    conn.query(`SELECT Id, ActivityDate, subject, description, whoId, CreatedDate FROM Task WHERE ActivityDate < ${Now} AND OwnerId = '${user.sf_userId}' AND Status != 'Completed'`, (err, result) => {
+        let taskArray = result.records;
+        let updatedArray = [];
+
+        async.each(taskArray, (task, next) => {
+            task.enddate = task.ActivityDate;
+            task.title = task.Subject;
+            task.Description ? task.content = task.Description : task.content = '';
+            task.id = task.Id;
+            task.is_sf_task = true;
+            task.createdAt = task.CreatedDate;
+            updatedArray.push(task);
+            next()
+        }, function(err) {
+            if (err) console.log(err);
+            resolve(updatedArray.concat(taskCollection));
+        })
     })
 })
 

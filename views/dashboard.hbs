@@ -36,7 +36,7 @@
               <a href="#" class="ui card" style="width: 100%" id="card">
                 <div class="content">
                   <div class="task-header">
-                    <span {{#if is_sf_task}}class="salesforce-task" data-icon="&#xf0c2"{{/if}}>{{title}} </span><i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
+                    <span {{#if is_sf_task}}class="salesforce-task" data-icon="&#xf0c2"{{/if}}>  {{title}}</span><i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
                       </div>
                   <div class="meta">{{createdAt}}</div>
                   <div class="description">
@@ -44,7 +44,9 @@
                     <p><strong>Location:</strong> {{location}}</p>
                       {{/if}}
                     <p><strong>Due:</strong> {{due}}</p>
+                    {{#if content}}
                     <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
+                    {{/if}}
                 </div>
                 <div class="ui green right ribbon label" style="margin-left: 25px; {{#unless status}} display:none {{/unless}}" data-ribbon="{{id}}" {{#if is_sf_task}}data-salesforce="true"{{/if}}>Complete</div>
                 <div class="ui two buttons">

@@ -41,7 +41,6 @@ const change_contact_info = async (userId,contactId,contact_change)=>{
 exports.change_task_info = async (userId,taskId,task_change) => {
     let task = await Task.findOne({where:{id:taskId,userId:userId}});
     let latest = await task.update(task_change);
-    console.log(latest);
     return latest.save()
 }
 

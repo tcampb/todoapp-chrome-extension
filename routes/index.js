@@ -4,6 +4,7 @@ const dns = require('dns');
 const _ = require('lodash');
 const userModel = require('../models/table/user');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,6 +42,44 @@ router.get('/', function(req, res, next) {
           picture: '../images/placeholder.png'
         })
         .then((user) => {
+          const userEmail = user.email;
+          let transporter = nodemailer.createTransport({
+            host:'smtp.gmail.com',
+            port:587,
+            secure:false,
+            auth:{
+                user: 'digitalcraftsatl@gmail.com', // generated ethereal user
+                pass: '8333272387'  // generated ethereal password
+            },
+            tls:{
+                rejectUnauthorized:false
+            }
+        })
+        let mailOptions = {
+            from: '"DigitalTasks 👻" <digitalcraftsatl@gmail.com>', // sender address
+            to: userEmail, // list of receivers
+            subject: 'Welcome to Digital Tasks!', // Subject line
+            text: 'Hello world?', // plain text body
+            html: '<h2>Welcome to DigitalTasks, Please enjoy this kitten</h2>   <img src="cid:unique@nodemailer.com"/>', // html body
+            attachments: [
+                // Binary Buffer attachment
+                {
+                    filename: 'gif.gif',
+                    path: './public/gif.gif',
+                    cid:'unique@nodemailer.com'
+                }]
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        });
+
+
+
+
           res.status(201).send({"userCreated":"True"});
         })
         .catch(err => {

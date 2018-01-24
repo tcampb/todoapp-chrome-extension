@@ -5,6 +5,11 @@ const create = require('../models/query/create');
 const update = require('../models/query/update');
 const deleto = require('../models/query/delete');
 const moment = require('moment');
+const jsforce = require('jsforce');
+const async = require('async');
+
+
+
 
 //Retrieves dashboard page if user successfully logs in
 router.get('/', (req, res, next) => {
@@ -14,7 +19,7 @@ router.get('/', (req, res, next) => {
         .then(allTasks=>{
                 if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
-
+                    console.log(task.content);
                     return {
                         id: task.id,
                         title:task.title,
@@ -26,7 +31,6 @@ router.get('/', (req, res, next) => {
                     }
                 })
         })
-
         .catch((err) => {console.log(err)})
         .then((task) => {
             res.render('dashboard', {

@@ -52,6 +52,20 @@ const User = sequelize.define('user', {
     sf_token :{
         type: Sequelize.STRING,
         allowNull:true
+    },
+
+    sf_refresh_token:{
+        type: Sequelize.STRING,
+        allowNull:true
+    },
+
+    sf_instance:{
+        type: Sequelize.STRING,
+        allowNull:true
+    },
+    sf_userId:{
+        type:Sequelize.STRING,
+        allowNull:true
     }
   });
 

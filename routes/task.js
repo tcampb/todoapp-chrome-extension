@@ -34,9 +34,10 @@ router.get('/', (req, res) => {
         sf.sfConn(res.locals.user)
         .then((conn) => sf.find_sfTask_by_Id(conn, taskId, res))
         .then((task) => {
-            console.log(task);
+            let firstName = task.name.split(' ')[0];
+            let lastName = task.name.split(' ')[1];
             res.render('task', {
-                contacts: task.name,
+                contacts: [{firstName, lastName}],
                 document: 'task',
                 id: task.id,
                 title: task.title,

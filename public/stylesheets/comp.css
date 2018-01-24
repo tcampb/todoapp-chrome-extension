@@ -5,8 +5,8 @@
         grid-column: 1/2;
     }
     .top-sign-up {
-        grid-row: 2/3;
-        grid-column: 1/3;
+        grid-row: 1/2;
+        grid-column: 2/3;
     }
     .salesforce-feature {
         grid-row: 3/4;
@@ -43,32 +43,30 @@
     .coders {
         grid-row:   7/8;
         grid-column: 1/3;
-        justify-items: center;
-        align-content: center;
         display: grid;
-        grid-template-rows: auto auto auto auto;
-        grid-template-columns: 1fr;         
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
     }
     .head {
         grid-row: 1/2;
-        grid-column: 1/2;
+        grid-column: 2/3;
     }
     .tyler {
         grid-row: 2/3;
         grid-column: 1/2;
     }
     .eric {
-        grid-row: 3/4;
-        grid-column: 1/2;
+        grid-row: 2/3;
+        grid-column: 2/3;
     }
     .rich {
-        grid-row: 4/5;
-        grid-column: 1/2;
+        grid-row: 2/3;
+        grid-column: 3/4;
     }
     .bottom-sign-up {
         grid-row: 8/9;
         grid-column: 1/3;
         text-align: center;
-        background: url("images/tan_stone.jpg");
+        /* background: url("images/tan_stone.jpg"); */
     }     
 }

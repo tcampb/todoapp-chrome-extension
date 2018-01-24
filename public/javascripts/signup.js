@@ -28,6 +28,9 @@ const emailAuth = (email) => {
 
 
 $(document).ready(() => {
+    if (location.search) {
+        $('[data-email-input]').attr('placeholder', location.search.slice(7));
+    }
     $('form').on('submit', (event) => {
         $('.ui.container.error.message').remove();
         event.preventDefault();

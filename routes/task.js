@@ -81,7 +81,6 @@ router.get('/', (req, res) => {
 })
 //Update individual task
 .put('/:id', (req, res) => {
-
     let userId = res.locals.user.id;
     let taskId = req.params.id;
     let data = req.body;

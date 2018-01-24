@@ -32,13 +32,18 @@ $(document).ready(() => {
 
   $('.green.button').on('click',(event)=>{
     event.preventDefault();
+    let isSFtask;
     let e = $(event.target).closest('.ui.card').find('[data-ribbon]');
     // Check to see if ribbon is hidden
     let display = e.attr('style');
     display.includes('none') ? status = true : status = false;
     let taskId = e.attr('data-ribbon');
-    //Check to see if task is from SF 
-    let isSFTask = e.attr('data-salesforce');
+    //Check to see if task is from SF
+    try {
+      isSFTask = e.attr('data-salesforce');
+    } catch (e) {
+      console.log(e);
+    }
     $.ajax({
       url: `/task/${taskId}`,
       type: 'PUT',

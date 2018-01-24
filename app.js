@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Parse JSON / url-encoded req
 app.use(parseJSON);
 app.use(parseURL);
+//Homepage route
 //Check to see if the user is currently signed-in
 app.use(isAuthorized);
 //Routes to homepage, login, sign-up

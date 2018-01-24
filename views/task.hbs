@@ -1,13 +1,13 @@
  <header>
         <div class="profile">
-         <a href="/profile" class="item" data-profile><img src={{img}} width="40px" height="40px"></a>
+         <a href="/profile" data-profile><img src={{img}} width="40px" height="40px"></a>
          </div>
         {{> header}}
     </header>
 <div data-container>
 <div class="console">
  <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
- <a href="/" data-update style="color: black"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+ {{#if notSFTask}}<a href="/" data-update style="color: black"><i class="fa fa-pencil" aria-hidden="true"></i></a>{{/if}}
 </div>
                 <div class="content" data-content>
                     <h2 data-title>{{title}}</h2>
@@ -17,7 +17,9 @@
                     <p data-location><strong>Location:</strong> {{location}}</p>
                       {{/if}}
                     <p data-due-date><strong>Due:</strong> {{due}}</p>
+                      {{#if content}}
                     <p data-description><strong>Description:</strong> {{content}}</p>
+                      {{/if}}
                 </div>
                 </div>
 <div class="label" data-label>

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userModel = require('./models/table/user');
+const sf = require('./models/table/salesforce');
 const jwt = require('jsonwebtoken');
 const config = require('./config/config.json');
 
@@ -29,8 +30,12 @@ module.exports = isAuthorized = (req, res, next) => {
     })
     .then((user) => {
         res.locals.user = user;
-        next();
-  }).catch((err) => {
+        return sf.sfConn(res.locals.user)
+  }).then((conn) => {
+      res.locals.sfConn = conn;
+      next();
+  })
+  .catch((err) => {
       console.log(err);
   })
 }

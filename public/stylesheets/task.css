@@ -30,6 +30,10 @@ header {
     background-color: white;
 }
 
+.profile {
+  padding-top: 5px;
+}
+
 .icon-background {
   margin: 0 auto 20px auto;
   background-color: #eff6f9;
@@ -117,6 +121,16 @@ header {
   font-weight: 700;
   color: black;
   word-break: break-all;
+}
+
+.salesforce-task::before {
+  content: attr(data-icon);
+  font-family: "FontAwesome";
+  color: #00a2ff;
+}
+
+#filter-icon-center::before{
+  top: 70%;
 }
 
 .error {

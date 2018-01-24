@@ -4,17 +4,22 @@ const getTasks = require('../models/query/getTask');
 const create = require('../models/query/create');
 const update = require('../models/query/update');
 const deleto = require('../models/query/delete');
+const sf = require('../models/table/salesforce');
 const moment = require('moment');
+const jsforce = require('jsforce');
+const async = require('async');
+
+
+
 
 //Retrieves dashboard page if user successfully logs in
 router.get('/', (req, res, next) => {
     // Redirect user to sign-in page if not logged in
     if (!res.locals.user) res.redirect('/');
-        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location', 'status'])
+        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location', 'status', 'is_sf_task'])
         .then(allTasks=>{
                 if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
-
                     return {
                         id: task.id,
                         title:task.title,
@@ -22,11 +27,11 @@ router.get('/', (req, res, next) => {
                         due: moment(task.enddate).format('llll'),
                         createdAt: moment(task.createdAt).fromNow(),
                         location: task.location,
-                        status: task.status
+                        status: task.status,
+                        is_sf_task: task.is_sf_task
                     }
                 })
         })
-
         .catch((err) => {console.log(err)})
         .then((task) => {
             res.render('dashboard', {
@@ -46,11 +51,10 @@ router.get('/', (req, res, next) => {
     if(!res.locals.user) res.redirect('/');
     console.log(res.locals.user)
     getTasks.find_done_task(res.locals.user,['id','title','content', 'enddate', 'createdAt', 'location', 'status'])
+    .then((tasks) => {return sf.find_done_task(res.locals.sfConn, res.locals.user, tasks)})
     .then(allTasks=>{
         if (!allTasks) return allTasks;
-
         return task = allTasks.map(task => {
-
             return {
                 id: task.id,
                 title:task.title,
@@ -58,7 +62,8 @@ router.get('/', (req, res, next) => {
                 due: moment(task.enddate).format('llll'),
                 createdAt: moment(task.createdAt).fromNow(),
                 location: task.location,
-                status: task.status
+                status: task.status,
+                is_sf_task: task.is_sf_task
             }
         })
     })
@@ -78,6 +83,7 @@ router.get('/', (req, res, next) => {
 .get('/due',(req,res)=> {
     if(!res.locals.user) res.redirect('/');
     getTasks.find_overdue_task(res.locals.user,['id','title','content', 'enddate', 'createdAt', 'location', 'status'])
+    .then((tasks) => {return sf.find_overdue_task(res.locals.sfConn, res.locals.user, tasks)})
     .then(allTasks=>{
         if (!allTasks) return allTasks;
         return task = allTasks.map(task => {
@@ -88,7 +94,8 @@ router.get('/', (req, res, next) => {
                 due: moment(task.enddate).format('llll'),
                 createdAt: moment(task.createdAt).fromNow(),
                 location: task.location,
-                status: task.status
+                status: task.status,
+                is_sf_task: task.is_sf_task
             }
         })
     })
@@ -118,7 +125,7 @@ router.get('/', (req, res, next) => {
                 due: moment(task.enddate).format('llll'),
                 createdAt: moment(task.createdAt).fromNow(),
                 location: task.location,
-                status: task.status
+                status: task.status,
             }
         })
     })

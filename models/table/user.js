@@ -12,13 +12,6 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING
     },
 
-    phone:{
-        type:Sequelize.BIGINT,
-        validate:{
-            len:{args:[11],msg:`please include area code!, currently only allow NA area code`}
-        }
-    },
-
     email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -28,10 +21,7 @@ const User = sequelize.define('user', {
 
     password: {
         type:Sequelize.STRING,
-        allowNull:false,
-        validate:{
-            notEmpty:{args:true,msg:`Enter a password please`}
-        }
+        allowNull:true
     },
 
     picture: {
@@ -51,6 +41,20 @@ const User = sequelize.define('user', {
 
     sf_token :{
         type: Sequelize.STRING,
+        allowNull:true
+    },
+
+    sf_refresh_token:{
+        type: Sequelize.STRING,
+        allowNull:true
+    },
+
+    sf_instance:{
+        type: Sequelize.STRING,
+        allowNull:true
+    },
+    sf_userId:{
+        type:Sequelize.STRING,
         allowNull:true
     }
   });

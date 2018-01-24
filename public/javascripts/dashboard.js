@@ -26,7 +26,7 @@ $(document).ready(() => {
       })
       setTimeout(() => {
         let taskId = event.currentTarget.attributes['data-info'].value;
-        location.replace(`task/${taskId}`);
+        location.replace(`${location.origin}/task/${taskId}`);
       }, 1000);
     })
 
@@ -37,11 +37,13 @@ $(document).ready(() => {
     let display = e.attr('style');
     display.includes('none') ? status = true : status = false;
     let taskId = e.attr('data-ribbon');
+    //Check to see if task is from SF 
+    let isSFTask = e.attr('data-salesforce');
     $.ajax({
       url: `/task/${taskId}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: {'status': status},
+      data: {'status': status, "isSFTask": isSFtask},
       success: (response) => {
         e.toggle();
       },

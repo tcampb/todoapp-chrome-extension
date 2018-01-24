@@ -26,7 +26,7 @@ $(document).ready(() => {
       })
       setTimeout(() => {
         let taskId = event.currentTarget.attributes['data-info'].value;
-        location.replace(`task/${taskId}`);
+        location.replace(`${location.origin}/task/${taskId}`);
       }, 1000);
     })
 
@@ -43,7 +43,7 @@ $(document).ready(() => {
       url: `/task/${taskId}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: {'status': status, "isSFTask": isSFTask},
+      data: {'status': status, "isSFTask": isSFtask},
       success: (response) => {
         e.toggle();
       },

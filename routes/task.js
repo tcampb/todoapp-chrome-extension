@@ -34,10 +34,14 @@ router.get('/', (req, res) => {
         sf.sfConn(res.locals.user)
         .then((conn) => sf.find_sfTask_by_Id(conn, taskId, res))
         .then((task) => {
-            let firstName = task.name.split(' ')[0];
-            let lastName = task.name.split(' ')[1];
+            let nameArray = '';
+            if (task.name) {
+                let firstName = task.name.split(' ')[0];
+                let lastName = task.name.split(' ')[1];
+                nameArray = [{firstName, lastName}];
+            } 
             res.render('task', {
-                contacts: [{firstName, lastName}],
+                contacts: nameArray,
                 document: 'task',
                 id: task.id,
                 title: task.title,
@@ -104,7 +108,7 @@ router.get('/', (req, res) => {
         res.status(201).send("success");
     })
     .catch((err) => {
-        console.log("dawdwadda");
+        
         res.status(422).end(err.message);
     })
 })

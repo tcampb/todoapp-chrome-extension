@@ -149,3 +149,30 @@ exports.find_overdue_task = (conn, user, taskCollection) => {
 })
 
 }
+
+exports.find_done_task = (conn, user, taskCollection) => {
+    if (!user.sf_userId) {return null}
+    return new Promise(resolve => {
+    let Now = new Date();
+    Now = Now.toISOString().slice(0, 10);
+    conn.query(`SELECT Id, ActivityDate, subject, description, whoId, CreatedDate FROM Task WHERE ActivityDate > ${Now} AND OwnerId = '${user.sf_userId}' AND Status = 'Completed'`, (err, result) => {
+        let taskArray = result.records;
+        let updatedArray = [];
+
+        async.each(taskArray, (task, next) => {
+            task.enddate = task.ActivityDate;
+            task.title = task.Subject;
+            task.Description ? task.content = task.Description : task.content = '';
+            task.id = task.Id;
+            task.is_sf_task = true;
+            task.createdAt = task.CreatedDate;
+            updatedArray.push(task);
+            next()
+        }, function(err) {
+            if (err) console.log(err);
+            resolve(updatedArray.concat(taskCollection));
+        })
+    })
+})
+
+}

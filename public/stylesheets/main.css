@@ -32,6 +32,7 @@ body {
     width: 20%;
 }
 .sign-up-btn:hover {
+    cursor: pointer;
     color: white;
     background-color: #ad5f43;
 }

@@ -139,6 +139,7 @@ button:focus {
   display: none;
 }
 
+
 @media screen and (max-width: 600px){
 
   .container-fluid {
@@ -182,19 +183,21 @@ button:focus {
   }
 
 }
-/* #e41600 */
+
 #password-error {
   display: none;
   color: red;
-  font-size: 18px;
+  font-size: 15px;
 }
 #email-error {
+  margin-left:22px;
   display: none;
   color: red;
-  font-size: 18px;
+  font-size: 15px;
 }
 #user-error {
+  margin-left:22px;
   display: none;
   color: red;
-  font-size: 18px;
+  font-size: 15px;
 }

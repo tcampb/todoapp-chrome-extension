@@ -31,17 +31,12 @@
 </div>
 
 
-
-
-
-
-
   {{#if tasks}}
     {{#each tasks}}
               <a href="#" class="ui card" style="width: 100%" id="card">
                 <div class="content">
                   <div class="task-header">
-                    {{title}} <i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
+                    <span {{#if is_sf_task}}class="salesforce-task" data-icon="&#xf0c2"{{/if}}>{{title}} </span><i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
                       </div>
                   <div class="meta">{{createdAt}}</div>
                   <div class="description">

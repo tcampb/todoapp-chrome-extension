@@ -36,6 +36,9 @@ const Task = sequelize.define('task',{
     },
     status : {
          type: Sequelize.BOOLEAN, defaultValue: false
+    },
+    is_sf_task : {
+        type: Sequelize.BOOLEAN, defaultValue: false
     }
 });
 

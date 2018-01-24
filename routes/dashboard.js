@@ -15,11 +15,10 @@ const async = require('async');
 router.get('/', (req, res, next) => {
     // Redirect user to sign-in page if not logged in
     if (!res.locals.user) res.redirect('/');
-        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location', 'status'])
+        getTasks.find_all_task(res.locals.user,['id', 'title','content', 'enddate', 'createdAt', 'location', 'status', 'is_sf_task'])
         .then(allTasks=>{
                 if (!allTasks) return allTasks;
                 return task = allTasks.map(task => {
-                    console.log(task.enddate);
                     return {
                         id: task.id,
                         title:task.title,
@@ -27,7 +26,8 @@ router.get('/', (req, res, next) => {
                         due: moment(task.enddate).format('llll'),
                         createdAt: moment(task.createdAt).fromNow(),
                         location: task.location,
-                        status: task.status
+                        status: task.status,
+                        is_sf_task: task.is_sf_task
                     }
                 })
         })

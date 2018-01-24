@@ -28,10 +28,7 @@ const User = sequelize.define('user', {
 
     password: {
         type:Sequelize.STRING,
-        allowNull:false,
-        validate:{
-            notEmpty:{args:true,msg:`Enter a password please`}
-        }
+        allowNull:true
     },
 
     picture: {

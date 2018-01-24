@@ -119,6 +119,12 @@ header {
   word-break: break-all;
 }
 
+.salesforce-task::before {
+  content: attr(data-icon);
+  font-family: "FontAwesome";
+  color: #00a2ff;
+}
+
 .error {
   color: #e41600;
 }

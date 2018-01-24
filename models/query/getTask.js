@@ -15,10 +15,12 @@ const print = (data)=>{
     let validate = {where:{userId:user.id},attributes:arr};
     let tasks = await Task.findAll(validate);
     let sfConn = await Sf.sfConn(user);
-    let sfTasks = await Sf.find_sf_tasks(user, sfConn);
-    console.log(sfTasks);
-    
-    return tasks.concat(sfTasks);
+    if (user.sf_token) {
+        let sfTasks = await Sf.find_sf_tasks(user, sfConn);
+        return tasks.concat(sfTasks);
+    } else {
+      return tasks;
+    }
 }
 
 // find_all_task(3,['title','content']);

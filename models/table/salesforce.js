@@ -62,3 +62,14 @@ exports.find_sf_tasks = (user, conn) => {
     })
 }
 
+//Update Salesforce task to completed or deferred
+exports.update_sf_task = (conn, userId, taskId, data) => {
+    data.status === "true" ? status = "Completed" : status = "Deferred";
+    conn.sobject("Task").update({ 
+        Id : taskId,
+        Status: status
+    }, function(err, ret) {
+        if (err || !ret.success) { return console.error(err, ret); }
+        console.log('Updated Successfully : ' + ret.id);
+    });
+}

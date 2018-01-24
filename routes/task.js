@@ -4,6 +4,7 @@ const getTasks = require('../models/query/getTask');
 const update = require('../models/query/update');
 const create = require('../models/query/create');
 const deleto = require('../models/query/delete');
+const sf = require('../models/table/salesforce');
 const moment = require('moment');
 //GET createTask page
 router.get('/', (req, res) => {
@@ -55,16 +56,24 @@ router.get('/', (req, res) => {
 })
 //Update individual task
 .put('/:id', (req, res) => {
+
     let userId = res.locals.user.id;
     let taskId = req.params.id;
     let data = req.body;
-    update.change_task_info(userId, taskId, data)
-    .then(() => {
-        res.status(202).send({"message":"success"});
-    })
-    .catch((err) => {
-        res.status(500).end();
-    })
+    if (data.isSFTask) {
+        sf.sfConn(res.locals.user)
+        .then((conn) => {sf.update_sf_task(conn, userId, taskId, data)})
+        .then(() => {res.status(202).send({"message":"success"})})
+        .catch((err) => {res.status(500).end()})
+    } else {
+        update.change_task_info(userId, taskId, data)
+        .then(() => {
+            res.status(202).send({"message":"success"});
+        })
+        .catch((err) => {
+            res.status(500).end();
+        })
+    }
 })
 //Create new task
 .post('/', (req, res, next) => {

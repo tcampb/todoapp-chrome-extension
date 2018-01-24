@@ -46,7 +46,7 @@
                     <p><strong>Due:</strong> {{due}}</p>
                     <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
                 </div>
-                <div class="ui green right ribbon label" style="margin-left: 25px; {{#unless status}} display:none {{/unless}}" data-ribbon="{{id}}">Complete</div>
+                <div class="ui green right ribbon label" style="margin-left: 25px; {{#unless status}} display:none {{/unless}}" data-ribbon="{{id}}" {{#if is_sf_task}}data-salesforce="true"{{/if}}>Complete</div>
                 <div class="ui two buttons">
                     <div class="ui toggle basic green button">Done</div>
                     <div class="ui basic blue button" data-info={{id}}>More</div>

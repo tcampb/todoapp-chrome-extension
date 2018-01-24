@@ -29,6 +29,24 @@ router.get('/', (req, res) => {
 //GET individual task
 .get('/:id', (req, res) => {
     const taskId = req.params.id;
+    //Salesforce Task object Id always starts with 00T
+    if (taskId.startsWith('00T')) {
+        sf.sfConn(res.locals.user)
+        .then((conn) => sf.find_sfTask_by_Id(conn, taskId, res))
+        .then((task) => {
+            console.log(task);
+            res.render('task', {
+                contacts: task.name,
+                document: 'task',
+                id: task.id,
+                title: task.title,
+                content: task.content,
+                due: moment(task.enddate).format('llll'),
+                location: task.location,
+                img: res.locals.user.picture,
+            })
+        }).catch((err) => {console.log(err)})
+    } else {
     return getTasks.find_task_by_id(taskId)
     .then((task) => {
         return getTasks.find_related_contacts(task)
@@ -50,9 +68,11 @@ router.get('/', (req, res) => {
             content: task.content,
             due: moment(task.enddate).format('llll'),
             location: task.location,
-            img: res.locals.user.picture
+            img: res.locals.user.picture,
+            notSFTask: true
         })
     })
+}
 })
 //Update individual task
 .put('/:id', (req, res) => {

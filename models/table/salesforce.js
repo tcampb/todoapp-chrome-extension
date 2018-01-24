@@ -73,3 +73,44 @@ exports.update_sf_task = (conn, userId, taskId, data) => {
         console.log('Updated Successfully : ' + ret.id);
     });
 }
+
+exports.find_sfTask_by_Id = (conn, taskId) => {
+    return new Promise(resolve => {
+    conn.query(`SELECT Id, ActivityDate, subject, description, whoId, CreatedDate FROM Task WHERE Id = '${taskId}'`, (err, result) => {
+        task = result.records[0];
+        !task.WhoId ? task.WhoId = '' : task.WhoId;
+            if (task.WhoId.startsWith('00Q')) {
+                conn.query(`SELECT id, FirstName, LastName FROM Lead WHERE id = '${task.WhoId}'`, function(err, result){
+                    task.name = result.records[0].FirstName + ' ' + result.records[0].LastName;
+                    task.enddate = task.ActivityDate;
+                    task.title = task.Subject;
+                    task.Description ? task.content = task.Description : task.content = '';
+                    task.id = task.Id;
+                    task.is_sf_task = true;
+                    task.createdAt = task.CreatedDate;
+                    resolve(task);
+                })
+            } else if (task.WhoId.startsWith('003')) {
+                conn.query(`SELECT id, FirstName, LastName FROM Contact WHERE id = '${task.WhoId}'`, function(err, result){
+                    task.name = result.records[0].FirstName + ' ' + result.records[0].LastName;
+                    task.enddate = task.ActivityDate;
+                    task.title = task.Subject;
+                    task.Description ? task.content = task.Description : task.content = '';
+                    task.id = task.Id;
+                    task.is_sf_task = true;
+                    task.createdAt = task.CreatedDate;
+                    resolve(task);
+                })
+            } else {
+                task.enddate = task.ActivityDate;
+                task.title = task.Subject;
+                task.Description ? task.content = task.Description : task.content = '';
+                task.id = task.Id;
+                task.is_sf_task = true;
+                task.createdAt= task.CreatedDate;
+                resolve(task);
+            }
+    })
+})
+
+}

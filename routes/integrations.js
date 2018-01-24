@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
     const conn = new jsforce.Connection({ oauth2 : oauth2 });
     const code = req.param('code');
     conn.authorize(code, function(err, userInfo) {
+    console.log(userInfo.id);
     if (err) { return console.error(err); }
     userModel.update({
         sf_token: conn.accessToken,

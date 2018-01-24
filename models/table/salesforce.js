@@ -10,10 +10,12 @@ exports.sfConn = (user) => {
 }
 
 exports.find_sf_tasks = (user, conn) => {
+    console.log(user.sf_userId)
     return new Promise(resolve => {
     let Now = new Date();
     Now = Now.toISOString().slice(0, 10);
-    conn.query(`SELECT Id, ActivityDate, subject, description, whoId, CreatedDate FROM Task WHERE ActivityDate > ${Now}`, function(err, result){
+    conn.query(`SELECT Id, ActivityDate, subject, description, whoId, CreatedDate FROM Task WHERE ActivityDate > ${Now} AND OwnerId = '${user.sf_userId}' AND Status != 'Completed'`, 
+    function(err, result){
         let taskArray = result.records;
         let updatedArray = [];
 

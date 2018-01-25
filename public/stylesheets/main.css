@@ -31,6 +31,10 @@ body {
     padding: 2px;
     width: 20%;
 }
+.install-btn {
+    margin: 20px;
+    cursor: pointer;
+}
 .sign-up-btn:hover {
     cursor: pointer;
     color: white;

@@ -16,7 +16,6 @@
  The project involves a static webpage to provide information on the extention and an opportunity to sign-up for an account that links your information. The app itself can retrieve and mark tasks in SalesForce as complete. It also stores tasks and contacts in their app account,</p>
 <img src="digitaltasks_webpage.png">
 
-<h2>I-Frame</h2>
 <p>The extention is set in an i-frame, so it behaves as a webpage. The forward and back browser buttons function for the extention when it is opened.
 <h2>Sign-Up</h2>
 <p>Once installed, the user has the ability, directly from the app, to create a user account using a personal email. The user will receive an email verifying their account creation.</p>

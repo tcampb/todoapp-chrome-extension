@@ -25,7 +25,10 @@ const create_all = async(user_json,task_json,contact_json) => {
 // find and create contask 
 
 const find_contact_task = async(contacts,task)=>{
-    let contact = await Contact.findOne({where:{id:contacts}}).catch((err) => {return err});
+    let contact = await Contact.findOne(
+        {where:
+            {id:contacts}
+        }).catch((err) => {return err});
     let contask = await Contask.create({}).catch((err) => {return err});
     contask.setContact(contact);
     contask.setTask(task);

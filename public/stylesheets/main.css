@@ -5,7 +5,7 @@ body {
 /* Initial grid layout - mobile first */
 .wrapper {
     display: grid;
-    grid-template-rows: 240px auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto;
     /* grid-template-rows: 200px auto; */
     grid-template-columns: 50% 50%;
 }
@@ -17,12 +17,12 @@ body {
      grid-column: 1/3;
      justify-self: center;
      align-self: end;
-     height: 240px;
+     height: 200px;
   }
 .welcome {
     color: #ad5f43;
     text-align: center;
-    font-size: 35px;
+    font-size: 1.5rem;
 }
 .sign-up-btn {
     text-align: center;
@@ -46,7 +46,7 @@ input {
     grid-row: 2/3;
     grid-column: 1/3;
     /* background: url("images/tan_stone.jpg"); */
-    padding-bottom: 20px;
+    padding: 20px;
 }
 .feature_bkgrnd {
     background-color: #d6b1a52e;

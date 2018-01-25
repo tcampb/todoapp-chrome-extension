@@ -40,7 +40,7 @@ $(document).ready(() => {
     let taskId = e.attr('data-ribbon');
     //Check to see if task is from SF
     try {
-      isSFTask = e.attr('data-salesforce');
+      isSFtask = e.attr('data-salesforce');
     } catch (e) {
       console.log(e);
     }

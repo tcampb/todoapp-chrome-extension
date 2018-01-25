@@ -49,7 +49,6 @@ router.get('/', (req, res, next) => {
 
 .get('/done',(req,res)=> {
     if(!res.locals.user) res.redirect('/');
-    console.log(res.locals.user)
     getTasks.find_done_task(res.locals.user,['id','title','content', 'enddate', 'createdAt', 'location', 'status'])
     .then((tasks) => {return sf.find_done_task(res.locals.sfConn, res.locals.user, tasks)})
     .then(allTasks=>{

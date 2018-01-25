@@ -151,7 +151,7 @@ exports.find_overdue_task = (conn, user, taskCollection) => {
 }
 
 exports.find_done_task = (conn, user, taskCollection) => {
-    if (!user.sf_userId) {return null}
+    if (!user.sf_userId) {return taskCollection}
     return new Promise(resolve => {
     let Now = new Date();
     Now = Now.toISOString().slice(0, 10);

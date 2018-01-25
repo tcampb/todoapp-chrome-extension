@@ -126,3 +126,7 @@ $('.ui.bottom.attached').on('click',(event)=>{
     })
 
 })
+
+$(document).on('click','#close-error',()=>{
+  $('.ui.error.container.message').hide();
+})

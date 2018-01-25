@@ -34,6 +34,7 @@ body {
 .install-btn {
     margin: 20px;
     cursor: pointer;
+    display: none;
 }
 .sign-up-btn:hover {
     cursor: pointer;

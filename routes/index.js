@@ -109,10 +109,7 @@ router.get('/', function(req, res, next) {
     res.status(400).send();
   } else {
   let firstName = user.dataValues.firstName;
-  //Lookup email domain
-  dns.resolveMx(domain, (err, address) => {
-    address[0].exchange.includes('google') ? res.send({'auth': 'google', 'username': `${firstName}`}) : res.send({'auth': 'email', 'username': `${firstName}`});
-  })
+  !user.dataValues.password ? res.send({'auth': 'google', 'username': `${firstName}`}) : res.send({'auth': 'email', 'username': `${firstName}`});
 }
   })
 });

@@ -1,0 +1,75 @@
+   <header>
+        <div class="profile" style="padding-top: 5px;">
+         <a href="/profile" data-profile><img src={{img}} width="40px" height="40px"></a>
+        </div>
+        {{> header}}
+    </header>
+   <div class="container" data-container>
+    <div class="console">
+    <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
+    </div>
+
+            <div class="ui header" style="text-align: center">Contacts</div>
+            <div class="container ui">
+            <div class=" fluid blue ui icon button" data-contact-hover><i class="fitted add user icon"></i></div>
+            <div class="ui flowing popup bottom left transition hidden">
+            <div class="ui form">
+                <div class="three fields">
+                    <div class="field">
+                    <label>First Name</label>
+                    <input type="text" placeholder="First Name" data-contact-firstname>
+                    </div>
+                    <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="Last Name" data-contact-lastname>
+                    </div>
+                    <div class="field">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Email Address" data-contact-email>
+                    </div>
+                </div>
+                <button class="ui inverted blue button" data-create-contact>Create</button>
+                </div>
+            </div></div>
+
+<div class="ui container">
+<div class="ui search">
+  <div class="ui icon input">
+    <input class="prompt" type="text" placeholder="Search contact..." style="width: 293px; margin-top: 10px;">
+    <i class="search icon"></i>
+  </div>
+  <div class="results"></div>
+</div>
+</div>
+
+<div class="container ui" id="primaryForm">
+    <div class="ui cards">
+    {{#if contact}}
+    {{#each contact}}
+        <div class="card">
+            <div class="content">
+                <div class="header contact">{{name}}</div>
+                </div>
+        <div class="content">
+            <p><i class="mail icon"></i>       {{email}}</p>
+        </div>
+            <div class="extra content">
+                <div class="ui bottom attached negative button" data-contact-id={{id}}>
+                    <i class="remove user icon"></i>
+                    Remove Contact
+                </div>
+            </div>
+            </div>
+    {{/each}}
+    {{else}}
+    <h3 style="color: rgba(0,0,0,0.44)">You have no contacts yet.</h3>
+    {{/if}}
+    </div>
+    </div>
+    <div id="error-box" class="ui container"></div>
+    </div>
+        </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+    <script src="javascripts/task.js"></script> 

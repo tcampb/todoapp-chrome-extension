@@ -5,7 +5,8 @@ User = require('./user');
 const Contact = sequelize.define('contact',{
 
     firstName: {
-        type: Sequelize.STRING, allowNull:false
+        type: Sequelize.STRING, allowNull:false,
+        validate:{notEmpty:true}
     },
 
     lastName: {
@@ -14,7 +15,7 @@ const Contact = sequelize.define('contact',{
 
     email : {
         type: Sequelize.STRING,allowNull:false,
-        validate: {isEmail:true }
+        validate: {isEmail:{args:true,msg:`email is not valid`}}
     },
 
     recent_date:{
@@ -24,10 +25,6 @@ const Contact = sequelize.define('contact',{
 });
 
 Contact.belongsTo(User);
-// Contact.sync()
-//     .then(() => {
-//         console.log('Created Contact table!');
-//     });
 
 
 module.exports = Contact;

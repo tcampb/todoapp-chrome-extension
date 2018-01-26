@@ -1,4 +1,3 @@
-/* CSS */
 html, body{
     width:100%;
     height:100%;
@@ -18,13 +17,101 @@ body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset,
 
 header {
     display: flex;
+    position: fixed;
+    top: 0px;
     justify-content: space-around;
     font-size: 35px;
-    margin-top: 8px;
     border-bottom: 1px solid #dadada;
     box-shadow: 0 7px 20px -5px rgba(0,0,0,0.2);
     min-height: 50px;
     margin-bottom: 20px;
+    z-index: 9999;
+    width: 100%;
+    background-color: white;
+}
+
+.profile {
+  padding-top: 5px;
+}
+
+.icon-background {
+  margin: 0 auto 20px auto;
+  background-color: #eff6f9;
+  border-radius: 50%;
+  height: 115px;
+  width: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+}
+
+.item:hover {
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 2%;
+}
+
+.tile {
+  margin-top: 35px;
+  font-size: 95px;
+  height: 245px;
+  text-align: center;
+}
+
+.tile h4 {
+  font-size: 24px;
+  color: #4D5055;
+  margin-bottom: 5px;
+}
+
+.tile p {
+  font-size: 18px;
+  color: rgba(0,0,0,0.44);
+}
+
+.container {
+  margin-top: 62px;
+}
+
+.ui.container {
+  margin:0px;
+}
+
+#primaryForm {
+  margin-top: 22px;
+}
+
+#error-box {
+  margin-top:10px;
+}
+.console {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 27px;
+  margin-top: 65px;
+}
+
+
+.label {
+  margin-left: 18px;
+}
+
+.content, .content h2, .content p {
+  margin-bottom: 15px;
+  margin-left: 10px;
+  max-width: 292px;
+}
+
+.content h2 {
+  margin-top: 20px;
+  font-size: 28px;
 }
 
 .task-header {
@@ -33,44 +120,59 @@ header {
   font-size: 22px;
   font-weight: 700;
   color: black;
+  word-break: break-all;
+}
+
+.salesforce-task::before {
+  content: attr(data-icon);
+  font-family: "FontAwesome";
+  color: #00a2ff;
+}
+
+#filter-icon-center::before{
+  top: 70%;
 }
 
 .error {
-    color: #e41600;
+  color: #e41600;
 }
 
 .description {
-    word-break: break-all;
+  word-break: break-all;
 }
 
-.tasks, .contacts, .settings {
-    padding-top: 5px;
+.tasks, .contacts, .integrations {
+  padding-top: 7.5px;
+  
 }
 
 .blue {
-    color: #00a2ff;
+  color: #00a2ff;
 }
 
 .gray {
-    color: #80808091
+  color: #80808091
 }
 
 header a {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 header img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .container-fluid {
-    width: 500px;
-    height: 500px;
-    box-shadow:0 4px 16px rgba(0,0,0,.2);
-    margin: 130px auto 0 auto;
-    background-color: white;
-  }
-  
+  width: 500px;
+  height: 500px;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+  margin: 130px auto 0 auto;
+  background-color: white;
+}
+
+.ui.card:hover {
+  cursor:default !important;
+}
   .header img {
     display: block;
     margin: 10% auto 0 auto;

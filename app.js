@@ -17,13 +17,16 @@ const helperFunctions = require('./helperFunctions');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const dashboard = require('./routes/dashboard');
+const profile = require('./routes/profile');
+const task = require('./routes/task');
+const contact = require('./routes/contacts');
+const integrations = require('./routes/integrations');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-//Check if stylesheet is one directory higher
 ////////////////////
 app.use(cookieParser());
 app.use(cookieSession({
@@ -39,6 +42,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Parse JSON / url-encoded req
 app.use(parseJSON);
 app.use(parseURL);
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/homepage.html'));
+})
+
 //Check to see if the user is currently signed-in
 app.use(isAuthorized);
 //Routes to homepage, login, sign-up
@@ -48,6 +55,15 @@ app.use('/', index);
 app.use('/auth', auth);
 //Dashboard will only display if authenication is successful
 app.use('/dashboard', dashboard);
+app.use('/profile', profile);
+app.use('/task', task);
+app.use('/contacts', contact);
+app.use('/integrations', integrations);
+//Logout user and redirect to sign-in page
+app.get('/logout', function(req, res){
+  res.cookie('session', '');
+  res.redirect('/');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

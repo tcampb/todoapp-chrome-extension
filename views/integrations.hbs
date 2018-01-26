@@ -1,0 +1,35 @@
+ <header>
+        <div class="profile" style="padding-top: 5px;">
+         <a href="/profile" data-profile><img src={{img}} width="40px" height="40px"></a>
+        </div>
+        {{> header}}
+    </header>
+<div class="container" data-container>
+    <div class="console">
+    <a href="/" data-back><i class="fa fa-arrow-left blue" aria-hidden="true"></i></a>
+</div>
+<div style="margin: 5px 0;">
+<a href="#" class="item">
+<div class="tile">
+    <div class="icon-background">
+<i class="fa fa-google" aria-hidden="true" style="color: #e04932;"></i>
+    </div>
+    <h4>Google Calendar</h4>
+    <p>Automatically add and update tasks to your Google Calendar</p>
+</div>
+</a>
+</div>
+<div>
+<a href="/integrations/auth/salesforce" class="item">
+<div class="tile">
+    <div class="icon-background">
+<i class="fa fa-cloud" aria-hidden="true" style="color: #009ed5;"></i>
+    </div>
+    <h4>Salesforce</h4>
+    <p>Automatically update Salesforce activities from DigitalTasks</p>
+</div>
+</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+<script src="/javascripts/integrations.js"></script>

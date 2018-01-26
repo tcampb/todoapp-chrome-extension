@@ -1,24 +1,74 @@
-   {{> header}}
+
+   <header>
+        <div class="profile" style="padding-top: 5px;">
+         <a href="/profile" data-profile><img src={{img}} width="40px" height="40px"></a>
+        </div>
+        {{> header}}
+    </header>
+   <div class="container" data-container>
+
+<div class="ui floating dropdown labeled icon button" style="margin-left:5px">
+  <i class="filter icon" id="filter-icon-center"></i>
+  <span class="text">{{{spam}}}</span>
+  <div class="menu">
+      <div class="item" data-all-task>
+        <i class="list layout icon"></i>
+        All
+      </div>
+      <div class="item" data-filter-date>
+        <i class="yellow calendar icon"></i>
+        Date
+      </div>
+      <div class="item" data-overdue-task>
+        <i class="red dont icon"></i>
+        Overdue
+      </div>
+      <div class="item" data-completed-task>
+        <i class="green check square icon"></i>
+        Completed
+      </div>
+  </div>
+</div>
+<div class="ui icon right pointing dropdown button" style="margin-left:100px">
+  <i class="green power icon"></i>
+  <div class="menu">
+    <div class="item">Connect</div>
+    <div class="item">Disconnect</div>
+  </div>
+</div>
+
+
+  {{#if tasks}}
     {{#each tasks}}
-         <a class="ui card" style="width: 100%" href="/" id="card">
+              <a href="#" class="ui card" style="width: 100%" id="card">
                 <div class="content">
-                  <div class="task-header">{{title}} <i class="fa fa-times" aria-hidden="true" data-delete-task></i></div>
+                  <div class="task-header">
+                    <span {{#if is_sf_task}}class="salesforce-task" data-icon="&#xf0c2"{{/if}}>  {{title}}</span><i class="fa fa-times blue" aria-hidden="true" data-delete-task="{{id}}"></i>
+                      </div>
                   <div class="meta">{{createdAt}}</div>
                   <div class="description">
                       {{#if location}}
                     <p><strong>Location:</strong> {{location}}</p>
                       {{/if}}
                     <p><strong>Due:</strong> {{due}}</p>
+                    {{#if content}}
                     <p><strong>Description:</strong> {{#partialContent content}}{{/partialContent}}</p>
+                    {{/if}}
                 </div>
+                <div class="ui green right ribbon label" style="margin-left: 25px; {{#unless status}} display:none {{/unless}}" data-ribbon="{{id}}" {{#if is_sf_task}}data-salesforce="true"{{/if}}>Complete</div>
                 <div class="ui two buttons">
-                    <div class="ui basic green button">Done</div>
-                    <div class="ui basic blue button">More</div>
+                    <div class="ui toggle basic green button">Done</div>
+                    <div class="ui basic blue button" data-info={{id}}>More</div>
                     </div>
                 </div>
               </a>
 {{/each}}
+{{else}} 
+<h3 style="color: rgba(0,0,0,0.44)">You have no upcoming tasks yet.</h3>
+{{/if}}
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
-<script src="javascripts/dashboard.js"></script>
+<script src="../javascripts/dashboard.js"></script>
 
+{{!-- make sure user can toggle the done button --}}

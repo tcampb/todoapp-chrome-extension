@@ -5,14 +5,14 @@ Contask = require('../table/contask');
 
 
 
-const delete_a_task = async (userId,taskId)=> {
+exports.delete_a_task = async (userId,taskId)=> {
     const task = await Task.findOne({where:{userId:userId, id:taskId}});
+    const contask = await Contask.findAll({where:{taskId:taskId}});
+    contask.forEach(contask=> {contask.destroy()});
     const elimenate = await task.destroy();
 }
 
-// delete_a_task(2,2);
-
-const delete_a_contact = async(userId,contactId)=> {
+exports.delete_a_contact = async(userId,contactId)=> {
     const contact = await Contact.findOne({where:{userId:userId, id:contactId}});
     const elimenate = await contact.destroy();
 }
@@ -30,4 +30,7 @@ const delete_account = async(userId)=> {
 
 }
 
-delete_account(1);
+// delete_account(1);
+
+
+

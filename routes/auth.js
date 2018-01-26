@@ -29,7 +29,7 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }))
 .get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.redirect('/dashboard');
+  res.redirect('/home');
 })
 //Sign-in with email / password
 .post('/', (req, res, next) => {

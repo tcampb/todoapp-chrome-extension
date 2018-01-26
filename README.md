@@ -2,8 +2,21 @@
 <h4>Coded by Tyler Campbell, Eric Yii and Rich Oswald</h4>
 <h4>Released: January 25, 2018</h4>
 <h4>To: Public/Chrome Extension Market</h4>
+<h4>Languages and Technologies used</h4>
+<ul>
+<li>Node.js</li>
+<li>Express</li>
+<li>JavaScript</li>
+<li>jQuery</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>Semantic UI</li>
+<li>PostgreSQL</li>
+<li>Salesforce Object Query Language (SOQL)</li>
+<li>Amazon Web Services (AWS)</li>
+</ul>
 <h2>Origin of Idea</h2>
-<p>This app was written as a full-stack project for DigitalCrafts 16-week Full-Stack Immersion Bootcamp. The idea was presented by Tyler Campbell. He shared how his fiance would like a browser extension that would allow her to access her Google Calendar, tasks and contacts as well as SaleForce account data without going to those specific sites.</p>
+<p>This app was written as a full-stack project for DigitalCrafts 16-week Full-Stack Immersion Bootcamp. The idea was presented by Tyler Campbell. He shared how his fiance would like a browser extension that would allow her to access her Google Calendar, tasks and contacts as well as Saleforce account data without going to those specific sites.</p>
 <h2>Unique Domain Name</h2>
 <h3>DigitalTasks.net</h3>
 <p>A domain name unique to the app was purchased and used to host the main page and give users a link to sign up for an account.</p>

@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 400px 450px;
+  grid-gap: 10px;
+  grid-template-rows: 200px 400px 400px;
+}
+.one {
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+.drop_down {
+  grid-column: 2 / 4;
+  grid-row: 1;
+}
+
+.drop_down ul {
+  display: inline;
+}
+.drop_down li {
+  font-size: 25px;
+
+}
+.two { 
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+=======
 html {
   box-sizing: border-box;
   font-family: Proxima Nova, sans-serif;
@@ -199,6 +226,16 @@ button:focus {
   margin-left:22px;
   display: none;
   color: red;
+<<<<<<< HEAD
+  font-size: 18px;
+>>>>>>> master
+}
+.three {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+}
+=======
   font-size: 15px;
 }
 
+>>>>>>> master

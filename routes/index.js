@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log("success");
   //If user session is valid, redirect to dashboard
   res.locals.user ? res.redirect('/dashboard') : res.render('index', { title: 'Login' });
 })

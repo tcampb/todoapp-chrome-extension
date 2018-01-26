@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/';
+const url = 'https://digitaltasks.net';
 
 chrome.runtime.onMessage.addListener(function(msg, sender){
     if(msg == "toggle"){

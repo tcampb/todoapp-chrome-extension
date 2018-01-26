@@ -5,6 +5,7 @@ const googleAuth = (username, e) => {
     $('[data-continue]').addClass('hide');
     $('[data-email]').addClass('hide');
     $('[data-google]').removeClass('hide');
+    $('[data-continue]').remove();
 }
 
 const emailAuth = (email, username, e) => {

@@ -1,4 +1,5 @@
 <h1>DigitalTasks Google Chrome Extension version 1.0</h1>
+<h4><a href="https://www.youtube.com/watch?v=5DAdvmZHA74&t=99s">Demo Video</a></h4>
 <h4>Coded by Tyler Campbell, Eric Yii and Rich Oswald</h4>
 <h4>Released: January 25, 2018</h4>
 <h4>To: Public/Chrome Extension Market</h4>
